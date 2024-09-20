@@ -639,6 +639,12 @@ appendWindowsPath = false
 
 https://cchtagetik.atlassian.net/wiki/spaces/TA1/pages/3725721601/Robot+Framework+modifica+codice+commit+push
 
+Dati per accedere a saastagetik:
+
+Password    @ei3VHu\a\y#zY
+username	e-antonio.vorraro@saastagetik.com
+link		https://jenkins-eks-dev.platformteam.saastagetik.internal/job/data-processing/
+
 
 echo "# testElaborazioni" >> README.md
 git init

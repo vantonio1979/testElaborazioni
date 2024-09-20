@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.6 on win32)" generated="20240918 12:26:42.931" rpa="false" schemaversion="4">
+<suite id="s1" name="Testrobotprova" source="C:\Users\e-antonio.vorraro\PycharmProjects\TGKTestElaborazioni\.venv\TestSuite\testrobotprova.robot">
+<test id="s1-t1" name="TGK_TEST_PROVA" line="12">
+<kw name="TGK_KEY">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20240918 12:26:43.106" level="INFO">Opening browser 'chrome' to base url 'https://cpm-man-trunk-3.platformteam.saastagetik.com/tagetikcpm/authenticate'.</msg>
+<status status="PASS" starttime="20240918 12:26:43.105" endtime="20240918 12:26:50.426"/>
+</kw>
+<kw name="Sleep 10s">
+<msg timestamp="20240918 12:26:50.428" level="FAIL">No keyword with name 'Sleep 10s' found. Did you mean:
+    BuiltIn.Sleep</msg>
+<status status="FAIL" starttime="20240918 12:26:50.428" endtime="20240918 12:26:50.428"/>
+</kw>
+<status status="FAIL" starttime="20240918 12:26:43.105" endtime="20240918 12:26:50.428"/>
+</kw>
+<status status="FAIL" starttime="20240918 12:26:43.105" endtime="20240918 12:26:50.429">No keyword with name 'Sleep 10s' found. Did you mean:
+    BuiltIn.Sleep</status>
+</test>
+<status status="FAIL" starttime="20240918 12:26:42.933" endtime="20240918 12:26:50.430"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Testrobotprova">Testrobotprova</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

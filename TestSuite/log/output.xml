@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.6 on win32)" generated="20240820 16:23:52.087" rpa="false" schemaversion="4">
+<suite id="s1" name="Testqa" source="C:\Users\e-antonio.vorraro\PycharmProjects\TGKTestElaborazioni\.venv\TestSuite\testqa.robot">
+<test id="s1-t1" name="TGK_URL ${url}" line="123">
+<status status="FAIL" starttime="20240820 16:23:53.380" endtime="20240820 16:23:53.384">Test cannot be empty.</status>
+</test>
+<doc>Run test for Diagnostic show form</doc>
+<status status="FAIL" starttime="20240820 16:23:52.092" endtime="20240820 16:23:53.393"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Testqa">Testqa</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20240820 16:23:53.367" level="ERROR">[ DataDriver ] Error in robot file:
+  File "C:\Users\e-antonio.vorraro\PycharmProjects\TGKTestElaborazioni\.venv\TestSuite\testqa.robot", line 0</msg>
+<msg timestamp="20240820 16:23:53.370" level="ERROR">In source file:
+  File "url.csv", line 12</msg>
+<msg timestamp="20240820 16:23:53.377" level="ERROR">Calling method '_start_suite' of listener 'DataDriver' failed: IndexError: list index out of range</msg>
+</errors>
+</robot>

@@ -1,0 +1,25 @@
+-- Table: public.anagraficaElaborazioni
+
+-- DROP TABLE IF EXISTS public."anagraficaElaborazioni";
+
+CREATE TABLE IF NOT EXISTS public."anagraficaElaborazioni"
+(
+    id integer NOT NULL DEFAULT nextval('"anagraficaElaborazioni_id_seq"'::regclass),
+    "codiceElab" text COLLATE pg_catalog."default",
+    "codProcesso" text COLLATE pg_catalog."default",
+    "codAnno" text COLLATE pg_catalog."default",
+    "codPeriodo" text COLLATE pg_catalog."default",
+    "codAmbiente" text COLLATE pg_catalog."default",
+    "codUtenteInserimento" text COLLATE pg_catalog."default",
+    "dataInserimento" date,
+    "dataModifica" date,
+    "profiloUtente" text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public."anagraficaElaborazioni"
+    OWNER to postgres;
+
+1,aae,ae,2017,01 - january,1,01,2023-12-28,2023-12-28,User
+2,aab,ae,2017,01 - january,2,01,2023-12-28,2023-12-28,Admin

@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS public.ambienti
+(
+    id integer NOT NULL DEFAULT nextval('ambienti_id_seq'::regclass),
+    url text COLLATE pg_catalog."default",
+    versione text COLLATE pg_catalog."default",
+    username text COLLATE pg_catalog."default",
+    password text COLLATE pg_catalog."default",
+    utenteins text COLLATE pg_catalog."default",
+    utentemod text COLLATE pg_catalog."default",
+    datains date,
+    datamod date,
+    CONSTRAINT ambienti_pkey PRIMARY KEY (id)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.ambienti
+    OWNER to postgres;
+
+
+1,https://cpm-man-trunk-3.platformteam.saastagetik.com/tagetikcpm,27,A.VORRARO,pass,A.VORRARO,A.VORRARO,2023-12-28,2023-12-28
+2,https://cpm-man-5326-3.platformteam.saastagetik.com/tagetikcpm,26,A.VORRARO,pass,A.VORRARO,A.VORRARO,2023-12-28,2023-12-28

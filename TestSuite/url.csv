@@ -1,0 +1,11 @@
+${url},${user},${pass}
+https://cpm-man-trunk-1.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-man-trunk-2.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-man-trunk-3.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-auto-trunk-1.platdirformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-auto-trunk-2.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-auto-trunk-3.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://systemdemo-trunk-aws-jardine.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://systemdemo-trunk-aws-multiwar.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://testinfra-trunk-aws-pps.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://testinfra-trunk-aws-end-release-test-idp.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT

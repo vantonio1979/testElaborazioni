@@ -1,0 +1,29 @@
+{"elab": [
+    {
+    "id": 4,
+    "codiceElab": "CONS_IC_PROFIT",
+    "codProcesso": "ACT_TEST_2 - null",
+    "codAnno": "2017TEST_2 - 2017TEST_2",
+    "codPeriodo": "01 - January",
+    "codAmbiente": "01",
+    "codUtenteInserimento": "01",
+    "dataInserimento": "2024-01-08",
+    "dataModifica": "2024-01-08",
+    "profiloUtente": "User",
+    "cruscotto": "Consolidator",
+    "codjob": "T8",
+    "codEntity": "100 - North America",
+    "codDescription": "Group data processing",
+    "key1": "CessMobInfraGroup",
+    "key2": "CessMobInfraGroupJOB",
+    "key3": "CessMobInfraGroupFLOW",
+    "scheda":   "1",
+    "valoreScheda":   "Consolidation data processing",
+    "codiceClasse": "CONS_IC_PROFIT",
+    "urlcockpit": "cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_2/2017TEST_2/01",
+    "pathelab":     "ACT_TEST_2/2017TEST_2/01",
+    "pathcruscotto":    "cockpit/consolidator",
+    "codiceTab":    "Consolidation Journals"
+  }
+  ]
+}

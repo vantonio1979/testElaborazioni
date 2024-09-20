@@ -1,0 +1,6 @@
+Classe: CopiaRegoleRiclassifica sotto gsd_efbase
+
+TEST:
+Accesso all'utility: admin/dataprocessing/consolidation/reclassificationlogics/TGK_TRUNK_YYC_IT_TEST
+
+Azioni: Copy logic

@@ -1,0 +1,67 @@
+Codice Elaborazione: CONTR_DEPRECIATION
+Provenienza Output: PROC_DEPRECIATION
+Tabelle Output: DATI_RETT_RIGA
+
+Configurazione lancio manuale: Consolidation -> Advanced Consolidation -> Depreciation -> on group
+	
+Lancio manuale: Cruscotto Consolidator - Consolidation Data Processing -> Selezionare Group Data Processing
+
+- TEST
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio Cruscotto contributor - Elaborazioni di azienda
+Url: cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_2/2017TEST_2/01
+selezionare tutte le aziende
+Entity data processing 
+
+Output:
+select drr.* from dati_rett_riga drr, categoria c 
+where 
+cod_scenario = '2017TEST_2'
+and cod_periodo = '01'
+and drr.provenienza like '%DEPR%'
+and c.cod_categoria = drr.cod_categoria 
+and c.tipo_categoria = 'RP'
+order by num_Rettifica
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T5 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+1c) Lancio da Cruscotto contributor - Task Workflow
+Cruscotto Contributor -> Tab ''Trial balance' -> Selezionare Azienda EN_00 - > Icona ingranaggi 'Entity - Depreciation' -> 'Esegui'
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+
+
+2) Test Integrazione
+
+Nessuno
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabAziendaScenariOriginari (Job, Template, DB):
+
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19LINUXNR	SqlServerLinuxSql2019   
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17LINUXDEV	SqlServerLinux   
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015, Metro2016
+- TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3, DemoPg13_STAT5, DemoPg13_STAT6
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-DRIVERMS	DemoSql_DriverMs   
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3   
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19, EonHana24_ACT_YEAR_GP

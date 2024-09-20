@@ -1,0 +1,691 @@
+CONTR_FINANCIAL_INVESTMENTS_RECLASSIFICATION
+	1B)Errore lancio job T21
+	it.grupposervizi.easy.base.EasyException: it.grupposervizi.easy.base.EasyException: ECCEZIONE IN class it.grupposervizi.easy.ef.riclassificapartecipazioni.task.aziende.RiclPartElabAziendeTask.executeTask() -  - SQLState: 23505 - ErrorCode: 0 - SQLState: 23505 - ErrorCode: 0 - SQLState: 23505 - ErrorCode: 0 [Tagetik exception information: Time 2024-04-18 07:36:36,844 UTC Release 5.3.28.0 Server cm5328-3-wildfly-7987674dc5-7p5mq_172.20.89.213__not_assigned_ Database Name PG_MAN_5328_DEV_YYC_2 DB Version v000 DB Update N.A. DB Patch Number 3711]
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.elaboration.remote.RemoteEasyElaboration.handleFailedResponse(RemoteEasyElaboration.java:250)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.elaboration.remote.RemoteEasyElaboration.handleResponseCommand(RemoteEasyElaboration.java:191)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.elaboration.remote.RemoteEasyElaboration.execute(RemoteEasyElaboration.java:80)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2356)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2296)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeRemoteSubElaborationTL(EasyElaboration.java:2308)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.SimpleExecutionStrategy.execute(SimpleExecutionStrategy.java:21)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.AbstractCachingRunnableDescriptor.execute(AbstractCachingRunnableDescriptor.java:54)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.eseguiElaborazioni(LancioElaborazioni.java:909)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.doRunElaborations(LancioElaborazioni.java:696)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.runOrigElaborations(LancioElaborazioni.java:665)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.launchOrigElaborationWithImpacted(LancioElaborazioni.java:550)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.execute(LancioElaborazioni.java:500)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.workflow.BaseWorkflowLancioElaborazioniElaboration.execute(BaseWorkflowLancioElaborazioniElaboration.java:29)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2356)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.JobDelegatingTask.executeDelegatingSubElaboration(JobDelegatingTask.java:73)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.DelegatingTask.executeTask(DelegatingTask.java:29)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationTask.executeImpl(ElaborationTask.java:87)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationTask.execute(ElaborationTask.java:142)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationManager.runTask(ElaborationManager.java:1121)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyConcurrentElaboration.startTask(EasyConcurrentElaboration.java:465)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyConcurrentElaboration.startTasksGroup(EasyConcurrentElaboration.java:246)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyConcurrentElaboration.startTasksGroupAndWaitForTheEnd(EasyConcurrentElaboration.java:188)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.job.JobElaboration.executeTasks(JobElaboration.java:369)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyConcurrentElaboration.execute(EasyConcurrentElaboration.java:149)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.job.JobElaboration.execute(JobElaboration.java:210)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.run(EasyElaboration.java:1102)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationManager.run(ElaborationManager.java:1348)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationManager.run(ElaborationManager.java:1063)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.ElaborationMsgContentBean._call(ElaborationMsgContentBean.java:105)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.MsgContentBean.call(MsgContentBean.java:149)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.TaskRunner.doRun(TaskRunner.java:94)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.TaskRunner.run(TaskRunner.java:52)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.Throwable: it.grupposervizi.easy.base.EasyException: ECCEZIONE IN class it.grupposervizi.easy.ef.riclassificapartecipazioni.task.aziende.RiclPartElabAziendeTask.executeTask() -  - SQLState: 23505 - ErrorCode: 0 - SQLState: 23505 - ErrorCode: 0 - SQLState: 23505 - ErrorCode: 0
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.riclassificapartecipazioni.RiclPartGenerale.execute(RiclPartGenerale.java:77)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.riclassificapartecipazioni.RiclPartAziende.execute(RiclPartAziende.java:57)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.AbstractFrameworkElaboration.safeExecute(AbstractFrameworkElaboration.java:328)
+	at jdk.internal.reflect.GeneratedMethodAccessor2808.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.callMethod(LegacyCommandExecutor.java:391)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.receivedExecuteRequest(LegacyCommandExecutor.java:308)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.getResponse(LegacyCommandExecutor.java:191)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.run(LegacyCommandExecutor.java:160)
+	... 3 more
+
+	1c) Lancio da Cruscotto contributor - Task Workflow
+	Cruscotto Contributor -> Tab ''Trial balance' -> Selezionare Azienda EN_00 - > Icona ingranaggi 'Entity - Fin.Inv.Recl.' -> 'Esegui'
+	
+	
+ConversioneElabDataProcessing
+	1a) Lancio Cruscotto consolidatore - Elaborazioni di area
+	Url: cockpit/consolidator/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_2/2017TEST_2/01
+	selezionare tutti i nodi
+	Consolidation Data Processing -> Custom -> Selezionare solo Consolidation Area Data Processing
+	Scenario consolidamento 2017TEST2_USD periodo 01
+	
+	it.grupposervizi.easy.base.EasyException: it.grupposervizi.easy.base.EasyException: it.grupposervizi.easy.base.EasyException: Errore in executeQueryUpdate: org.postgresql.util.PSQLException: ERROR: null value in column "num_rettifica" of relation "dati_rett" violates not-null constraint
+  Detail: Failing row contains (2017TEST_2, 01, null, EN_00, null, EN_00, null, Look Through, 1, 0, 0, 0, 0, 097, null, 0, 0, USD, null, 0, null, null, null, CONS_LOOK_THROUGH, A.VORRARO, 2024-04-18 07:44:32, 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0).
+Query Errata:
+--------
+
+
+INSERT  INTO DATI_RETT (
+	COD_SCENARIO,
+	COD_PERIODO,
+	NUM_RETTIFICA,
+	COD_AZIENDA1,
+	COD_DEST21,
+	COD_AZIENDA2,
+	COD_DEST22,
+	NOTE,
+	FLAG_FILTRA_SCENARIO_CONS,
+	FLAG_RIPRISTINO,
+	FLAG_ESCLUDI_GPN,
+	TIPO_PROP,
+	TIPO_TERZI,
+	TIPO_TERZI_AZIENDA1,
+	TIPO_TERZI_AZIENDA2,
+	TIPO_EQUITY,
+	TIPO_IMPOSTE,
+	TIPO_ANNULLAMENTO,
+	COD_CATEGORIA,
+	TIPO_GENERANTE,
+	COD_GENERANTE,
+	COD_GENERANTE_ORIGINARIO,
+	FLAG_CAMBIO_STORICO,
+	FLAG_NO_RAPPORTO,
+	COD_VALUTA,
+	NUM_RETTIFICA_RAGGR,
+	FLAG_FINE,
+	COD_AZI1_ORIGINARIA,
+	COD_AZI2_ORIGINARIA,
+	COD_CATEGORIA_ORIGINARIA,
+	FLAG_FORZATURA_MANUALE,
+	FLAG_PERIODICO,
+	PROVENIENZA,
+	USERUPD,
+	DATEUPD
+)
+SELECT
+	S.COD_SCENARIO_ORIGINARIO AS COD_SCENARIO,
+	'01' AS COD_PERIODO,
+	(
+		CASE WHEN D.STORNO = '0' THEN 'LTO' ELSE 'LTV' END  || 		'_'  || 		D.COD_CATEGORIA  || 		CASE WHEN D.STORNO = '0' THEN
+			'_'  || 			D.COD_AZIENDA1  || 							'_'  || 		    	D.COD_DEST21
+		      || 		    '_'  || 			D.COD_AZIENDA2  || 							'_'  || 		    	D.COD_DEST22
+		    		ELSE
+			''
+		END  || 		'_'  || 		D.NUM_RETTIFICA
+	) AS NUM_RETTIFICA,
+    D.COD_AZIENDA1 AS COD_AZIENDA1,
+	D.COD_DEST21 AS COD_DEST21,
+	D.COD_AZIENDA2 AS COD_AZIENDA2,
+	D.COD_DEST22 AS COD_DEST22,
+	'Look Through' AS NOTE,
+	0 AS FLAG_FILTRA_SCENARIO_CONS,
+	MAX(DR.FLAG_RIPRISTINO) AS FLAG_RIPRISTINO,
+	MAX(DR.FLAG_ESCLUDI_GPN) AS FLAG_ESCLUDI_GPN,
+	'0' AS TIPO_PROP,
+	'0' AS TIPO_TERZI,
+	'0' AS TIPO_TERZI_AZIENDA1,
+	'0' AS TIPO_TERZI_AZIENDA2,
+	'0' AS TIPO_EQUITY,
+	'0' AS TIPO_IMPOSTE,
+	'0' AS TIPO_ANNULLAMENTO,
+	D.COD_CATEGORIA AS COD_CATEGORIA,
+	NULL AS TIPO_GENERANTE,
+	NULL AS COD_GENERANTE,
+	NULL AS COD_GENERANTE_ORIGINARIO,
+	0 AS FLAG_CAMBIO_STORICO,
+	0 AS FLAG_NO_RAPPORTO,
+	MAX(D.COD_VALUTA) AS COD_VALUTA,
+	NULL AS NUM_RETTIFICA_RAGGR,
+	0 AS FLAG_FINE,
+	NULL AS COD_AZI1_ORIGINARIA,
+	NULL AS COD_AZI2_ORIGINARIA,
+	NULL AS COD_CATEGORIA_ORIGINARIA,
+	0 AS FLAG_FORZATURA_MANUALE,
+	0 AS FLAG_PERIODICO,
+	'CONS_LOOK_THROUGH' AS PROVENIENZA,
+	'A.VORRARO' as USERUPD,
+	to_timestamp ('18-04-2024 07:44:32','DD-MM-YYYY HH24:MI:SS') AS DATEUPD
+FROM
+	APP_LT_MOVIMENT180744398863386 D
+	JOIN SCENARIO S ON
+		S.COD_SCENARIO = '2017TEST2_USD'
+	JOIN DATI_RETT DR ON
+		DR.COD_SCENARIO = S.COD_SCENARIO_ORIGINARIO AND
+		DR.COD_PERIODO = '01' AND
+		DR.NUM_RETTIFICA = D.NUM_RETTIFICA
+WHERE
+	D.IMPORTO <> 0 AND
+	NOT EXISTS(
+		SELECT 1
+		FROM DATI_RETT DR
+		WHERE
+			DR.COD_SCENARIO = S.COD_SCENARIO_ORIGINARIO AND
+			DR.COD_PERIODO = '01' AND
+			DR.NUM_RETTIFICA = (
+				CASE WHEN D.STORNO = '0' THEN 'LTO' ELSE 'LTV' END  || 				'_'  || 				D.COD_CATEGORIA  || 				CASE WHEN D.STORNO = '0' THEN
+					'_'  || 					D.COD_AZIENDA1  || 											'_'  || 				    	D.COD_DEST21
+				      || 				    '_'  || 					D.COD_AZIENDA2  || 											'_'  || 				    	D.COD_DEST22
+				    				ELSE
+					''
+				END  || 				'_'  || 				D.NUM_RETTIFICA
+			)
+	)
+GROUP BY
+	S.COD_SCENARIO_ORIGINARIO,
+	D.NUM_RETTIFICA,
+	D.COD_AZIENDA1,
+	D.COD_DEST21,
+	D.COD_AZIENDA2,
+	D.COD_DEST22,
+	D.COD_CATEGORIA,
+	D.STORNO
+
+----------- - SQLState: 23502 - ErrorCode: 0 - SQLState: 23502 - ErrorCode: 0 - SQLState: 23502 - ErrorCode: 0 [Tagetik exception information: Time 2024-04-18 07:44:33,392 UTC Release 5.3.28.0 Server cm5328-3-wildfly-7987674dc5-7p5mq_172.20.89.213__not_assigned_ Database Name PG_MAN_5328_DEV_YYC_2 DB Version v000 DB Update N.A. DB Patch Number 3711]
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.elaboration.remote.RemoteEasyElaboration.handleFailedResponse(RemoteEasyElaboration.java:250)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.elaboration.remote.RemoteEasyElaboration.handleResponseCommand(RemoteEasyElaboration.java:191)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.elaboration.remote.RemoteEasyElaboration.execute(RemoteEasyElaboration.java:80)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2356)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2296)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeRemoteSubElaborationTL(EasyElaboration.java:2308)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.SimpleExecutionStrategy.execute(SimpleExecutionStrategy.java:21)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.UserToolsUtils.concurrentExecute(UserToolsUtils.java:57)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.AbstractConcurrentExecutionStrategy.execute(AbstractConcurrentExecutionStrategy.java:14)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.AbstractCachingRunnableDescriptor.execute(AbstractCachingRunnableDescriptor.java:54)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.processi.elabs.ScecFinalElaboration.execute(ScecFinalElaboration.java:102)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2356)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2296)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaborationTL(EasyElaboration.java:2241)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.SimpleExecutionStrategy.execute(SimpleExecutionStrategy.java:23)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.AbstractCachingRunnableDescriptor.execute(AbstractCachingRunnableDescriptor.java:54)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.eseguiElaborazioni(LancioElaborazioni.java:909)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.doRunElaborations(LancioElaborazioni.java:696)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.runConsElaborations(LancioElaborazioni.java:709)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.launchConsElaborationWithImpacted(LancioElaborazioni.java:525)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.execute(LancioElaborazioni.java:506)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.run(EasyElaboration.java:1102)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationManager.run(ElaborationManager.java:1348)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationManager.run(ElaborationManager.java:1063)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.ElaborationMsgContentBean._call(ElaborationMsgContentBean.java:105)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.MsgContentBean.call(MsgContentBean.java:149)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.TaskRunner.doRun(TaskRunner.java:94)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.TaskRunner.run(TaskRunner.java:52)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.Throwable: it.grupposervizi.easy.base.EasyException: it.grupposervizi.easy.base.EasyException: Errore in executeQueryUpdate: org.postgresql.util.PSQLException: ERROR: null value in column "num_rettifica" of relation "dati_rett" violates not-null constraint
+  Detail: Failing row contains (2017TEST_2, 01, null, EN_00, null, EN_00, null, Look Through, 1, 0, 0, 0, 0, 097, null, 0, 0, USD, null, 0, null, null, null, CONS_LOOK_THROUGH, A.VORRARO, 2024-04-18 07:44:32, 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0).
+Query Errata:
+--------
+
+
+INSERT  INTO DATI_RETT (
+	COD_SCENARIO,
+	COD_PERIODO,
+	NUM_RETTIFICA,
+	COD_AZIENDA1,
+	COD_DEST21,
+	COD_AZIENDA2,
+	COD_DEST22,
+	NOTE,
+	FLAG_FILTRA_SCENARIO_CONS,
+	FLAG_RIPRISTINO,
+	FLAG_ESCLUDI_GPN,
+	TIPO_PROP,
+	TIPO_TERZI,
+	TIPO_TERZI_AZIENDA1,
+	TIPO_TERZI_AZIENDA2,
+	TIPO_EQUITY,
+	TIPO_IMPOSTE,
+	TIPO_ANNULLAMENTO,
+	COD_CATEGORIA,
+	TIPO_GENERANTE,
+	COD_GENERANTE,
+	COD_GENERANTE_ORIGINARIO,
+	FLAG_CAMBIO_STORICO,
+	FLAG_NO_RAPPORTO,
+	COD_VALUTA,
+	NUM_RETTIFICA_RAGGR,
+	FLAG_FINE,
+	COD_AZI1_ORIGINARIA,
+	COD_AZI2_ORIGINARIA,
+	COD_CATEGORIA_ORIGINARIA,
+	FLAG_FORZATURA_MANUALE,
+	FLAG_PERIODICO,
+	PROVENIENZA,
+	USERUPD,
+	DATEUPD
+)
+SELECT
+	S.COD_SCENARIO_ORIGINARIO AS COD_SCENARIO,
+	'01' AS COD_PERIODO,
+	(
+		CASE WHEN D.STORNO = '0' THEN 'LTO' ELSE 'LTV' END  || 		'_'  || 		D.COD_CATEGORIA  || 		CASE WHEN D.STORNO = '0' THEN
+			'_'  || 			D.COD_AZIENDA1  || 							'_'  || 		    	D.COD_DEST21
+		      || 		    '_'  || 			D.COD_AZIENDA2  || 							'_'  || 		    	D.COD_DEST22
+		    		ELSE
+			''
+		END  || 		'_'  || 		D.NUM_RETTIFICA
+	) AS NUM_RETTIFICA,
+    D.COD_AZIENDA1 AS COD_AZIENDA1,
+	D.COD_DEST21 AS COD_DEST21,
+	D.COD_AZIENDA2 AS COD_AZIENDA2,
+	D.COD_DEST22 AS COD_DEST22,
+	'Look Through' AS NOTE,
+	0 AS FLAG_FILTRA_SCENARIO_CONS,
+	MAX(DR.FLAG_RIPRISTINO) AS FLAG_RIPRISTINO,
+	MAX(DR.FLAG_ESCLUDI_GPN) AS FLAG_ESCLUDI_GPN,
+	'0' AS TIPO_PROP,
+	'0' AS TIPO_TERZI,
+	'0' AS TIPO_TERZI_AZIENDA1,
+	'0' AS TIPO_TERZI_AZIENDA2,
+	'0' AS TIPO_EQUITY,
+	'0' AS TIPO_IMPOSTE,
+	'0' AS TIPO_ANNULLAMENTO,
+	D.COD_CATEGORIA AS COD_CATEGORIA,
+	NULL AS TIPO_GENERANTE,
+	NULL AS COD_GENERANTE,
+	NULL AS COD_GENERANTE_ORIGINARIO,
+	0 AS FLAG_CAMBIO_STORICO,
+	0 AS FLAG_NO_RAPPORTO,
+	MAX(D.COD_VALUTA) AS COD_VALUTA,
+	NULL AS NUM_RETTIFICA_RAGGR,
+	0 AS FLAG_FINE,
+	NULL AS COD_AZI1_ORIGINARIA,
+	NULL AS COD_AZI2_ORIGINARIA,
+	NULL AS COD_CATEGORIA_ORIGINARIA,
+	0 AS FLAG_FORZATURA_MANUALE,
+	0 AS FLAG_PERIODICO,
+	'CONS_LOOK_THROUGH' AS PROVENIENZA,
+	'A.VORRARO' as USERUPD,
+	to_timestamp ('18-04-2024 07:44:32','DD-MM-YYYY HH24:MI:SS') AS DATEUPD
+FROM
+	APP_LT_MOVIMENT180744398863386 D
+	JOIN SCENARIO S ON
+		S.COD_SCENARIO = '2017TEST2_USD'
+	JOIN DATI_RETT DR ON
+		DR.COD_SCENARIO = S.COD_SCENARIO_ORIGINARIO AND
+		DR.COD_PERIODO = '01' AND
+		DR.NUM_RETTIFICA = D.NUM_RETTIFICA
+WHERE
+	D.IMPORTO <> 0 AND
+	NOT EXISTS(
+		SELECT 1
+		FROM DATI_RETT DR
+		WHERE
+			DR.COD_SCENARIO = S.COD_SCENARIO_ORIGINARIO AND
+			DR.COD_PERIODO = '01' AND
+			DR.NUM_RETTIFICA = (
+				CASE WHEN D.STORNO = '0' THEN 'LTO' ELSE 'LTV' END  || 				'_'  || 				D.COD_CATEGORIA  || 				CASE WHEN D.STORNO = '0' THEN
+					'_'  || 					D.COD_AZIENDA1  || 											'_'  || 				    	D.COD_DEST21
+				      || 				    '_'  || 					D.COD_AZIENDA2  || 											'_'  || 				    	D.COD_DEST22
+				    				ELSE
+					''
+				END  || 				'_'  || 				D.NUM_RETTIFICA
+			)
+	)
+GROUP BY
+	S.COD_SCENARIO_ORIGINARIO,
+	D.NUM_RETTIFICA,
+	D.COD_AZIENDA1,
+	D.COD_DEST21,
+	D.COD_AZIENDA2,
+	D.COD_DEST22,
+	D.COD_CATEGORIA,
+	D.STORNO
+
+----------- - SQLState: 23502 - ErrorCode: 0 - SQLState: 23502 - ErrorCode: 0 - SQLState: 23502 - ErrorCode: 0
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.consolidamento.lookthrough.LookThroughConsElaboration.executeTasks(LookThroughConsElaboration.java:93)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.FrameworkConcurrentElaboration.execute(FrameworkConcurrentElaboration.java:49)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.AbstractFrameworkElaboration.safeExecute(AbstractFrameworkElaboration.java:328)
+	at jdk.internal.reflect.GeneratedMethodAccessor2808.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.callMethod(LegacyCommandExecutor.java:391)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.receivedExecuteRequest(LegacyCommandExecutor.java:308)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.getResponse(LegacyCommandExecutor.java:191)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.run(LegacyCommandExecutor.java:160)
+	... 3 more
+	
+	1c) Lancio da Cruscotto consolidatore - Workflow
+	Cruscotto Consolidatore -> Tab 'Consolidation journals' -> Selezionare Nodo 100 - > Icona ingranaggi 'Area data processing' -> 'Esegui'
+	
+		it.grupposervizi.easy.base.EasyException: it.grupposervizi.easy.base.EasyException: it.grupposervizi.easy.base.EasyException: Errore in executeQueryUpdate: org.postgresql.util.PSQLException: ERROR: null value in column "num_rettifica" of relation "dati_rett" violates not-null constraint
+  Detail: Failing row contains (2017TEST_2, 01, null, EN_00, null, EN_00, null, Look Through, 1, 0, 0, 0, 0, 097, null, 0, 0, USD, null, 0, null, null, null, CONS_LOOK_THROUGH, A.VORRARO, 2024-04-18 07:46:45, 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0).
+Query Errata:
+--------
+
+
+INSERT  INTO DATI_RETT (
+	COD_SCENARIO,
+	COD_PERIODO,
+	NUM_RETTIFICA,
+	COD_AZIENDA1,
+	COD_DEST21,
+	COD_AZIENDA2,
+	COD_DEST22,
+	NOTE,
+	FLAG_FILTRA_SCENARIO_CONS,
+	FLAG_RIPRISTINO,
+	FLAG_ESCLUDI_GPN,
+	TIPO_PROP,
+	TIPO_TERZI,
+	TIPO_TERZI_AZIENDA1,
+	TIPO_TERZI_AZIENDA2,
+	TIPO_EQUITY,
+	TIPO_IMPOSTE,
+	TIPO_ANNULLAMENTO,
+	COD_CATEGORIA,
+	TIPO_GENERANTE,
+	COD_GENERANTE,
+	COD_GENERANTE_ORIGINARIO,
+	FLAG_CAMBIO_STORICO,
+	FLAG_NO_RAPPORTO,
+	COD_VALUTA,
+	NUM_RETTIFICA_RAGGR,
+	FLAG_FINE,
+	COD_AZI1_ORIGINARIA,
+	COD_AZI2_ORIGINARIA,
+	COD_CATEGORIA_ORIGINARIA,
+	FLAG_FORZATURA_MANUALE,
+	FLAG_PERIODICO,
+	PROVENIENZA,
+	USERUPD,
+	DATEUPD
+)
+SELECT
+	S.COD_SCENARIO_ORIGINARIO AS COD_SCENARIO,
+	'01' AS COD_PERIODO,
+	(
+		CASE WHEN D.STORNO = '0' THEN 'LTO' ELSE 'LTV' END  || 		'_'  || 		D.COD_CATEGORIA  || 		CASE WHEN D.STORNO = '0' THEN
+			'_'  || 			D.COD_AZIENDA1  || 							'_'  || 		    	D.COD_DEST21
+		      || 		    '_'  || 			D.COD_AZIENDA2  || 							'_'  || 		    	D.COD_DEST22
+		    		ELSE
+			''
+		END  || 		'_'  || 		D.NUM_RETTIFICA
+	) AS NUM_RETTIFICA,
+    D.COD_AZIENDA1 AS COD_AZIENDA1,
+	D.COD_DEST21 AS COD_DEST21,
+	D.COD_AZIENDA2 AS COD_AZIENDA2,
+	D.COD_DEST22 AS COD_DEST22,
+	'Look Through' AS NOTE,
+	0 AS FLAG_FILTRA_SCENARIO_CONS,
+	MAX(DR.FLAG_RIPRISTINO) AS FLAG_RIPRISTINO,
+	MAX(DR.FLAG_ESCLUDI_GPN) AS FLAG_ESCLUDI_GPN,
+	'0' AS TIPO_PROP,
+	'0' AS TIPO_TERZI,
+	'0' AS TIPO_TERZI_AZIENDA1,
+	'0' AS TIPO_TERZI_AZIENDA2,
+	'0' AS TIPO_EQUITY,
+	'0' AS TIPO_IMPOSTE,
+	'0' AS TIPO_ANNULLAMENTO,
+	D.COD_CATEGORIA AS COD_CATEGORIA,
+	NULL AS TIPO_GENERANTE,
+	NULL AS COD_GENERANTE,
+	NULL AS COD_GENERANTE_ORIGINARIO,
+	0 AS FLAG_CAMBIO_STORICO,
+	0 AS FLAG_NO_RAPPORTO,
+	MAX(D.COD_VALUTA) AS COD_VALUTA,
+	NULL AS NUM_RETTIFICA_RAGGR,
+	0 AS FLAG_FINE,
+	NULL AS COD_AZI1_ORIGINARIA,
+	NULL AS COD_AZI2_ORIGINARIA,
+	NULL AS COD_CATEGORIA_ORIGINARIA,
+	0 AS FLAG_FORZATURA_MANUALE,
+	0 AS FLAG_PERIODICO,
+	'CONS_LOOK_THROUGH' AS PROVENIENZA,
+	'A.VORRARO' as USERUPD,
+	to_timestamp ('18-04-2024 07:46:45','DD-MM-YYYY HH24:MI:SS') AS DATEUPD
+FROM
+	APP_LT_MOVIMENT180746142913267 D
+	JOIN SCENARIO S ON
+		S.COD_SCENARIO = '2017TEST2_USD'
+	JOIN DATI_RETT DR ON
+		DR.COD_SCENARIO = S.COD_SCENARIO_ORIGINARIO AND
+		DR.COD_PERIODO = '01' AND
+		DR.NUM_RETTIFICA = D.NUM_RETTIFICA
+WHERE
+	D.IMPORTO <> 0 AND
+	NOT EXISTS(
+		SELECT 1
+		FROM DATI_RETT DR
+		WHERE
+			DR.COD_SCENARIO = S.COD_SCENARIO_ORIGINARIO AND
+			DR.COD_PERIODO = '01' AND
+			DR.NUM_RETTIFICA = (
+				CASE WHEN D.STORNO = '0' THEN 'LTO' ELSE 'LTV' END  || 				'_'  || 				D.COD_CATEGORIA  || 				CASE WHEN D.STORNO = '0' THEN
+					'_'  || 					D.COD_AZIENDA1  || 											'_'  || 				    	D.COD_DEST21
+				      || 				    '_'  || 					D.COD_AZIENDA2  || 											'_'  || 				    	D.COD_DEST22
+				    				ELSE
+					''
+				END  || 				'_'  || 				D.NUM_RETTIFICA
+			)
+	)
+GROUP BY
+	S.COD_SCENARIO_ORIGINARIO,
+	D.NUM_RETTIFICA,
+	D.COD_AZIENDA1,
+	D.COD_DEST21,
+	D.COD_AZIENDA2,
+	D.COD_DEST22,
+	D.COD_CATEGORIA,
+	D.STORNO
+
+----------- - SQLState: 23502 - ErrorCode: 0 - SQLState: 23502 - ErrorCode: 0 - SQLState: 23502 - ErrorCode: 0 [Tagetik exception information: Time 2024-04-18 07:46:46,977 UTC Release 5.3.28.0 Server cm5328-3-wildfly-7987674dc5-7p5mq_172.20.89.213__not_assigned_ Database Name PG_MAN_5328_DEV_YYC_2 DB Version v000 DB Update N.A. DB Patch Number 3711]
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.elaboration.remote.RemoteEasyElaboration.handleFailedResponse(RemoteEasyElaboration.java:250)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.elaboration.remote.RemoteEasyElaboration.handleResponseCommand(RemoteEasyElaboration.java:191)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.elaboration.remote.RemoteEasyElaboration.execute(RemoteEasyElaboration.java:80)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2356)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2296)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeRemoteSubElaborationTL(EasyElaboration.java:2308)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.SimpleExecutionStrategy.execute(SimpleExecutionStrategy.java:21)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.UserToolsUtils.concurrentExecute(UserToolsUtils.java:57)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.AbstractConcurrentExecutionStrategy.execute(AbstractConcurrentExecutionStrategy.java:14)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.AbstractCachingRunnableDescriptor.execute(AbstractCachingRunnableDescriptor.java:54)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.processi.elabs.ScecFinalElaboration.execute(ScecFinalElaboration.java:102)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2356)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2296)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaborationTL(EasyElaboration.java:2241)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.SimpleExecutionStrategy.execute(SimpleExecutionStrategy.java:23)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.services.usertools.AbstractCachingRunnableDescriptor.execute(AbstractCachingRunnableDescriptor.java:54)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.eseguiElaborazioni(LancioElaborazioni.java:909)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.doRunElaborations(LancioElaborazioni.java:696)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.runConsElaborations(LancioElaborazioni.java:709)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.launchConsElaborationWithImpacted(LancioElaborazioni.java:525)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.LancioElaborazioni.execute(LancioElaborazioni.java:506)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.usertools.workflow.BaseWorkflowLancioElaborazioniElaboration.execute(BaseWorkflowLancioElaborazioniElaboration.java:29)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2356)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.JobDelegatingTask.executeDelegatingSubElaboration(JobDelegatingTask.java:73)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.DelegatingTask.executeTask(DelegatingTask.java:29)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationTask.executeImpl(ElaborationTask.java:87)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationTask.execute(ElaborationTask.java:142)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationManager.runTask(ElaborationManager.java:1121)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyConcurrentElaboration.startTask(EasyConcurrentElaboration.java:465)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyConcurrentElaboration.startTasksGroup(EasyConcurrentElaboration.java:246)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyConcurrentElaboration.startTasksGroupAndWaitForTheEnd(EasyConcurrentElaboration.java:188)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.job.JobElaboration.executeTasks(JobElaboration.java:369)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyConcurrentElaboration.execute(EasyConcurrentElaboration.java:149)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.job.JobElaboration.execute(JobElaboration.java:210)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2356)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.executeSubElaboration(EasyElaboration.java:2296)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.processi.elabs.workflowingrid.multiexecution.easyelaboration.WorkflowInGridMultiExecutionElaboration.createAndExecuteJob(WorkflowInGridMultiExecutionElaboration.java:338)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.processi.elabs.workflowingrid.multiexecution.easyelaboration.WorkflowInGridMultiExecutionElaboration.execute(WorkflowInGridMultiExecutionElaboration.java:310)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.EasyElaboration.run(EasyElaboration.java:1102)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationManager.run(ElaborationManager.java:1348)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.repository.ElaborationManager.run(ElaborationManager.java:1063)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.ElaborationMsgContentBean._call(ElaborationMsgContentBean.java:105)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.MsgContentBean.call(MsgContentBean.java:149)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.TaskRunner.doRun(TaskRunner.java:94)
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.commons.concurrent.impl.TaskRunner.run(TaskRunner.java:52)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.lang.Throwable: it.grupposervizi.easy.base.EasyException: it.grupposervizi.easy.base.EasyException: Errore in executeQueryUpdate: org.postgresql.util.PSQLException: ERROR: null value in column "num_rettifica" of relation "dati_rett" violates not-null constraint
+  Detail: Failing row contains (2017TEST_2, 01, null, EN_00, null, EN_00, null, Look Through, 1, 0, 0, 0, 0, 097, null, 0, 0, USD, null, 0, null, null, null, CONS_LOOK_THROUGH, A.VORRARO, 2024-04-18 07:46:45, 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0).
+Query Errata:
+--------
+
+
+INSERT  INTO DATI_RETT (
+	COD_SCENARIO,
+	COD_PERIODO,
+	NUM_RETTIFICA,
+	COD_AZIENDA1,
+	COD_DEST21,
+	COD_AZIENDA2,
+	COD_DEST22,
+	NOTE,
+	FLAG_FILTRA_SCENARIO_CONS,
+	FLAG_RIPRISTINO,
+	FLAG_ESCLUDI_GPN,
+	TIPO_PROP,
+	TIPO_TERZI,
+	TIPO_TERZI_AZIENDA1,
+	TIPO_TERZI_AZIENDA2,
+	TIPO_EQUITY,
+	TIPO_IMPOSTE,
+	TIPO_ANNULLAMENTO,
+	COD_CATEGORIA,
+	TIPO_GENERANTE,
+	COD_GENERANTE,
+	COD_GENERANTE_ORIGINARIO,
+	FLAG_CAMBIO_STORICO,
+	FLAG_NO_RAPPORTO,
+	COD_VALUTA,
+	NUM_RETTIFICA_RAGGR,
+	FLAG_FINE,
+	COD_AZI1_ORIGINARIA,
+	COD_AZI2_ORIGINARIA,
+	COD_CATEGORIA_ORIGINARIA,
+	FLAG_FORZATURA_MANUALE,
+	FLAG_PERIODICO,
+	PROVENIENZA,
+	USERUPD,
+	DATEUPD
+)
+SELECT
+	S.COD_SCENARIO_ORIGINARIO AS COD_SCENARIO,
+	'01' AS COD_PERIODO,
+	(
+		CASE WHEN D.STORNO = '0' THEN 'LTO' ELSE 'LTV' END  || 		'_'  || 		D.COD_CATEGORIA  || 		CASE WHEN D.STORNO = '0' THEN
+			'_'  || 			D.COD_AZIENDA1  || 							'_'  || 		    	D.COD_DEST21
+		      || 		    '_'  || 			D.COD_AZIENDA2  || 							'_'  || 		    	D.COD_DEST22
+		    		ELSE
+			''
+		END  || 		'_'  || 		D.NUM_RETTIFICA
+	) AS NUM_RETTIFICA,
+    D.COD_AZIENDA1 AS COD_AZIENDA1,
+	D.COD_DEST21 AS COD_DEST21,
+	D.COD_AZIENDA2 AS COD_AZIENDA2,
+	D.COD_DEST22 AS COD_DEST22,
+	'Look Through' AS NOTE,
+	0 AS FLAG_FILTRA_SCENARIO_CONS,
+	MAX(DR.FLAG_RIPRISTINO) AS FLAG_RIPRISTINO,
+	MAX(DR.FLAG_ESCLUDI_GPN) AS FLAG_ESCLUDI_GPN,
+	'0' AS TIPO_PROP,
+	'0' AS TIPO_TERZI,
+	'0' AS TIPO_TERZI_AZIENDA1,
+	'0' AS TIPO_TERZI_AZIENDA2,
+	'0' AS TIPO_EQUITY,
+	'0' AS TIPO_IMPOSTE,
+	'0' AS TIPO_ANNULLAMENTO,
+	D.COD_CATEGORIA AS COD_CATEGORIA,
+	NULL AS TIPO_GENERANTE,
+	NULL AS COD_GENERANTE,
+	NULL AS COD_GENERANTE_ORIGINARIO,
+	0 AS FLAG_CAMBIO_STORICO,
+	0 AS FLAG_NO_RAPPORTO,
+	MAX(D.COD_VALUTA) AS COD_VALUTA,
+	NULL AS NUM_RETTIFICA_RAGGR,
+	0 AS FLAG_FINE,
+	NULL AS COD_AZI1_ORIGINARIA,
+	NULL AS COD_AZI2_ORIGINARIA,
+	NULL AS COD_CATEGORIA_ORIGINARIA,
+	0 AS FLAG_FORZATURA_MANUALE,
+	0 AS FLAG_PERIODICO,
+	'CONS_LOOK_THROUGH' AS PROVENIENZA,
+	'A.VORRARO' as USERUPD,
+	to_timestamp ('18-04-2024 07:46:45','DD-MM-YYYY HH24:MI:SS') AS DATEUPD
+FROM
+	APP_LT_MOVIMENT180746142913267 D
+	JOIN SCENARIO S ON
+		S.COD_SCENARIO = '2017TEST2_USD'
+	JOIN DATI_RETT DR ON
+		DR.COD_SCENARIO = S.COD_SCENARIO_ORIGINARIO AND
+		DR.COD_PERIODO = '01' AND
+		DR.NUM_RETTIFICA = D.NUM_RETTIFICA
+WHERE
+	D.IMPORTO <> 0 AND
+	NOT EXISTS(
+		SELECT 1
+		FROM DATI_RETT DR
+		WHERE
+			DR.COD_SCENARIO = S.COD_SCENARIO_ORIGINARIO AND
+			DR.COD_PERIODO = '01' AND
+			DR.NUM_RETTIFICA = (
+				CASE WHEN D.STORNO = '0' THEN 'LTO' ELSE 'LTV' END  || 				'_'  || 				D.COD_CATEGORIA  || 				CASE WHEN D.STORNO = '0' THEN
+					'_'  || 					D.COD_AZIENDA1  || 											'_'  || 				    	D.COD_DEST21
+				      || 				    '_'  || 					D.COD_AZIENDA2  || 											'_'  || 				    	D.COD_DEST22
+				    				ELSE
+					''
+				END  || 				'_'  || 				D.NUM_RETTIFICA
+			)
+	)
+GROUP BY
+	S.COD_SCENARIO_ORIGINARIO,
+	D.NUM_RETTIFICA,
+	D.COD_AZIENDA1,
+	D.COD_DEST21,
+	D.COD_AZIENDA2,
+	D.COD_DEST22,
+	D.COD_CATEGORIA,
+	D.STORNO
+
+----------- - SQLState: 23502 - ErrorCode: 0 - SQLState: 23502 - ErrorCode: 0 - SQLState: 23502 - ErrorCode: 0
+	at deployment.cpm-5328.ear.gsw_ef.war//it.grupposervizi.easy.ef.consolidamento.lookthrough.LookThroughConsElaboration.executeTasks(LookThroughConsElaboration.java:93)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.FrameworkConcurrentElaboration.execute(FrameworkConcurrentElaboration.java:49)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.AbstractFrameworkElaboration.safeExecute(AbstractFrameworkElaboration.java:328)
+	at jdk.internal.reflect.GeneratedMethodAccessor2808.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.callMethod(LegacyCommandExecutor.java:391)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.receivedExecuteRequest(LegacyCommandExecutor.java:308)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.getResponse(LegacyCommandExecutor.java:191)
+	at deployment.cpm-5328.ear.gsw_ef.war//com.tagetik.akka.elaboration.LegacyCommandExecutor.run(LegacyCommandExecutor.java:160)
+	... 3 more
+
+	JOB 		T5
+	
+	(CONSOLIDATION 2) Entity - Equity pick-up
+ Pick-up category check
+  Message = The $AMOUNT category hasn't defined the Pick-up category
+  Message = The 020 category hasn't defined the Pick-up category
+  Message = The 022 category hasn't defined the Pick-up category
+  Message = The 024 category hasn't defined the Pick-up category
+  Message = The 040 category hasn't defined the Pick-up category
+  Message = The 045 category hasn't defined the Pick-up category
+  Message = The 050 category hasn't defined the Pick-up category
+  Message = The 055 category hasn't defined the Pick-up category
+  Message = The 060 category hasn't defined the Pick-up category
+  Message = The 075 category hasn't defined the Pick-up category
+  Message = The 100 category hasn't defined the Pick-up category
+  Message = The 104 category hasn't defined the Pick-up category
+  Message = The 106 category hasn't defined the Pick-up category
+  Message = The 110 category hasn't defined the Pick-up category
+  Message = The 120 category hasn't defined the Pick-up category
+  Message = The 124 category hasn't defined the Pick-up category
+  Message = The 125 category hasn't defined the Pick-up category
+  Message = The 130 category hasn't defined the Pick-up category
+  Message = The 160 category hasn't defined the Pick-up category
+  Message = The 170 category hasn't defined the Pick-up category
+  Message = The 180 category hasn't defined the Pick-up category
+  Message = The 190 category hasn't defined the Pick-up category
+  Message = The 215 category hasn't defined the Pick-up category
+  Message = The 300 category hasn't defined the Pick-up category
+  Message = The RECODED_ category hasn't defined the Pick-up category
+
+

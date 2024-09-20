@@ -1,0 +1,54 @@
+
+tgk-aih
+
+	Codice			HANA_AIH_PARTITION_ALIGNMENT
+	Elaborazione    com.tagetik.cpm.dataprocessing.AihHanaPartitionAlignmentElaboration
+
+	Codice			AIH_DATASET_VERSION_UPGRADE
+	Elaborazione    com.tagetik.cpm.dataprocessing.AihDatasetVersionUpgradeElaboration
+
+	Codice			AIH_WORKSPACE_VERSION_UPGRADE
+	Elaborazione    com.tagetik.cpm.dataprocessing.AihAwVersionUpgradeElaboration
+
+	Codice			OWS_DATASET_UPDATE
+	Elaborazione    com.tagetik.cpm.ows.services.utility.DatasetUpdateElaboration
+
+	Codice			ESPLOSIONE_UTENTE_LIM_DEF_OWS
+	Elaborazione    com.tagetik.cpm.ows.elab.DeployUtenteLimOwsElaboration
+
+	Codice			ESPLOSIONE_UTENTE_LIM_DEF_OWS_TABELLA
+	Elaborazione    com.tagetik.cpm.ows.elab.DeployUtenteLimOwsTabellaElaboration
+
+	Codice			OWS_GDPR_DATA_PROTECTION
+	Elaborazione    com.tagetik.cpm.ows.services.gdprdataprotection.OwsGdprDataProtectionElaboration
+
+	Codice			AIH_CREATE_DATASET_ELAB
+	Elaborazione    com.tagetik.aih.elaborations.internal.AihCreateAndPopulateElaboration
+
+	Codice			AIH_PROCESS_MD_DATA_MIGRATION
+	Elaborazione    com.tagetik.aih.processmd.dataprocessing.datamigration.AihProcessMdDataMigration
+
+	Codice			AW_PARTITION_DELETION
+	Elaborazione    com.tagetik.cpm.ows.awpartitiondeletion.AwPartitionDeletionElaboration
+	
+
+tgk-balancesheetdata
+
+
+tgk-datamodel
+
+
+tgk-endpoint 
+
+
+tgk-qdl
+
+
+tgk-userprovisioning
+		
+		
+tgk-reporting
+		
+		
+tgk-widgets
+

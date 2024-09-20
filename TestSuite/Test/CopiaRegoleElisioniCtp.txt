@@ -1,0 +1,5 @@
+Classe: CopiaRegoleElisioneCtp sotto gsd_efbase
+
+TEST:
+Accesso all'utility: admin/dataprocessing/consolidation/eliminationrules/TGK_TRUNK_YYC_IT_TEST
+Azioni: Copy from

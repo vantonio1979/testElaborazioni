@@ -1,0 +1,80 @@
+e-antonio.vorraro@wolterskluwer.com
+
+Credenziali svn
+username:				antoniovorraro
+password:				czh6MEXJntg4JYBe
+
+https://community.tagetik.com/training		prova1000@
+
+svn://linux02.platformteam.saastagetik.internal/Dev/solutions/cpm/trunk
+svn://linux02.platformteam.saastagetik.internal/Dev/libraries/bom-int/trunk
+svn://linux02.platformteam.saastagetik.internal/Dev/libraries/common-libraries/trunk
+svn://linux02.platformteam.saastagetik.internal/Dev/libraries/elaboration-framework-contracts/trunk
+svn://linux02.platformteam.saastagetik.internal/Dev/libraries/elaboration-framework-adapters/trunk
+svn://linux02.platformteam.saastagetik.internal/Dev/libraries/elaboration-framework/trunk
+svn://linux02.platformteam.saastagetik.internal/Dev/solutions/tgk-modules/tgk-aih/trunk
+svn://linux02.platformteam.saastagetik.internal/Dev/solutions/tgk-modules/tgk-datamodel/trunk
+svn://linux02.platformteam.saastagetik.internal/Dev/solutions/tgk-modules/tgk-consolidation/trunk
+svn://linux02.platformteam.saastagetik.internal/Dev/solutions/tgk-modules/tgk-process/trunk
+svn://linux02.platformteam.saastagetik.internal/Dev/dev-tools/system-team/system-app/scripts/postgres
+
+Monitor test
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/view/AT-CONSOLIDATO/
+
+monitor per vedere se posso scaraicare cpm
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/
+
+Trunk radiator
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/view/Trunk%20Radiator/
+
+Moduli
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/view/Maven%20Radiator%20Trunk/
+
+
+mvn clean package -f gsw_ef/pom.xml -U -DskipTests (se ci sono altri progetti chiedo)
+./mvnMultipleInstallSvnDiff.sh -c dalla stessa cartella
+mvn clean install -U -DskipTests
+  
+ https://cchtagetik.atlassian.net/wiki/spaces/SDLC/pages/2772566017/Testing+Process+With+Jira+8+Xray
+ 
+ link confluence base
+ https://cchtagetik.atlassian.net/wiki/home
+
+
+link dove ci sono tutti gli ear rilasciti in produzione, anche quelle versioni vecchie vecchie
+\\files.grupposervizi.it\Dati\Software\Easy Finance Web\Versioni\VECCHIE_VERSIONI
+
+
+link per controllare stato cpm
+
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/view/Maven%20Radiator%20Trunk/
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/job/ear/job/trunk-ear-build/
+
+
+Link per retrospettive OnlyTrunk
+https://miro.com/app/board/uXjVPXpsZ50=/ password onlytrunk2023!
+https://cchtagetik.atlassian.net/wiki/spaces/REP/pages/3536027715/Robot+Framework
+
+
+Link per retrospettive OnlyTrunk
+https://miro.com/app/board/uXjVPXpsZ50=/ password onlytrunk2023!
+
+
+Link guida installazione kafka
+https://cchtagetik.atlassian.net/wiki/spaces/OT/pages/3720020241/WSL+Docker+Kafka
+
+https://www.conduktor.io/kafka/kafka-topics-cli-tutorial/
+
+
+https://www.digitalocean.com/community/tutorials/how-to-install-apache-kafka-on-ubuntu-20-04
+
+
+curl "https://downloads.apache.org/kafka/2.8.2/kafka_2.13-2.8.2.tgz" -o ~/Downloads/kafka.tgz
+
+ ubuntu-pro-client
+
+
+sotto wildfly /standalone/deployment fate
+ln -s /home/oscar-granese/sviluppo/cpm/gsw_ef/target/exploded.war gsw_ef.war
+
+ln -s /home/default/sviluppo/cpm/gsw_ef/target/exploded.war gsw_ef.war

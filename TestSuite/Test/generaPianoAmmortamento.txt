@@ -1,0 +1,5 @@
+Classe: GeneraPianoAmmortamento sotto gsd_efutility
+
+TEST:
+Accesso all'utility:  events/depreciationproposal/TGK_TRUNK_YYC_IT_TEST
+Azioni: Generate depreciation plan

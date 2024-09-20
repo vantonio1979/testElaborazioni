@@ -1,0 +1,92 @@
+01)Uso il comando git clone, per scaricare il progetto da un repository dove risiede esso,
+  da terminale do poi il comando 
+  git clone url
+02)Per entrare nel progetto appena scaricato, prendo il nome del progetto che sarebbe l'ultima parte
+  prima di .git e do il comando 
+  cd nomeprogetto
+03)Se invece voglio caricare su git un mio nuovo progetto faccio i seguenti passaggi:
+   1)Creo una nuova cartella dove scrivo il progetto
+   2)Apro editor per scrivere il progetto
+   3)Apro il terminale del'IDE, mi sposto nella cartella del progetto e do il comando
+     git init
+	 Questo comando serve per inizializzare la cartella e sincronizzarla con git in locale
+   4)Dopo aver creato i primi file del progetto o modificati, posso dare il comando git status
+     che mi permette di vedere lo stato dei vari file presenti nel progetto sotto git
+	 Il comando ci dice in quale branch - ramo del progetto siamo, se ci sono state delle commit,
+	 e se ci sono file tracciati o meno
+   5)Usare il comando git add nomefile, per tracciare le modifiche dei file, ora dando di nuovo
+     il comando git status, git mi vede il nuovo stato del file
+   6)Per aggiungere a git tutti i file di una cartella e non tracciarli manualmente do il comando
+     git add .
+	 Dando di nuovo il comando git status vedo i nuovi file aggiunti
+   7)Per rendere le modifiche su git, effettive sulla macchina in locale do il seguente comando:
+     git commit -m "messaggio"
+   8)Quando faccio delle modifiche su un progetto tracciato da git una volta salvato il file,
+     per rendere tracciate le modifiche su git do i seguenti comandi:
+	 git add .
+	 git commit -m "messaggio"
+   9)Posso usare il comando git log, per vedere l'elenco dei commit effettuati
+04)Quando si lavora con git abbiamo il concetto dei rami o branch come detto prima.
+   Tali rami li possiamo vedere come dei sotto progetti individuali dove gli sviluppatori sviluppano
+   le caratteristiche del progetto. Di solito su git c'è un ramo principale detto main o master,
+   dove risiede il progetto che deve andare in produzione, e poi almeno un ulteriore ramo chiamato
+   develop o dev, usato dagli sviluppatori per programmare, tutto il codice che scrivo sul ramo develop
+   o qualsiasi altro ramo, non viene visto sul ramo principale finchè non viene fatto il merge dei due rami
+05)Per spostarmi su un nuovo branch che non esiste do il seguente comando:
+   git checkout -b nomebranch
+   Il comando mi crea il nuovo branch e si sposta pure in esso come area di sviluppo
+   Per cambiare il branch in cui sono do il comando git checkout nomebranch, questa volta senza
+   l'opzione -b, spostandomi su branch master, per il momento ancora non vedo le modifiche fatte dall'altro 
+   branch, inoltre finchè non committo le modifiche fatte sul file in locale sul branch, quando
+   mi sposto tra i due branch vedo sempre l'ultimo salvataggio del file
+06)Quando devo fare il merge del ramo develop con quello master do i seguenti comandi:
+   git checkout master, per andare sul ramo master
+   git merge dev, per dire le modifiche di quale ramo deve portare in master
+07)Se dopo aver salvato un file su git con il comando git add, voglio tornare indietro ed ignorare 
+   la modifica fatta devo dare il comando git reset
+08)Se invece volessi tornare indietro a livello di commit devo dare il seguente comando:
+   git reset HEAD~1 con questo comando indico di quante commit voglio tornare indietro 
+   a partire da head, in base al numero messo dopo la tilde
+   Se vogliamo tornare indietro ad un determinato commit, invece di usare head, uso il seguente comando:
+   git reset hash-commit
+09)Per aggiungere il nostro progetto sul nostro repository git creato do il comando:
+   git remote add origin urlgit
+   Per pubblicare online le nostre modifiche fatte con git devo dare da console il comando
+   git push origin nomebranch
+   
+10)Per aprire un progetto tramite vcs con pycharm eseguo i seguenti passaggi:
+   Clicco sul pulsante Get From VCS dalla schermata iniziale di pycharm
+   Clicco sul pulsante GitHub
+   Clicco sul pulsante log in via git hub
+   Mi loggo su github dalla pagina web
+   Da Pycharm mi compare l'elenco dei progetti associati al mio account di cui posso fare il clone.
+15)Se invece creo un nuovo progetto da zero su pycharm eseguo i seguenti passaggi:
+   Creo il nuovo ambiente virtuale con pycharm ed il nuovo progetto
+   Vado sul menu VCS e clicco sul opzionie Enable Version Control
+   Seleziono il sistema git e poi clicco su ok
+   Una volta cliccato su ok mi esce in alto il nuovo menu Git, dal quale posso eseguire i comandi git
+   sul progetto che sto sviluppando
+   
+16)Per cancellare un branch do i seguenti comandi:
+   git branch --delete git branch --delete 					<branch> cancello il branch in locale
+   git push origin -d "branch name"		cancello il branch in remoto
+
+17)Per creare un branch in remoto sul repository utilizzo il comando
+   git push origin branch1
+18)Per vedere tutti i branch in locale do il comando
+   git branch -a
+   Per vedere tutti i branch in remoto do il comando
+   git branch -r
+   
+19)Per caricare un branch creato in locale in remoto do il seguente comando git
+   git push origin nomebranch
+   git push --all fa il push in remoto di tutti i branch locali
+ 
+20)Esempio di comandi da dare in git per copiare su repository remoto 
+	echo "# testElaborazioni" >> README.md
+	git init
+	git add README.md
+	git commit -m "first commit"
+	git branch -M main
+	git remote add origin https://github.com/vantonio1979/testElaborazioni.git
+	git push -u origin main

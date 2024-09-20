@@ -1,0 +1,5 @@
+[wsl2]
+dnsTunneling=false
+#networkingMode=mirrored
+[experimental]
+#hostAddressLoopback=true

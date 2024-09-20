@@ -1,0 +1,9 @@
+Passaggi da fare per eseguire elaborazione
+  Loggarsi sul ambiente e selezionare il profilo admin
+  Andare sulla scheda process
+  cliccare sul processo Default process
+  Cliccare sui bottone con i tre puntini e selezionare Process migration
+  Si apre la finestra di popup e poi si clicca su next
+  Adesso non parte perchè ci sono errore di validazione sul dato Mixed step ovvero la prima voce
+  Se si vuole andare avanti senza evitare questo errore, si fa il clone del processo
+  e si elimina il passaggio di validazione del valore misto

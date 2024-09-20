@@ -1,0 +1,483 @@
+Credenziali svn
+username:				antoniovorraro
+password:				czh6MEXJntg4JYBe
+password vpn:			Goodmorning24@  
+password windows:		Goodmorning23! 
+F.CITARELLA		tagetik
+e-antonio.vorraro@wolterskluwer.com
+
+Versiione 25
+http://qa11:8380/tagetikcpm/5?ver=5.3.25 A.VORRARO pass
+http://qatest8:8280/tagetikcpm versione 25 ok 
+http://qa11:8480/tagetikcpm		versione 26	A.VORRARO pass
+https://tools.grupposervizi.it/
+
+Link per controllare lo stato dei progetti
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/
+
+- collegarsi all'applicativo http://localhost:8580/tagetikcpm 
+	  con i seguenti credenziali A.VORRARO pass1
+upload di file tramite jquery
+https://makitweb.com/a-step-by-step-guide-to-file-upload-with-php-ajax-and-jquery/?utm_content=cmp-true
+link presenze
+https://wolterskluwer-my.sharepoint.com/:x:/r/personal/e-massimiliano_listo_wolterskluwer_com/Documents/Report_Presenze.xlsx?d=w4c4cc8beb28e4bd39d287cb33573f88f&csf=1&web=1&e=m56HVZ
+
+https://tools.grupposervizi.it/ devo accedere con le credenziali di sistema
+http://qa7.grupposervizi.it:8480/tagetikcpm/authenticate/?ver=5.3.12.0&currentMillis=1582723018348
+http://test.grupposervizi.it:8080/view/AT-CONSOLIDATO/ sito per vedere i risultati dei test AT
+https://tools.grupposervizi.it/ sito per trovare anche parametri di connessioni ad i db
+usare utente $USER $USER per entrare ovunque 
+								
+Versione	Link "Artemide" / qatest			End Of Life
+
+documentazione xray
+https://cchtagetik.atlassian.net/wiki/spaces/SDLC/pages/3248586772/QA
+
+Link per retrospettive OnlyTrunk
+https://miro.com/app/board/uXjVPXpsZ50=/ password onlytrunk2023!
+https://cchtagetik.atlassian.net/wiki/spaces/REP/pages/3536027715/Robot+Framework
+	
+link per controllare stato cpm
+
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/view/Maven%20Radiator%20Trunk/
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/job/ear/job/trunk-ear-build/
+
+mvn clean package -f gsw_ef/pom.xml -U -DskipTests (se ci sono altri progetti chiedo)
+./mvnMultipleInstallSvnDiff.sh -c dalla stessa cartella
+mvn clean install -U -DskipTests
+
+
+Link url test
+https://wolterskluwer.sharepoint.com/:x:/r/teams/TAA_TGK_Global_Development_Team/_layouts/15/doc2.aspx?sourcedoc=%7BBFBA5BC1-9A16-42FD-AE06-ECBE5E150EDB%7D&file=Test%20environment%20Urls.xlsx&action=default&mobileredirect=true&DefaultItemOpen=1&cid=b2d425f1-c9dc-4399-a5e4-cf9c26880eb8&ovuser=8ac76c91-e7f1-41ff-a89c-3553b2da2c17%2Ce-antonio.vorraro%40wolterskluwer.com&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyNy8yMzA3MDMwNzMzOSIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D
+
+link dove sono presenti i link alle vecchie versioni
+https://wolterskluwer.sharepoint.com/:x:/t/TAA_TGK_Global_Development_Team/EcFbur8Wmv1Crgbsvl4VDtsB--7Mq5_n3_OQWa6J85JzEA?e=qk9oPY&isSPOFile=1   
+
+
+Sito per fare corsi online riguartante tagEtik
+https://wk-cchtagetik.udemy.com/tgk-dl-onlytrunk@Wolterskluwer.com password  onlytrunk-1!!
+https://cchtagetik.atlassian.net/wiki/spaces/REP/pages/3536027715/Robot+Framework
+
+https://wk-cchtagetik.udemy.com/organization/home/
+
+Per aprire segnalazioni, malfunzionamenti ed utenze vedere questo link
+https://rainier.wolterskluwer.com/sp
+
+https://e-support.tagetik.com/
+sito di sistema per vedere pure i database su quale macchine sono installati
+
+
+
+https://cchtagetik.atlassian.net/wiki/spaces/OT/overview?homepageId=3377497035
+
+TGK_DEV_YYC_MODULARIZATION
+
+
+
+http://jenkins.grupposervizi.it:8080/ utilizzare questo sito per vedere un pò lo stato dei vari 
+
+[15:15] Listo, Massimiliano
+
+TGK_DEV_YYC_MODULARIZATION
+TGK_QC_TRUNK_YYC
+
+versione 24
+svn://linux02/Dev/solutions/cpm/branches/branch_5.3.24.0.dev
+svn://linux02/Dev/solutions/cpm/branches/branch_5.3.24.0.dev
+
+
+svn://linux02/Dev/libraries/elaboration-framework/tags/elaboration-framework-6.1.0
+svn://linux02/Dev/libraries/elaboration-framework/tags/elaboration-framework-6.1.0
+
+svn://linux02/Dev/solutions/tgk-modules/tgk-consolidation/tags/tgk-consolidation-3.7.3
+
+svn://linux02/Dev/libraries/bom-int/branches/branch_24.0.0.0.dev pomint
+
+guida robot framework con test api json
+https://www.youtube.com/watch?v=UbE_GsaAWvs&list=PLUDwpEzHYYLvMLbma_Rp-6jrrpxkeH0VJ
+pip install robotframework-angularjs
+pip install robotframework-requests
+pip install -U robotframework-jsonlibrary
+
+Per vedere un database su quale macchina è installato eseguo i seguenti passaggi:
+1)Accedo all'url   https://tools.grupposervizi.it/
+2)Entro con i parametri di sistema e-antonio.vorraro@wolterskluwer.com 3sd3N!eRe3
+3)Clicco sulla scheda All
+4)Clicco sulla svoce check artemide database parameter
+5)Clicco sulla voce a sinistra Compila con parametri
+6)Nella casella di testo inserisco il nome del database e poi clicco compila
+7)Clicco sulla voce  artemide database parameter
+8)Clicco su ultimo numero di build a sinistra
+9)In fine clicco su Output console e poi 
+
+
+
+pip install robotframework-oracledb-library
+pip install robotframework-postgresqldb
+pip install robotframework-psycopg2
+pip install pymssql
+pip install robotframework-oracledb-library
+
+
+
+python.exe -m pip install --upgrade pip
+pip install --upgrade --force-reinstall chromedriver-binary-auto
+
+Quando compare il messaggio di errore in robot framework di incompatibilità di versione
+di chrome con quella di chromedriver, devo scaricare la versione di chrome drive esatta,
+e poi la devo incollare nella cartella scripts di python e poi nella cartella c:\windows
+e riavviare il pc
+
+
+oracle
+postgress
+microsfsql
+hana
+
+SELECT *
+FROM DATI_RETT_RIGA 
+WHERE PROVENIENZA IN ('PROC_CTP_ELIMINATIONS','PROC_FI_ELIMINATIONS')
+AND COD_SCENARIO LIKE '2017ACT'
+AND COD_PERIODO = '12'
+
+verificare i campi userupd, dateupd
+
+
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/3500539972/Robot+Framework+-+Best+Practices
+pip install robotframework-datetime-tz
+
+robotframework==6.0.1
+robotframework-jsonlibrary==0.5
+robotframework-jsonvalidator==2.0.0
+robotframework-requests==0.9.3
+robotframework-requests-extension==0.0.6
+robotframework-selenium2library==3.0.0
+robotframework-seleniumlibrary==6.0.0
+
+
+Library    String
+Library    RequestsLibrary
+Library    JSONLibrary
+Library    DateTime
+
+
+
+
+*****note app per test *******
+prima fase scenari non automatizzati della relaese in corso
+		   anche scenari presi da xray con major broker o major
+		   
+seconda fase:	il team di sviluppo dovrà fixare i bug della prima fase, dopo di che il tester
+				deve ritestare i bug aperti nella prima fase
+				
+Prendere gli scenari di tipo test chiusi, la priorità broker e major
+
+quando creo un bug devo prendere la label da mettere da fine realease
+
+la fase di subexecution nella prima fase può essere chiusa se tutti i test sono passati,
+altrimenti resta aperta per la seconda fase
+
+Guida jira di base
+https://www.atlassian.com/it/software/jira/guides/getting-started/basics#step-2-pick-a-template
+
+Link per controllare le elaborazioni assegnate ad onlytrunk-1
+
+https://wolterskluwer.sharepoint.com/:x:/r/teams/TAA_TGK_Global_Development_Team/_layouts/15/doc2.aspx?sourcedoc=%7BAFE9070F-E92C-41E2-AC28-2FA8DCDDF62D%7D&file=Elab%20consolidato%20da%20remotizzare.xlsx&action=default&mobileredirect=true&ovuser=8ac76c91-e7f1-41ff-a89c-3553b2da2c17%2Ce-silvio.pastore%40wolterskluwer.com&SafelinksUrl=https%3A%2F%2Fwolterskluwer.sharepoint.com%2F%3Ax%3A%2Fr%2Fteams%2FTAA_TGK_Global_Development_Team%2F_layouts%2F15%2FDoc.aspx&cid=87fd3e33-957d-45db-9601-eaf4f00adbdf&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyNy8yMzA1MDEwMDQyMiIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D
+
+
+
+
+Ciao ecco a voi qualche link di ciò che abbiamo visto oggi..
+
+https://wolterskluwer.sharepoint.com/:x:/r/teams/TAA_TGK_Global_Development_Team/_layouts/15/doc2.aspx?sourcedoc=%7BAFE9070F-E92C-41E2-AC28-2FA8DCDDF62D%7D&file=Elab%20consolidato%20da%20remotizzare.xlsx&action=default&mobileredirect=true&ovuser=8ac76c91-e7f1-41ff-a89c-3553b2da2c17%2Ce-silvio.pastore%40wolterskluwer.com&SafelinksUrl=https%3A%2F%2Fwolterskluwer.sharepoint.com%2F%3Ax%3A%2Fr%2Fteams%2FTAA_TGK_Global_Development_Team%2F_layouts%2F15%2FDoc.aspx&cid=87fd3e33-957d-45db-9601-eaf4f00adbdf&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyNy8yMzA1MDEwMDQyMiIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D
+
+https://cchtagetik.atlassian.net/wiki/spaces/SDLC/pages/3255435294/End+Release+Test+Process
+https://cchtagetik.atlassian.net/wiki/spaces/SDLC/pages/3258941449/End+Release+-+activities+in+Xray
+https://e-support.tagetik.com/browse/DEV-87195
+https://e-support.tagetik.com/secure/XrayTestPlanRepositoryAction!default.jspa?entityKey=DEV-87195&path=%5Craven_all_tests
+
+Label da utilizzare per l'apertura dei bug in fase di Test di Fine Release 5.3.SP25EndReleaseTest
+
+Query da utilizzare per aggiungere gli scenari alle Sub Execution del vostro team:
+
+ 
+
+project = Development AND type in (Test) AND  status in (Closed) AND  ((priority in ( Blocker, Major) AND fixVersion not in (5.3.SP25, "5.3.SP25 (Next Patch)")) OR fixVersion in (5.3.SP25, "5.3.SP25 (Next Patch)") ) AND "Automation Status" not in (Automated) AND cf[12007] = "NOME_TEAM"
+
+ 
+
+like 1
+
+Log in with Atlassian account
+
+Log in to Jira, Confluence, and all other Atlassian Cloud products here. Not an Atlassian user? Sign up for free.
+
+training  di fine realease
+https://wolterskluwer-my.sharepoint.com/:v:/p/stefania_currenti/Ea6xqhxWulpAv8gt3TnNc_MBgQcghsZK_23P0Zud9Wz6uQ
+
+
+test assegnati
+https://e-support.tagetik.com/browse/DEV-87195
+
+
+https://cchtagetik.atlassian.net/wiki/spaces/SDLC/pages/3255435294/End+Release+Test+Process
+https://cchtagetik.atlassian.net/wiki/spaces/SDLC/pages/3258941449/End+Release+-+activities+in+Xray
+https://e-support.tagetik.com/browse/DEV-87195
+
+link per spostare i test orfani nel gruppo onlytrunk
+https://e-support.tagetik.com/secure/XrayTestPlanRepositoryAction!default.jspa?entityKey=DEV-87195&path=%5Craven_all_tests
+
+https://e-support.tagetik.com/secure/XrayTestPlanRepositoryAction!default.jspa?entityKey=DEV-87195&path=%5Craven_orphans
+
+test fine realease
+https://e-support.tagetik.com/browse/DEV-87195
+
+
+login pluralsight
+https://app.pluralsight.com/
+Company URL: wolterskluwer.com
+https://cchtagetik.atlassian.net/wiki/spaces/CTDC/pages/3173777446/PluralSight+channels
+link dei corsi da fare
+https://app.pluralsight.com/channels/details/dba53564-fcb0-426e-9286-2a0bf78949a8
+
+link per test endtoend
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/3558146066/QA+-+End+to+End+test+suite?NO_SSR=1
+
+link per struttura progetti robot framework
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/3502538753/Project+structure?NO_SSR=1
+
+Struttura progetto robot framework
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/3502538753/Project+structure?NO_SSR=1
+project = Development AND type in (Test) AND  status in (Closed) AND  ((priority in ( Blocker, Major) AND fixVersion not in (5.3.SP25, "5.3.SP25 (Next Patch)")) OR fixVersion in (5.3.SP25, "5.3.SP25 (Next Patch)") ) AND "Automation Status" not in (Automated) AND cf[12007] = "NOME_TEAM"
+
+Cose da fare per l'esecuzione dei test
+1)La creazione del test plan viene eseguita da Stefania Currenti etichetta di tipo issue test
+  all'interno di questo executin test, ci sono poi le varie sub execution una per ogni team
+  e queste cartelle verranno popolate dai tester dei team
+  
+2)Quando il test di uno sceneraio fallisce, devo aprire un bug cliccando sul pulsante create in alto
+  e poi nella form di compilazione del bug devo inserire la label di fine realease per legare
+  il bug appena creato alla realease in cui è stato riscontrato
+  
+come scrivere scenari su xray
+
+Per creare un test da assegnare a me devo eseguire i seguenti passaggi:
+	1)Mi collego al link https://e-support.tagetik.com/browse/DEV-87195
+	2)Nella sezione dei sottotest clicco la voce relativa al mio gruppo in questo caso
+	  dev-87318
+	3)Una volta cliccato vado sulla voce crea 
+	4)Vado sulla scheda general ed eseguo i seguenti passaggi:
+	4.1)Nel campo Porgetto metto Development(DEV)
+	4.2)Nel campo tipo ticket metto test
+	4.3)Nel campo Riepilogo metto un nome parlante del progetto come pure in descrizione
+	4.4)Nel campo Descrizione metto un nome parlante del progetto come pure in descrizione
+	4.5)Nel campo assegnatario metto assegnato a me
+	4.6)Nel campo priorità seleziono la priorità del progetto
+	4.7)Nel campo Test Repository Path inserisco la sezione di tagetik (chiedere 
+	    ad Antonia di yes you cons dove mettere i test)
+	4.8)Nel campo Automation status metto il To be automated - Dev Team
+	5)Cliccare sulla scheda Test Details
+	5.1)Cliccare sul tasto Add Step e poi sulla voce Add New
+	5.2)Inserire i passaggi da fare
+	5.3)Cliccare sul pulsante ADD
+	6)Cliccare sul pulsante Crea per creare il test
+	7)Una volta creato il test vado al link https://e-support.tagetik.com/browse/DEV-idtest
+	  in questo caso https://e-support.tagetik.com/browse/DEV-idtest
+	8)Clicco sul pulsante in Progress nella parte alta dello schermo
+	9)Si apre una popup e riclicco sul pulsante InProgress
+	10)Compare il pulsante Close e clicco sul pulsante Close
+	11)Nella popup che si apre nel campo Versione di Correzione in questo caso inserisco 5.3.SP25
+	12)Nel campo sprint inserisco lo sprint associato al mio gruppo in questo caso sprint0
+	13)Clicco su close
+	20)Dal menu a sinistra cliccare sulla voce Xray Test Plan Board
+	Esempio DEV-87431
+	21)Vado al url https://e-support.tagetik.com/browse/DEV-87318 per questa realese
+	https://e-support.tagetik.com/browse/DEV-87195
+	https://cchtagetik.atlassian.net/wiki/spaces/SDLC/pages/3255435294/End+Release+Test+Process
+https://cchtagetik.atlassian.net/wiki/spaces/SDLC/pages/3258941449/End+Release+-+activities+in+Xray
+https://e-support.tagetik.com/browse/DEV-87195
+https://e-support.tagetik.com/secure/XrayTestPlanRepositoryAction!default.jspa?entityKey=DEV-87195&path=%5Craven_all_tests
+	22)Clicco sul tab JQL
+	23)Incollo la query seguente mettendo come nome team OnlyTrunk
+	project = Development AND type in (Test) AND  status in (Closed) AND  ((priority in ( Blocker, Major) AND fixVersion not in (5.3.SP25, "5.3.SP25 (Next Patch)")) OR fixVersion in (5.3.SP25, "5.3.SP25 (Next Patch)") ) AND "Automation Status" not in (Automated) AND cf[12007] = "NOME_TEAM"
+	24)Seleziono il test da aggiungere
+	25)Clicco sul pulsante add select
+	26)Clicco sul pulsante Add Tests della popup che esce
+
+Da testare
+
+1)Deconsolidamento
+2)ElisioniC
+3)ElisioniPn
+4)Fusioni
+
+Elenco ambienti di test
+-	http://qatest12:8480/tagetikcpm/   Repository  SQL              standalone.xml
+-	http://qatest12:8380/tagetikcpm/   Repository  Hana            standalone.xml
+-	http://qatest12:8280/tagetikcpm     Repository  Postgres      standalone.xml
+-	http://qatest12:8180/tagetikcpm/   Repository  Oracle          standalone.xml
+
+Below  the url of qatest8 and qa11 environments:
+
+-	http://qatest8:8480/tagetikcpm/      standalone.xml   
+-	http://qatest8:8280/tagetikcpm/      standalone.xml   
+-	http://qa11:8380/tagetikcpm/   \   standalone.xml    
+
+Below the url of 5.3.25-qa-systemdemo:
+
+-	systemdemo-qa-5325-aws.platformteam.saastagetik.com/tagetikcpm
+
+
+Procedimento per eseguire test AT
+1)Aggiornare in locale il CPM se è verde
+2)Apro jenkins per vedere se è verde
+  https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/job/smoke-test/job/trunk-smoke-int-test-spring-context-bean-loading/
+  jenkins-eks-dev-cpm.platformteam.saastagetik.internal/view/Ear%20Builds/job/ear/job/trunk-ear-build/
+  http://jenkins.grupposervizi.it:8080/
+  Vado sulla destra di trunk-ear-build e clicco sopra
+  Se anche il progetto trunk-smoke-int-test-spring-context-bean-loading
+  è verde posso aggiornare il cpm
+3) Vado nella cartella dove ho scaricato i files sorgente del cpm, in questo caso
+   C:\Sviluppo\projects e faccio tasto destro del mouse sulla cartella del cpm e poi
+   SVN UPDATE
+4)Eseguo la stessa operazione anche sulla cartella del bomint, ed eventuali altri progetti
+  che potrebbero servire in base a quello che devo testare
+  Da terminale di gitbash sotto la cartella cpm devo eseguire il comando
+  mvn clean package -f gsw_ef/pom.xml -U (se ci sono altri progetti chiedo)
+  Dare il comando ./mvnMultipleInstallSvnDiff.sh -c dalla stessa cartella
+  mvn clean install -U -DskipTests
+  
+  Andare nella cartella C:\sviluppo\wildfly-24.0.1-Tagetik\standalone\deployments e fare
+  doppio click sul file create_link_trunk.bat esegui come amministratore
+  Apro intellij e vado sul file pom.xml in basso, faccio tasto destro con il mouse
+  e clicco sul menu di maven e seleziono la voce Reload project
+5)Vado sul link http://test:8080/ poi clicco sulla voce in alto AT-CONSOLIDATO/
+  per vedere i test del consolidato
+6)Seleziono il test che voglio lanciare
+7)Vado nel test che voglio lanciare su test:8080, dopo di che una volta selezionato il test,
+  dal menu a sinistra clicco sul regressiontest, e nella pagina successiva in base al test
+  che devo lanciare, mi copio il path della classe da eseguire, nella colonna Ambiente e mi 
+  copio anche il valore corrispondente nel campo Test, che sarebbe il metodo del test da eseguire
+  com.tagetik.qa.regression.generic.consolidato.ambienti.hana.hanadev24.eon.EonHana24_ACT_YEAR_GP
+  TestElabAziendaScenariOriginari
+8)Clicco sulla colonna status alla riga corrispondente del test da lanciare,, per creare 
+  la connessione a DBEaviewer del database repository in modalità sola lettura 
+9)Quando devo lanciare un test, devo controllare se nella tabella REP-TEIC del database   
+  in questione  è presente già il test, se è presente non lo posso eseguire, se invece non è 
+  presente lo posso lanciare, ma alla fine del test devo controllare che il record non è più
+  presente in tabella.
+
+10)Apro un terminale dos e vado nella cartella C:\Sviluppo\projects\cpm\gsd_acceptancetest
+sempre in questa cartella, e mai nella cartella cpm, altrimenti mi fa la clean di tutto ed è
+male
+11)Lancio il seguente comando
+mvn clean integration-test -o -PnrTest -DnrTest.ambiente="regression/generic/consolidato/ambienti/sql/sqldb17dev/DemoSql2017_BDG2" -DnrTest.template=".*TestElabScenariConsolidamento" -Dmaven.surefire.debug -DtrimStackTrace=false
+Nel comando sopra indicato nel parametro ambiente incollo il package della classe trovata
+a partire dalla directory regression, e devo sostituire i . nel percorso con il carattere /
+Nel parametro template invece metto .* ed il nome del metodo trovato precedentemente nel campo Test
+Nel comando ci sono anche le opzioni -o per lanciare il comando offline
+-Dmaven.surefire.debug servono per lanciare in modalità debug
+-DtrimStackTrace
+Questi due parametri per le mie esecuzioni dei test sono opzionali, li posso togliere
+12)Il risultato del test lo trovo C:\Sviluppo\projects\cpm\gsd_acceptancetest\target\output\
+   in cui dentro c'è il file html con i risultati dentro, che sono uguali a quelli su regression
+   test online
+
+Robot framework test api
+https://www.youtube.com/playlist?list=PLUDwpEzHYYLvMLbma_Rp-6jrrpxkeH0VJ
+python.exe -m pip install --upgrade pip
+pip install requests
+pip install robotframework-requests
+pip install -U robotframework-jsonlibrary
+pip install robotframework-jsonlibrary
+
+
+url versione 25
+Find below the urls:
+
+-	http://qatest12:8480/tagetikcpm/   Repository  SQL              standalone.xml
+-	http://qatest12:8380/tagetikcpm/   Repository  Hana            standalone.xml
+-	http://qatest12:8280/tagetikcpm     Repository  Postgres      standalone.xml
+-	http://qatest12:8180/tagetikcpm/   Repository  Oracle          standalone.xml
+
+Below  the url of qatest8 and qa11 environments:
+
+-	http://qatest8:8480/tagetikcpm/      standalone.xml   
+-	http://qatest8:8280/tagetikcpm/      standalone.xml   
+-	http://qa11:8380/tagetikcpm/      standalone.xml    
+
+Below the url of 5.3.25-qa-systemdemo:
+
+-	systemdemo-qa-5325-aws.platformteam.saastagetik.com/tagetikcpm
+
+Default credentials are $USER/$USER , but please create an user by yourself.
+
+
+
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/3599138854/Libraries-oriented+Robot+Framework+test+suites
+
+ciao provare ad accedere al link del file excel di cui si parlava e mi dite se ve lo apre? (è in fondo alla pagina, cliccate si here) https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/786169875/How+to+assign+priority+to+test+scenario
+
+
+
+TGK_DEV_YYC_MODULARIZATION
+
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/view/AT-CONSOLIDATO/
+
+
+ mvn clean package -f gsw_ef/pom.xml -U	-DskipTests (se ci sono altri progetti chiedo)
+ ./mvnMultipleInstallSvnDiff.sh -c dalla stessa cartella
+  mvn clean install -U -DskipTests
+  
+https://gitlab.aws.tagetik.com/tagetik/common-libraries/python/rbt-int/
+
+https://cchtagetik.atlassian.net/wiki/spaces/CTDC/pages/3767435270/Jakarta+Migration
+
+Sito miro per le retrospettive 	password onlytrunk2023!
+https://miro.com/app/board/uXjVPXpsZ50=/
+
+https://cchtagetik.atlassian.net/wiki/spaces/OT/pages/3720020241/WSL+Docker+Kafka
+
+https://learn.microsoft.com/it-it/windows/wsl/install-manual
+
+C:\Users\e-antonio.vorraro\AppData\Local\Android\Sdk
+https://docs.flutter.dev/get-started/test-drive?tab=terminal
+https://dart.dev/tutorials
+https://www.tutorialspoint.com/flutter/flutter_introduction_to_layouts.htm
+
+Retrospettiva
+
+link	https://miro.com/app/board/uXjVPXpsZ50=/
+pass	onlytrunk2023!
+
+
+Creazione test in jira
+https://cchtagetik.atlassian.net/wiki/spaces/SDLC/pages/3258941449/End+Release+-+activities+in+Xray
+
+Dashboard test qa
+https://e-support.tagetik.com/secure/Dashboard.jspa?selectPageId=13403#
+
+
+Link url di test
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/3864264726/Test+environments+list
+
+
+Sito per seguire i corsi
+https://app.pluralsight.com/
+
+entrare con il nome del azienda
+
+sito per controllare le ore fatte
+https://wolterskluwer.sharepoint.com/
+
+
+Dear e-antonio.vorraro,
+this email notifies you have either enabled for the first time on saastagetik Domain Controller with a defined Scope or your password has been reset. 
+The Scope is assigned at your team and allows you to get access to several tools and platforms as reported at https://cchtagetik.atlassian.net/wiki/spaces/SOC/pages/3544056048/Scope+vs+Application+Roles 
+This is your temporary password: 
+Temporary Password valid for 5 days: 
+|ei3VHu\a\y#zY
+
+Change Password Link: https://adfs.saastagetik.com/adfs/ls/idpinitiatedsignon?LoginToRp=WelcomeOnBoard
+
+Password Requirements 

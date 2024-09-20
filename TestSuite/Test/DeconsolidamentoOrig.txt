@@ -1,0 +1,200 @@
+Comprende:
+1) DeconsolidamentoContributorElaboration extends AbstractLancioElaborazioniElaboration
+2) DeconsolidamentoConsolidatoreElaboration extends AbstractLancioElaborazioniElaboration
+3) DeconsolidamentoContributorUserToolsElaboration extends AbstractDeconsolidationUserToolsElaboration
+4) DeconsolidamentoConsolidatoreUserToolsElaboration extends AbstractDeconsolidationUserToolsElaboration
+
+Note: 
+- AbstractLancioElaborazioniElaboration viene usata anche da FusioniConsolidatoreElaboration e FusioniContributorElaboration
+- DeconsolidamentoContributorUserToolsElaboration non fa altro che eseguire DeconsolidamentoContributorElaboration
+- DeconsolidamentoConsolidatoreUserToolsElaboration non fa altro che eseguire DeconsolidamentoConsolidatoreElaboration
+- AbstractDeconsolidationUserToolsElaboration usa la classe NewDeconsolidamentoLauncher contenuta in gsd_efelabpreliminari
+
+Moduli di Destinazione:
+
+tgk-consolidation-dataprocessing-original -> entityandgroup: parti a comune (per esempio AbstractLancioElaborazioniElaboration e AbstractDeconsolidationUserToolsElaboration)
+tgk-consolidation-dataprocessing-elabpreliminari -> origandcons: NewDeconsolidamentoLauncher
+tgk-consolidation-dataprocessing-original -> entity: DeconsolidamentoContributorElaboration
+tgk-consolidation-dataprocessing-original -> entity: DeconsolidamentoContributorUserToolsElaboration
+tgk-consolidation-dataprocessing-original -> group: DeconsolidamentoConsolidatoreElaboration
+tgk-consolidation-dataprocessing-original -> group: DeconsolidamentoConsolidatoreUserToolsElaboration
+
+
+
+
+*** DeconsolidamentoContributorUserToolsElaboration
+Codice Elaborazione: CONTR_DECONSOLIDATION
+Provenienza Output: PROC_DECONSOLIDATION3
+Tabelle Output: DATI_SALDI_IC, DATI_SALDI_LORDI, DATI_RETT_RIGA, DATI_RETT 
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Deconsolidation -> on entities
+
+Lancio manuale: Cruscotto Contributor - Entity Data Processing -> Deconsolidation
+
+TEST
+
+
+1) Test manuali da applicazione
+
+DB:
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio da cruscotto Contributor - Entity data processing
+url: /cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/CUS_PR/2017CUS_PR/12
+Cruscotto Contributor
+Selezionare tutte le aziende
+Entity data processing  (selezionare solo deconsolidamento - Deconsolidations)
+Run
+
+Output:
+select d.* from dati_rett_riga d, categoria c 
+where COD_SCENARIO = '2017CUS_PR'
+and COD_PERIODO = '12'
+and c.cod_categoria = d.cod_categoria 
+and c.tipo_categoria = 'RP'
+and d.provenienza in ('PROC_DECONSOLIDATION3')
+
+select * from dati_saldi_lordi
+where COD_SCENARIO = '2017CUS_PR'
+and COD_PERIODO = '12'
+and provenienza in ('PROC_DECONSOLIDATION3')
+
+select * from dati_saldi_ic
+where COD_SCENARIO = '2017CUS_PR'
+and COD_PERIODO = '12'
+and provenienza in ('PROC_DECONSOLIDATION3')
+
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Menu Admin > Data Processing > Jobs > T18.
+Selezionare la riga con codice T18 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+1c) Lancio da Cruscotto contributor - Task Workflow
+Cruscotto Contributor-> Tab 'Trial balance' -> Selezionare Entity EN_55 - >
+selezionare seconda icona Icona ingranaggi ->'Entity - Deconsolidation -> 'Esegui'
+
+Output:
+Eseguire le stesse query indicate sopra
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabAziendaScenariOriginari (Job, Template):
+
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_YEAR_GP
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25BDG3
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3
+- TRUNK-MAVEN-AT-CONSOLIDATO-ORA-DBTESTNR-19	DemoOracle_BDG2
+- TRUNK-MAVEN-AT-CONSOLIDATO-ORA-DBTESTNR-19	DemoOracle_BDG3
+- TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT5
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-DRIVERMS	DemoSql_DriverMs
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17DEV	DemoSql2017_BDG2
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17DEV	DemoSql2017_BDG3
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17LINUXDEV	SqlServerLinux
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19LINUXNR	SqlServerLinuxSql2019
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG2
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG2
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3
+
+
+
+
+
+*** DeconsolidamentoConsolidatoreUserToolsElaboration	Da fare
+Codice Elaborazione: CONS_DECONSOLIDATION
+Provenienza Output: PROC_DECONSOLIDATION3
+Tabelle Output: DATI_RETT_RIGA, DATI_RETT 
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Deconsolidation -> on group
+
+Lancio manuale: Cruscotto Consolidator - Consolidation Data Processing -> Group Data Processing
+
+TEST
+
+
+1) Test manuali da applicazione
+
+DB:
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio da cruscotto Consolidatore - Elaborazioni di gruppo 
+url: /cockpit/consolidator/TGK_DEV_YYC_MODULARIZATION/CUS_PR/2017CUS_PR/12
+Cruscotto Consolidatore
+Selezionare Tutti i nodi
+Consolidation data processing - Custom -> selezionare solo Group data processing 
+Run
+
+Output:
+select d.* from dati_rett_riga d, categoria c 
+where COD_SCENARIO = '2017CUS_PR'
+and COD_PERIODO = '12'
+and c.cod_categoria = d.cod_categoria 
+and c.tipo_categoria = 'RC'
+and d.provenienza in ('PROC_DECONSOLIDATION3')
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T18 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+qui ho  i nodi padri con icona gialla OK-KO
+1c) Lancio da Cruscotto consolidatore - Task Workflow
+Cruscotto Consolidatore-> Tab 'Consolidation journals' -> Selezionare Nodo 300 - > Icona ingranaggi ->'Group data processing' -> 'Esegui'
+
+Output:
+Eseguire le stesse query indicate sopra
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabGruppoScenariOriginari (Job, Template):
+
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_YEAR_GP
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25BDG3
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3
+- TRUNK-MAVEN-AT-CONSOLIDATO-ORA-DBTESTNR-19	DemoOracle_BDG2
+- TRUNK-MAVEN-AT-CONSOLIDATO-ORA-DBTESTNR-19	DemoOracle_BDG3
+- TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-DRIVERMS	DemoSql_DriverMs
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-FAPER	Faper
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17DEV	DemoSql2017_BDG2
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17DEV	DemoSql2017_BDG3
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17LINUXDEV	SqlServerLinux
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19LINUXNR	SqlServerLinuxSql2019
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG2
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG2
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3

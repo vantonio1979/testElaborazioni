@@ -1,0 +1,123 @@
+****ElisioniIcElaboration
+Codice Elaborazione: CONS_CTP_ELIMINATIONS
+Provenienza Output: PROC_CTP_ELIMINATIONS
+Tabelle Output: DATI_RETT_RIGA
+
+Moduli di Destinazione: tgk-consolidation-dataprocessing-original -> group
+(spostare tutto il package gsd_efconsolidatooriginario/src/java/it/grupposervizi/easy/ef/elisionictp)
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Eliminations and IC matching -> by counterparty
+
+Lancio manuale: Cruscotto Consolidator - Consolidation Data Processing -> Group Data Processing
+
+TEST
+
+1) Test manuali da applicazione
+
+DB:
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio da cruscotto consolidatore - Elaborazioni di gruppo
+Url: cockpit/consolidator/TGK_DEV_YYC_MODULARIZATION/ACT/2017ACT/12
+selezionare tutti i nodi
+Consolidation Data Processing -> Custom -> Selezionare solo Group Data Processing
+
+Output:
+SELECT *
+FROM DATI_RETT_RIGA 
+WHERE PROVENIENZA IN ('PROC_CTP_ELIMINATIONS','PROC_FI_ELIMINATIONS')
+AND COD_SCENARIO LIKE '2017ACT'
+AND COD_PERIODO = '12'
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T4 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+1c) Lancio da Cruscotto consolidatore - Workflow
+Cruscotto Consolidatoe -> Tab 'Consolidation journals' -> Selezionare Nodo 100 - > Icona ingranaggi 'Group data processing' -> 'Esegui'
+
+Output:
+SELECT *
+FROM DATI_RETT_RIGA 
+WHERE PROVENIENZA IN ('PROC_CTP_ELIMINATIONS','PROC_FI_ELIMINATIONS')
+AND COD_SCENARIO LIKE '2017ACT'
+AND COD_PERIODO = '12'
+and (NUM_RETTIFICA like '%EN_10_EN_15%' 
+or NUM_RETTIFICA like '%EN_05_EN_10%' 
+or NUM_RETTIFICA like '%EN_00_EN_05%')
+
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+trunk-yyc-originario-hsql-int-test	
+packages com.tagetik.cpm.it.elab.elisionictp e it.grupposervizi.easy.ef.elisionictp.tables.populators
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabGruppoScenariOriginari (Job, Template):
+
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_YEAR_GP
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3
+TRUNK-MAVEN-AT-CONSOLIDATO-ORA-DBTESTNR-19	DemoOracle_BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-ENTERTONEUK	EntertainmentOneUkLTD
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-EONE	EOneUkCE_FORZ_NOCMP
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17DEV	DemoSql2017_BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3
+
+
+**********ElisioniPNElaboration
+
+Codice Elaborazione: CONS_FINANCIAL_INVESTMENTS_ELIMINATIONS
+Provenienza Output: PROC_FI_ELIMINATIONS
+Tabelle Output: DATI_RETT_RIGA
+
+Moduli di Destinazione: tgk-consolidation-dataprocessing-original -> group
+(spostare tutto il package gsd_efconsolidatooriginario/src/java/it/grupposervizi/easy/ef/elisionictp)
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Eliminations and IC matching -> Financial investments from ownership structure register
+
+Lancio manuale: Cruscotto Consolidator - Consolidation Data Processing -> Group Data Processing
+
+TEST
+
+1) Test manuali da applicazione
+
+(stesso di ElisioniIcElaboration)
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabGruppoScenariOriginari (Job, Template):
+
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_YEAR_GP
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3
+TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-ENTERTONEUK	EntertainmentOneUkLTD
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-EONE	EOneUkCE_FORZ_NOCMP
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17DEV	DemoSql2017_BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3

@@ -1,0 +1,343 @@
+Comprende:
+
+Devo fare i punti 3 e 4
+1) FusioniContributorElaboration extends AbstractLancioElaborazioniElaboration
+2) FusioniConsolidatoreElaboration extends AbstractLancioElaborazioniElaboration
+3) MergeContributorUserToolsElaboration extends AbstractMergeUserToolsElaboration
+4) MergeConsolidatoreUserToolsElaboration extends AbstractMergeUserToolsElaboration
+
+Note: 
+- AbstractLancioElaborazioniElaboration viene usata anche da DeconsolidamentoConsolidatoreElaboration e DeconsolidamentoContributorElaboration
+- MergeContributorUserToolsElaboration non fa altro che eseguire FusioniContributorElaboration
+- MergeConsolidatoreUserToolsElaboration non fa altro che eseguire FusioniConsolidatoreElaboration
+- AbstractMergeUserToolsElaboration usa la classe NewFusioniLauncher contenuta in gsd_efelabpreliminari
+
+Moduli di Destinazione:
+
+tgk-consolidation-dataprocessing-original -> entityandgroup: parti a comune (per esempio AbstractLancioElaborazioniElaboration e AbstractMergeUserToolsElaboration)
+tgk-consolidation-dataprocessing-elabpreliminari -> origandcons: NewFusioniLauncher
+tgk-consolidation-dataprocessing-original -> entity: FusioniContributorElaboration
+tgk-consolidation-dataprocessing-original -> entity: MergeContributorUserToolsElaboration
+tgk-consolidation-dataprocessing-original -> group: FusioniConsolidatoreElaboration
+tgk-consolidation-dataprocessing-original -> group: MergeConsolidatoreUserToolsElaboration
+
+
+*** MergeContributorUserToolsElaboration
+Codice Elaborazione: CONTR_MERGE
+Provenienza Output: PROC_MERGE3
+Tabelle Output: DATI_SALDI_IC, DATI_SALDI_LORDI, DATI_RETT_RIGA, DATI_RETT 
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Mergers -> on entities
+
+Lancio manuale: Cruscotto Contributor - Entity Data Processing -> Incoming mergers
+
+TEST
+
+1) Test manuali da applicazione
+
+DB:
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio da cruscotto Contributor - Entity data processing
+url: /cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/DE_TB/2017DE_TB/01
+Cruscotto Contributor
+Selezionare tutte le aziende
+Entity data processing  (selezionare solo Fusioni)
+Run
+
+Output:
+select drr.* from dati_rett_riga drr, categoria c
+where 
+cod_scenario = '2017DE_TB'
+and cod_periodo = '01'
+and drr.provenienza = 'PROC_MERGE3'
+and c.cod_categoria = drr.cod_categoria 
+and c.tipo_categoria = 'RP'
+order by drr.dateupd desc
+
+select * from dati_saldi_lordi drr 
+where 
+cod_scenario = '2017DE_TB'
+and cod_periodo = '01'
+and provenienza = 'PROC_MERGE3'
+order by dateupd desc
+
+
+1b) Lancio da Job, qui ho  i nodi padri con icona gialla OK-KO
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T17 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+1c) Lancio da Cruscotto contributor - Task Workflow OK
+Cruscotto Contributor-> Tab 'Trial balance' -> Selezionare Entity EN_10 - > Icona ingranaggi ->'Entity - Merge -> 'Esegui'
+
+Output:
+Eseguire le stesse query indicate sopra
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabAziendaScenariOriginari (Job, Template):
+
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_YEAR_GP
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3
+- TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3
+- TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT5
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-DRIVERMS	DemoSql_DriverMs
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17LINUXDEV	SqlServerLinux
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19LINUXNR	SqlServerLinuxSql2019
+
+
+*** FusioniContributorElaboration
+Codice Elaborazione: PO_MERGE1, PO_MERGE2
+Provenienza Output: PREL_MERGE1, PREL_MERGE2
+Tabelle Output: DATI_SALDI_IC, DATI_SALDI_LORDI, DATI_RETT_RIGA, DATI_RETT 
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Mergers -> on initial balances and from previous period
+
+Lancio manuale: Cruscotto Contributor - Preliminary Data Processing - Incoming Mergers on Initial balances (PO_MERGE1) and Incoming Mergers from previous period (PO_MERGE2)
+
+TEST 
+
+ATTENZIONE: Questa elaborazione è' gia' stata modularizzata e testata con la card NewFusioniLauncher, quindi non dovrebbe essere necessario ripetere i tests.
+
+1) Test manuali da applicazione
+
+DB:
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+
+1a) Lancio da cruscotto Contributor - Elaborazioni preliminari 
+url: /cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/DE_TB/2017DE_TB/01
+Cruscotto Contributor
+Selezionare Tutte le aziende
+Preliminary Data Processing (le opzioni necessarie sono già selezionate)
+Run
+
+Output:
+select * from dati_rett_riga drr 
+where 
+cod_scenario = '2017DE_TB'
+and cod_periodo = '01'
+and provenienza in ('PREL_MERGE1','PREL_MERGE2')
+order by dateupd desc
+
+select * from dati_saldi_lordi drr 
+where 
+cod_scenario = '2017DE_TB'
+and cod_periodo = '01'
+and provenienza in ('PREL_MERGE1','PREL_MERGE2')
+order by dateupd desc
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T7 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+1c) Lancio da Cruscotto contributor - Task Workflow
+Cruscotto Contributor-> Tab 'Trial balance' -> Selezionare Entity EN_10 - > Icona ingranaggi ->'Preliminary -> 'Esegui'
+
+Output:
+Eseguire le stesse query indicate sopra
+
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabPreliminariScenariOriginari (Job, Template):
+
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19	TGK_DEV_HANA24_YYC_EON_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19	TGK_DEV_HANA24_YYC_EON_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON001	EonHana24_ElabPrelOrig	TGK_DEV_HANA24_YYC_EON_TRUNK_001 
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON001	EonHana24_ElabPrelOrig	TGK_DEV_HANA24_YYC_EON_TRUNK_001 
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3	TGK_DEV_YYC_HANA25_TRUNK_001 
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3	TGK_DEV_YYC_HANA25_TRUNK_001 
+- TRUNK-MAVEN-AT-CONSOLIDATO-ORA-DBTESTNR-19	DemoOracle_BDG2	TCPM_ABC_ORA_YYC_NR_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-ORA-DBTESTNR-19	DemoOracle_BDG2	TCPM_ABC_ORA_YYC_NR_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3	TCPM_ABC_PG13_YYC_NR_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3	TCPM_ABC_PG13_YYC_NR_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-DRIVERMS	DemoSql_DriverMs	TCPM_ABC_NR3_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-DRIVERMS	DemoSql_DriverMs	TCPM_ABC_NR3_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-FAPER	Faper	TCPM_FAPER_NR_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-FAPER	Faper	TCPM_FAPER_NR_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016	TCPM_METRO_NR_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016	TCPM_METRO_NR_TRUNK 
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17LINUXDEV	SqlServerLinux	TGK_DEV_YYC_APP_TRUNK_003 
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17LINUXDEV	SqlServerLinux	TGK_DEV_YYC_APP_TRUNK_003 
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19LINUXNR	SqlServerLinuxSql2019	TGK_DEV_YYC_APP_TRUNK_003_SQL2019 
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19LINUXNR	SqlServerLinuxSql2019	TGK_DEV_YYC_APP_TRUNK_003_SQL2019 
+
+
+
+*** MergeConsolidatoreUserToolsElaboration
+Codice Elaborazione: CONS_MERGE
+Provenienza Output:  PROC_MERGE3
+Tabelle Output: , DATI_RETT_RIGA, DATI_RETT 
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Mergers -> on group
+
+Lancio manuale: Cruscotto Consolidator - Consolidation Data Processing -> Group Data Processing
+
+TEST
+
+1) Test manuali da applicazione
+
+DB:
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+qui ho  i nodi padri con icona gialla OK-KO
+1a) Lancio da cruscotto Consolidatore - Elaborazioni di gruppo Ok
+url: /cockpit/consolidator/TGK_DEV_YYC_MODULARIZATION/DE_TB/2017DE_TB/01
+Cruscotto Consolidatore
+Selezionare Tutti i nodi
+Consolidation data processing - Custom -> selezionare solo Group data processing 
+Run
+
+Output:
+select drr.* from dati_rett_riga drr, categoria c
+where 
+cod_scenario = '2017DE_TB'
+and cod_periodo = '01'
+and drr.provenienza = 'PROC_MERGE3'
+and c.cod_categoria = drr.cod_categoria 
+and c.tipo_categoria = 'RC'
+order by drr.dateupd desc
+
+
+qui ho  i nodi padri con icona gialla OK-KO
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T17 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+qui ho  i nodi padri con icona gialla OK-KO
+1c) Lancio da Cruscotto consolidatore - Task Workflow
+Cruscotto Consolidatore-> Tab 'Consolidation journals' -> Selezionare Nodo 100 - > Icona ingranaggi ->'Group data processing' -> 'Esegui'
+
+Output:
+Eseguire le stesse query indicate sopra
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabGruppoScenariOriginari (Job, Template):
+
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_YEAR_GP
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3
+- TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-DRIVERMS	DemoSql_DriverMs
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17LINUXDEV	SqlServerLinux
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19LINUXNR	SqlServerLinuxSql2019
+
+
+
+*** FusioniConsolidatoreElaboration 
+Codice Elaborazione: PO_MERGE1, PO_MERGE2
+Provenienza Output: PREL_MERGE1, PREL_MERGE2
+Tabelle Output: DATI_SALDI_IC, DATI_SALDI_LORDI, DATI_RETT_RIGA, DATI_RETT 
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Mergers -> on initial balances and from previous period
+
+Lancio manuale: Cruscotto Consolidatore - Preliminary Data Processing - Incoming Mergers on Initial balances (PO_MERGE1) and Incoming Mergers from previous period (PO_MERGE2)
+
+TEST
+
+ATTENZIONE: Questa elaborazione è' gia' stata modularizzata e testata con la card NewFusioniLauncher, quindi non dovrebbe essere necessario ripetere i tests.
+
+1) Test manuali da applicazione
+
+DB:
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio da cruscotto Consolidatore - Elaborazioni preliminari
+url: /cockpit/consolidator/TGK_DEV_YYC_MODULARIZATION/DE_TB/2017DE_TB/01
+Cruscotto Consolidatore
+Selezionare Tutti i nodi
+Preliminary Data Processing (le opzioni necessarie sono già selezionate)
+Run
+
+Output:
+select * from dati_rett_riga drr 
+where 
+cod_scenario = '2017DE_TB'
+and cod_periodo = '01'
+and provenienza in ('PREL_MERGE1','PREL_MERGE2')
+order by dateupd desc
+
+select * from dati_saldi_lordi drr 
+where 
+cod_scenario = '2017DE_TB'
+and cod_periodo = '01'
+and provenienza in ('PREL_MERGE1','PREL_MERGE2')
+order by dateupd desc
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T7 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+1c) Lancio da Cruscotto contributor - Task Workflow
+Cruscotto Contributor-> Tab 'Trial balance' -> Selezionare Entity EN_10 - > Icona ingranaggi ->'Preliminary -> 'Esegui'
+(il lancio del task  'Prel. Entity & Group' dal cruscotto consolidatore su questo processo non produce righe perché viene passato il parametro della fase 006 e non ci sono conti nella fase 'Consolidation journal')
+
+Output:
+Eseguire le stesse query indicate sopra
+
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> ?? (Job, Template):

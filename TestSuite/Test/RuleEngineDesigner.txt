@@ -1,0 +1,211 @@
+**** REDOrigEntityEasyElaboration
+Codice Elaborazione: CONTR_RED
+Provenienza Output: PROC_RED
+Tabelle Output: DATI_SALDI_IC, DATI_RETT_RIGA
+
+Configurazione lancio manuale: 
+Consolidation -> Basic Consolidation -> Rules Engine Designer -> on Entity
+	
+Lancio manuale: 
+Cruscotto Consolidator - Consolidation Data Processing -> Custom -> Entity Data Processing
+
+- TEST
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio Cruscotto contributor - Elaborazioni di azienda
+Url: cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/RED/2016RED/12
+selezionare tutte le aziende
+Entity data processing 
+
+Output:
+select * from dati_saldi_ic dsi 
+where cod_scenario = '2016RED'
+and cod_periodo = '12'
+and provenienza like 'PROC_RED'
+order by DATEUPD DESC
+
+select d.* from dati_rett_riga d, categoria c
+where cod_scenario = '2016RED'
+and cod_periodo = '12'
+and d.provenienza like 'PROC_RED'
+and c.cod_categoria = d.cod_categoria 
+and c.tipo_categoria = 'RP'
+order by d.DATEUPD DESC
+
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T11 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire le stesse query indicate sopra
+
+
+
+1c) Lancio da Cruscotto contributor - Task Workflow
+Cruscotto Contributor -> Tab ''Trial balance' -> Selezionare Azienda EN_15 - > Icona ingranaggi 'Entity - RED' -> 'Esegui'
+
+Output:
+Eseguire le stesse query indicate sopra
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+trunk-yyc-gpn-hsql-int-test	package com.tagetik.cpm.red.inmemory.orig.entity
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabAziendaScenariOriginari (Job, Template):
+
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016
+
+
+**** REDOrigGroupEasyElaboration
+Codice Elaborazione: CONS_RED
+Provenienza Output: PROC_RED
+Tabelle Output: DATI_RETT_RIGA
+
+Configurazione lancio manuale: 
+Consolidation -> Basic Consolidation -> Rules Engine Designer -> on Group
+	
+Lancio manuale: 
+Cruscotto Consolidator - Consolidation Data Processing -> Custom -> Group Data Processing
+
+- TEST
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio Cruscotto consolidatore - Elaborazioni di gruppo
+Url: cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/RED/2016RED/12
+selezionare tutti i nodi
+Elaborazioni di consolidamento - Selezionare solo Elaborazioni di gruppo
+
+Output:
+select d.* from dati_rett_riga d, categoria c
+where cod_scenario = '2016RED'
+and cod_periodo = '12'
+and d.provenienza like 'PROC_RED'
+and c.cod_categoria = d.cod_categoria 
+and c.tipo_categoria = 'RC'
+order by d.DATEUPD DESC
+
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T12 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+1c) Lancio da Cruscotto consolidatore - Task Workflow
+Cruscotto Consolidatore -> Tab ''Consolidation journals' -> Selezionare Nodo 020 - > Icona ingranaggi 'Group data processing' -> 'Esegui'
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+trunk-yyc-gpn-hsql-int-test	package com.tagetik.cpm.red.inmemory.orig.group
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> ?? (Job, Template):
+
+TODO
+
+
+**** REDConsEasyElaboration
+Codice Elaborazione: FINAL_MULTIDIM_RECLASSIFICATION
+Provenienza Output: CONS_RED
+Tabelle Output: DATI_RETT_RIGA_CONS_3
+
+Configurazione lancio manuale: 
+Consolidation -> Basic Consolidation -> Rules Engine Designer -> on Consolidation Area
+	
+Lancio manuale: 
+Cruscotto Consolidator - Consolidation Data Processing -> Custom -> Consolidation Area Data Processing
+
+- TEST
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio Cruscotto consolidatore - Elaborazioni di area
+Url: cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/RED/2016RED/12
+selezionare tutti i nodi
+Elaborazioni di consolidamento - Selezionare solo Elaborazioni di area - Scenario di consolidamento 2016RED_USD 12
+
+Output:
+select *
+from dati_rett_riga_cons_3
+where cod_scenario = '2016RED_USD'
+and cod_periodo = '12'
+and provenienza ='CONS_RED'
+order by DATEUPD DESC
+
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T13 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+1c) Lancio da Cruscotto consolidatore - Task Workflow
+Cruscotto Consolidatore -> Tab ''Consolidation journals' -> Selezionare Nodo 100 - > Icona ingranaggi 'Area data processing' -> 'Esegui'
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+trunk-yyc-gpn-hsql-int-test	package com.tagetik.cpm.red.inmemory.orig.group
+
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+trunk-yyc-gpn-hsql-int-test	packages:
+- com.tagetik.cpm.red.inmemory.cons
+- com.tagetik.cpm.services.internal.red
+- com.tagetik.cpm.services.internal.tables.cons
+- com.tagetik.cpm.red.rulesengine
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabScenariConsolidamento (Job, Template):
+
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016

@@ -1,0 +1,332 @@
+Guida installazione wsl2
+
+    1.  Abilitare il supporto di wsl2 in windows:
+
+        per aggiornare wsl:
+
+            wsl --update
+			modificare il file .wslconfig nella cartella c:\users\nomeutente\.wslconfig
+			mettere il parametro 
+			guiApplications=true
+
+        comandi per scegliere la distribuzione di wsl installata e per vedere quale versione; da DOS Prompt eseguire il comando
+
+            wsl --list --online
+            wsl --version
+
+        per installare il sistema Ubuntu di default
+
+            wsl --install
+			Quando l'installazione chiede l'inserimento del nome utente inserire
+			Username default e password default
+			
+
+        aggiornamento sistema wsl:
+
+            sudo apt-get update
+            sudo apt-get upgrade
+            sudo apt-get install net-tools
+            sudo apt-get install fuse libfuse2
+			sudo apt-get install nautilus -y
+			sudo apt-get install x11-apps
+			
+			aggiungere al file /home/default/.profile
+
+            export DISPLAY=:0
+            export LIBGL_ALWAYS_INDIRECT=1
+
+        riavviare il sottosistema wsl da DOS Prompt con il comando
+
+            wsl --shutdown
+
+        per entrare come root su ubuntu, da DOS Prompt, eseguire il comando:
+
+            ubuntu config --default-user root
+			Dare il seguente comando da ubuntu, collegato come root
+			sudo usermod -l newUsername oldUsername
+			
+			https://askubuntu.com/questions/34074/how-do-i-change-my-username
+
+    2.  Installazione java:
+
+            sudo apt-get install openjdk-11-jdk
+
+        per risalire al percorso dell'installazione:
+
+            whereis java (per controllare se è stata creata la cartella /usr/bin/java)
+            ls -l /usr/bin/java (per recuperare il puntamento di java)
+            ls -l /etc/alternatives/java (per vedere la directory finale di java)
+
+        editare il file .profile e aggiungere alla fine del file le seguenti righe:
+
+            export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"
+            PATH="$JAVA_HOME/bin:$PATH"
+            export PATH
+
+        per rendere effettive le modifiche eseguire il comando:
+
+            source .profile
+            wsl --shutdown
+
+    4.  Installazione maven:
+
+            wget --no-check-certificate https://mirrors.estointernet.in/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+            tar -xvf apache-maven-3.6.3-bin.tar.gz
+            sudo mv apache-maven-3.6.3 /opt
+
+        editare il file .profile e aggiungere alla fine del file le seguenti righe:
+
+            export MVN_HOME="/opt/apache-maven-3.6.3"
+            PATH="$MVN_HOME/bin:$PATH"
+
+        per rendere effettive le modifiche eseguire il comando:
+    
+	        Dare il seguente comando da terminale ubuntu
+            source .profile
+			
+			Dare il seguente comando da dos
+            wsl --shutdown
+
+    5.  Installazione subversion:
+			
+
+            sudo apt-get install subversion
+			Copiare il file setting.xml dalla cartella di windows c:\users\nomeutente\.m2\settings.xml
+			nella cartella di ubuntu 
+			/home/default/.m2
+			
+			(guida svn  https://wiki.ubuntu-it.org/Programmazione/Subversion#:~:text=Subversion%20%C3%A8%20un%20sistema%20alternativo,mediante%20il%20client%20testuale%20svn)
+			Per non far richiedere più la password di svn eseguire i seguenti passaggi:
+			Andare nella seguente cartella da ubuntu 
+			\\wsl.localhost\Ubuntu\home\antoniovorraro\.subversion\auth\svn.simple ed aprire il file con nome esadecimale e modificarlo cosi
+			e modificarlo aggiungendo a fine file le seguente righe
+			Ad inizio file cambiare le prime 4 righe del file cosi 
+			K 8
+			passtype
+			V 6
+			simple
+			K 8   --> k sta per chiave, mentre 8 indica la lunghezza della stringa del rigo successivo
+			username
+			V 14  --> V sta per valore, mentre 14 indica la lunghezza della riga successiva, e mettere il proprio username di svn
+			antoniovorraro
+			K 8	  --> k sta per chiave, mentre 8 indica la lunghezza della stringa del rigo successivo password
+			password
+			V 16	V sta per valore, mentre 16 indica la lunghezza della riga successiva, e mettere il proprio username di svn
+			czh6MEXJntg4JYBe
+			
+			Andare nella cartella /home/username/.subversion lato ubuntu ed aprire il file servers
+			Aggiungere a fine file le seguenti righe
+			# Password / passphrase caching parameters:
+			store-passwords = yes
+			store-auth-creds = yes
+			username = username --> qua ci va lo username di svn
+
+        aggiungere in fondo a .subversion/servers
+
+            username = massimilianolisto
+
+        per salvare la password lanciare il comando:
+
+            
+
+        al primo accesso ad SVN si aprirà un popup che richiede la password e la salva per non richiederla più
+
+            mkdir sviluppo
+            cd sviluppo
+            mkdir cpm
+            cd cpm
+			Dalla cartella .m2 di windows copiare il file settings.xml nella cartella 
+			/home/nomeutente/.m2/ di ubuntu
+            svn co svn://linux02.platformteam.saastagetik.internal/Dev/solutions/cpm/trunk .
+
+        altri comandi:
+
+            svn list svn://dominio/cartellaremota per sfogliare un repository
+            svn add file svn://dominio/cartellaremota
+            svn add cartellalocale svn://dominio/cartellaremota
+            svn copy file1 file2
+            svn copy file1 cartella/file1
+            svn copy cartella1 cartella2
+            svn copy cartella1 cartella2/cartella1
+            svn move file1 file2
+            svn move file1 cartella/file1
+            svn move cartella1 cartella2
+            svn move cartella1 cartella2/cartella1
+            svn rm file
+            svn rm cartella
+			SVN update dalla cartella di cui si vuole fare update del codice
+       
+        importazione di un progetto in un repository SVN
+
+            svn import cartellalocale svn://dominio/cartella --username=nomeutente
+
+        
+ 
+	6.	Configurazione per usare il db postgres di windows su wsl
+		https://stackoverflow.com/questions/56824788/how-to-connect-to-windows-postgres-database-from-wsl
+
+		Add Windows Firewall Inbound Port Rule for WSL2 IP Addresses:
+
+			Open Windows Defender Firewall with Advanced Security
+			Click New Rule...
+			Select Port for rule type
+			Select TCP and for Specific local ports enter 5432
+			Select Allow the connection. Connecting from WSL2 won't be secure so don't select the secure option
+			Select at least Public. Can select Domain and Private as well. I could only connect if Public was selected
+			Name the rule e.g. Postgres - connect from WSL2 and create it
+			Right click newly created rule and select Properties then click on the Scope tab
+			Under Remote IP address, select These IP addresses then click Add... and enter range 172.0.0.1 to 172.254.254.254
+			Repeat step 9 for IP address range 192.0.0.1 to 192.254.254.254
+			Click Apply then OK
+			Make sure rule is enabled
+
+		Configure Postgres to Accept Connections from WSL2 IP Addresses
+
+		Assuming a default install/setup of Postgresql for Windows the following files are located under 
+		C:\Program Files\PostgreSQL\$VERSION\data
+
+		Verify that postgresql.conf has following set:
+
+			listen_addresses = '*'
+			This should already be set to '*' so nothing do here.
+
+		Update pg_hba.conf to allow connections from WSL2 range e.g. for Postgresl 12:
+
+		# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+		# "local" is for Unix domain socket connections only
+		local   all             all                                     scram-sha-256
+		# IPv4 local connections:
+		host    all             all             127.0.0.1/32            scram-sha-256
+		# IPv6 local connections:
+		host    all             all             ::1/128                 scram-sha-256
+		# Allow replication connections from localhost, by a user with the
+		# replication privilege.
+		local   replication     all                                     scram-sha-256
+		host    replication     all             127.0.0.1/32            scram-sha-256
+		host    replication     all             ::1/128                 scram-sha-256
+
+
+		#nuove righe di configurazione
+		host    all             all             172.0.0.0/8             scram-sha-256
+		host    all             all             192.0.0.0/8             scram-sha-256
+
+  
+        Dare i seguenti comandi da dos, in alternativa se non vanno riavviare il servizio
+        dall'utility di windows Gestione di attivita		
+		net stop postgresql-x64-15
+		net start postgresql-x64-15
+
+		WSL Shell Conveniences
+
+		In WSL, add following to your ~/.bashrc or similar:
+
+		# Add DNS entry for Windows host
+		if ! $(cat /etc/hosts | grep -q 'winhost'); then
+		  echo 'Adding DNS entry for Windows host in /etc/hosts'
+		  echo '\n# Windows host - added via ~/.bashhrc' | sudo tee -a /etc/hosts
+		  echo -e "$(grep nameserver /etc/resolv.conf | awk '{print $2, "   winhost"}')" | sudo tee -a /etc/hosts
+		fi
+
+		Then reload your .bashrc changes: source ~/.bashrc
+		
+    7.  Configurazione ambiente cpm:
+            Dalla finestra di wsl creare la cartella sviluppo sotto /home/default con il seguente comando
+				mkdir	sviluppo
+			Creare la cartella cpm sotto la cartella sviluppo eseguendo i seguenti passaggi
+				cd sviluppo
+				mkdir cpm
+			Creare la cartella projects sotto sviluppo con il seguente comando
+				mkdir projects
+		    Andare nella cartella projects e creare la sotto cartella bom-int
+				cd /home/default/sviluppo/projects
+				mkdir bom-int
+			Aggiornare i pacchetti di sistema con i seguenti comandi
+				sudo apt-get update
+				sudo apt-get upgrade
+			Installare pacchetti necessari per jetbrains-toolbox				
+				sudo apt install libxi6 libxrender1 libxtst6 mesa-utils libfontconfig libgtk-3-bin -y
+            Da browser su windows scaricare il file jetbrains-tools box, formato .tar.gz e copiaralo
+			poi nella cartella \\wsl.localhost\Ubuntu\home\default\sviluppo tramite 
+			l'Esplora file di windows
+			Decomprimere il file con il comando tar cvfz nomefile.tar.gz
+			Andare nella cartella /home/default/sviluppo/jetbrains-toolsbox
+				cd /home/default/sviluppo/jetbrains-toolsbox
+			E rendere eseguibile il file jetbrains-toolbox con il comando
+				chmod 777 jetbrains-toolbox
+			Eseguire il file con il comando ./jetbrains-toolbox ed installare gli IDE per 
+			IntelliJ e PyCharm
+			Cliccando prima sul pulsante Install vicino il tool IntelliJUltimate
+			
+			
+			scaricare il .tar.gz da https://www.jetbrains.com/toolbox-app/ e metterlo in una nuova 
+			cartella 'conf' nella home
+			(per spostare il file da windows a wsl si può accedere tramite windows explorer 
+				al path "\\wsl.localhost\Ubuntu\home\default")
+
+            tar -zxf jetbrains-toolbox-*.tar.gz
+
+			eseguire l'applicazione (dalla cartella appena estratta)
+
+            ./jetbrains-toolbox (se non parte l'interfaccia è necessario effettuare l'update di wsl con il comando wsl --update)
+
+			per creare un alias inserire in .bashrc
+
+            alias jtoolbox="/home/default/conf/jetbrains-toolbox-2.2.2.20062/jetbrains-toolbox"
+			
+			Copiare nella cartella /home/default/sviluppo/ il file wildfly-26.1.1.Final.tar.gz
+			tramite l'esplora file di windows
+			Andare nella cartella /home/default/sviluppo/ ed estrarre il file wildfly-26.1.1.Final.tar.gz
+	        con il seguente comando
+				tar xvfz wildfly-26.1.1.Final.tar.gz .
+		    Dare i seguenti comandi sempre dalla shell di wsl				    	    
+				cd /home/default/sviluppo/wildfly-26.1.1.Final/standalone/deployments				
+				cd /home/default/sviluppo/wildfly-26.1.1.Final/bin
+				chmod 777 standalone.sh
+			Andare nella cartella /home/default/sviluppo/projects/bom-int cosi
+				cd /home/default/sviluppo/projects/bom-int cosi
+			Scaricare il bom-int con il seguente comando
+				svn co svn://linux02.platformteam.saastagetik.internal/Dev/libraries/bom-int/trunk
+				inserire username e password di svn
+			Andare nella cartella /home/default/sviluppo/cpm e dare i seguenti comandi
+				cd /home/default/sviluppo/cpm
+				svn co svn://linux02.platformteam.saastagetik.internal/Dev/solutions/cpm/trunk
+				inserire username e password di svn
+			Eseguire la build del cpm, dalla cartella del cpm con i seguenti comandi
+				mvn clean package -f gsw_ef/pom.xml -U	-DskipTests (se ci sono altri progetti chiedo)
+				./mvnMultipleInstallSvnDiff.sh -c dalla stessa cartella
+				ln -s /home/default/sviluppo/cpm/gsw_ef/target/exploded.war gsw_ef.war
+			Riavviare wsl da dos con il comando
+				wsl --shutdown
+			Avviare di nuovo wsl
+			Andare nella directory cd /home/default/sviluppo/wildfly-26.1.1.Final/bin
+			Eseguire il file ./standalone.sh
+			Aprire un browser su windows ed andare all'indirizzo localhost:8080/tagetikcpm
+			Verificare che carica la pagina ed esegue il login
+	
+	8.	Configurazione Python
+	
+	9.  Dare i seguenti comandi per non inseire pià la password con sudo
+		sudo visudo
+		
+		aggiungere a fine file il seguente codice
+		YOUR_USERNAME_HERE ALL=(ALL) NOPASSWD: ALL
+		
+	10.	Per esclure il path di windows dalla variabile PATH di linux ed evitare conflitti
+	    tra programmi su window e linux editare il file /etc/wsl.conf cosi
+		
+		[boot]
+		systemd=true
+
+		[interop]
+		appendWindowsPath = false
+
+			
+
+
+
+
+https://wolterskluwer-my.sharepoint.com/personal/e-massimiliano_listo_wolterskluwer_com/Documents/File%20di%20chat%20di%20Microsoft%20Teams/configurazione_wildfly.txt
+
+
+C:\Program Files\PostgreSQL\15\data

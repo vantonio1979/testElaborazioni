@@ -1,0 +1,2 @@
+controllare job t18
+errore su ottennimento della connessione  jdbc che fallisce

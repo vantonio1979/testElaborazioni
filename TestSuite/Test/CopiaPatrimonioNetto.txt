@@ -1,0 +1,6 @@
+Classe CopiaPatrimonioNetto sotto gsd_efconsolidatooriginario
+
+TEST:
+Accesso all'utility: admin/dataprocessing/consolidation/legalstructure/eventdata/TGK_TRUNK_YYC_IT_TEST/CLA/EN_00/EN_05/RED/1
+
+Azioni: Copy net equity

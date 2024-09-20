@@ -1,0 +1,30 @@
+
+tgk-balancesheetdata
+
+	giuseppe sollano o davide benassi
+	
+	
+tgk-datamodel
+
+	simone santarsiero
+	
+
+tgk-qdl
+
+	domenico gennatiempo 
+	
+	
+tgk-userprovisioning
+
+	antonio inverso
+	
+	
+tgk-reporting
+
+	davide benassi
+	
+	
+tgk-widgets
+
+	simone santarsiero
+

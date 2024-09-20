@@ -1,0 +1,33 @@
+CopiaScenariConsolidamento
+
+Test
+
+DB: TGK_DEV_YYC_MODULARIZATION
+URL:/admin/consolidation/general/requirements/TGK_DEV_YYC_MODULARIZATION/FIL
+
+Processo FIL
+Albero elaborazioni > Consolidato > Requisiti > riquadro Area di consolidamento > Bottone 'Copia elementi da consolidare'
+
+Nella modale inserire i seguenti parametri (vedi immagine allegata CopiaElementiDaConsolidare.png): 
+Copia da: Scenario/periodo di consolidamento: 2017FIL_USD periodo 03
+Copia a: Scenario/periodo di consolidamento : 2017FIL_USD periodo 04
+
+Cliccare su bottone Esegui
+
+Output:
+
+Tabelle di Output: 
+SCENARIO_PERIODO_AREA_DEF (e SCENARIO_PERIODO_AREA, SCENARIO_PERIODO_EQUITY popolate dal deployment),
+
+Query:
+select * from scenario_periodo_area_def spa 
+where cod_Scenario = '2017FIL_USD'
+and cod_periodo = '04'
+
+select * from scenario_periodo_area spa 
+where cod_Scenario = '2017FIL_USD'
+and cod_periodo = '04'
+
+select * from scenario_periodo_equity spe 
+where cod_Scenario = '2017FIL_USD'
+and cod_periodo = '04'

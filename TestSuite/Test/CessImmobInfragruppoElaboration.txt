@@ -1,0 +1,101 @@
+Codice Elaborazione: CONS_IC_PROFIT
+Provenienza Output: PROC_IC_PROFIT
+Tabelle Output: DATI_RETT_RIGA
+
+
+Configurazione lancio manuale: Consolidation -> Advanced Consolidation -> Intercompany Asset Assignment
+	
+Lancio manuale: Cruscotto Consolidator - Consolidation Data Processing -> Selezionare Group Data Processing
+
+- TEST
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio Cruscotto consolidatore - Elaborazioni di gruppo
+Url: cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_2/2017TEST_2/01
+selezionare il nodo 100 - Consolidation Data processing - Custom
+Selezionare solo Group data processing 
+
+Output:
+select * from dati_rett_riga drr
+where 
+cod_scenario = '2017TEST_2'
+and cod_periodo = '01'
+and drr.provenienza = 'PROC_IC_PROFIT'
+order by num_Rettifica
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T8 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+1c) Lancio da Cruscotto consolidatore - Task Workflow
+Cruscotto Consolidatore -> Tab ''Consolidation journals' -> Selezionare Nodo 100 - > Icona ingranaggi 'Group data processing' -> 'Esegui'
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+2) Test Integrazione
+
+http://jenkins:8080/view/YYC-IT/job/trunk-yyc-originario-hsql-int-test/ package it.grupposervizi.easy.ef.cessioniimmobinfragruppo
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabGruppoScenariOriginari (Job, Template, DB):
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19LINUXNR	SqlServerLinuxSql2019	TGK_DEV_YYC_APP_TRUNK_003_SQL2019 
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17LINUXDEV	SqlServerLinux	TGK_DEV_YYC_APP_TRUNK_003 
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015	TCPM_METRO_NR_TRUNK 
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016	TCPM_METRO_NR_TRUNK 
+TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3	TCPM_ABC_PG13_YYC_NR_TRUNK 
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-DRIVERMS	DemoSql_DriverMs	TCPM_ABC_NR3_TRUNK 
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3	TGK_DEV_YYC_HANA25_TRUNK_001 
+
+- Queries a DB
+
+------ TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19LINUXNR e TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17LINUXDEV --------
+
+select * from DATI_SALDI_LORDI where COD_SCENARIO = '2013STAT1' and COD_PERIODO = '12' and PROVENIENZA = 'PROC_DEFERRED_TAXES' 
+
+select * from DATI_RETT_RIGA where COD_SCENARIO = '2013STAT1' and COD_PERIODO = '12' and PROVENIENZA = 'PROC_DEFERRED_TAXES'
+
+
+------ TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO TCPM_METRO_NR_TRUNK --------
+
+Metro2015:
+select * from DATI_RETT_RIGA where COD_SCENARIO = '2015A00' and COD_PERIODO = '12' and PROVENIENZA = 'PROC_DEFERRED_TAXES'
+
+Metro2016:
+select * from DATI_RETT_RIGA where COD_SCENARIO = '2016A00' and COD_PERIODO IN ('06','07', '08', '09') and PROVENIENZA = 'PROC_DEFERRED_TAXES'
+
+
+------ TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13 TCPM_ABC_PG13_YYC_NR_TRUNK --------
+
+select * from DATI_SALDI_LORDI where COD_SCENARIO = '2013STAT3' and COD_PERIODO = '12' and PROVENIENZA = 'PROC_DEFERRED_TAXES' 
+
+select * from DATI_RETT_RIGA where COD_SCENARIO = '2013STAT3' and COD_PERIODO = '12' and PROVENIENZA = 'PROC_DEFERRED_TAXES'
+
+
+
+------ TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-DRIVERMS TCPM_ABC_NR3_TRUNK --------
+
+select * from DATI_SALDI_LORDI where COD_SCENARIO = '2013STAT1' and COD_PERIODO = '12' and PROVENIENZA = 'PROC_DEFERRED_TAXES' 
+
+select * from DATI_RETT_RIGA where COD_SCENARIO = '2013STAT1' and COD_PERIODO = '12' and PROVENIENZA = 'PROC_DEFERRED_TAXES'
+
+
+------ TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO TGK_DEV_YYC_HANA25_TRUNK_001 --------
+
+select * from DATI_SALDI_LORDI where COD_SCENARIO = '2013STAT3' and COD_PERIODO = '12' and PROVENIENZA = 'PROC_DEFERRED_TAXES' 
+
+select * from DATI_RETT_RIGA where COD_SCENARIO = '2013STAT3' and COD_PERIODO = '12' and PROVENIENZA = 'PROC_DEFERRED_TAXES'

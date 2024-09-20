@@ -1,0 +1,6 @@
+Le modalità di lancio del qdl sono:
+1) Workflow task -> cruscotto standard e Multi organizzativo
+2)Cruscotto standard -> modalità standalone ( tab a destra Quick data loader )
+3)Job
+4)Rest api
+5) Form

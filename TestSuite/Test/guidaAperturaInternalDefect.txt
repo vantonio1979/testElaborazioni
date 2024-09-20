@@ -1,0 +1,10 @@
+Per aprire un internal defect faccio i seguenti passaggi:
+1)Vado su jira
+2)Vado nella board degli onlytrunk
+3)Trovo la dev sulla quale aprire internal defect
+4)Vado nel menu a tendina in alto clicco sulla voce Crea Internal defect
+5)Riempio i campi inserendo il gruppo, area di interesse e feature ed i campi 
+  descrizione e risultato atteso, dopo di che clicco su Crea
+6)Clicco sul link che mi compare in alto a destra
+7)Nella nuova pagina clicco sul tasto assegna
+8)Seleziono il gruppo onlytrunk  

@@ -1,0 +1,53 @@
+[SOURCE Path] gsd_efconsolidatooriginario/src/java/it/grupposervizi/easy/ef/partecipazioni/CopiaStrutturaDati.java
+
+[TARGET Destination]
+tgk-consolidation/tgk-consolidation-dataprocessing-utility
+
+[UTILITY LAUNCH]
+
+DB: TGK_DEV_YYC_MODULARIZATION
+URL: /admin/dataprocessing/admin/legalstructure/TGK_DEV_YYC_MODULARIZATION
+
+Lancio con 'parametri suggeriti' (RED e RED2 sono due Process che hanno stesso tipo-rapporto e pertanto compatibili per l'applicazione di questa Utility):
+
+1. Alla modale visualizzata in apertura (in attachment CopiaStrutturaDatiModale1.png) inserire il Process desiderato: suggeriamo RED - [NA]
+
+2. Dopo aver cliccato su Copy Ownership structure (in attachment CopiaStrutturaDati2.png) register riempire il form della modale con i seguenti parametri di lancio (in attachment CopiaStrutturaDatiModale3.png):
+       - Source Event Scenario : RED - RED
+       - Target Event Scenario : RED2 - RED2
+       - Start Date : Nessuna selezione
+       - End Date : Nessuna selezione
+
+3. Cliccare su bottone RUN
+
+
+[VERIFY]
+
+L'esecuzione di questa Utility coinvolge le seguenti tabelle il cui stato andrà verificato a valle dell'esecuzione dell'Utility, così come descritto successivamente:
+
+ - STRUTTURA_DATI
+ - STRUTTURA_DATI_CAMBIO_CONTO
+ - STRUTTURA_DATI_CAMBIO
+ - STRUTTURA_DATI_DEST2_PART
+ - STRUTTURA_DATI_PART 
+ - STRUTTURA_DATI_PN 
+ - STRUTTURA_DATI_AVANZATI
+
+
+Le tabelle nel precedente elenco verranno popolate con i rispettivi Result Set delle seguenti Query 
+
+(ovviamente nell'attributo COD_SCENARIO di ogni riga copiata avremo il valore 'RED2' del Target Event Scenario anziché il valore 'RED' del Source Event Scenario, mentre nell'attributo relativo alla creazione della riga avremo il valore DATA/ORARIO relativo al lancio della Utility stessa e non quello originario del Source Event Scenario): 
+
+SELECT D.* FROM STRUTTURA_DATI D WHERE D.COD_SCENARIO = 'RED';
+
+SELECT D.* FROM STRUTTURA_DATI_CAMBIO_CONTO D, STRUTTURA_DATI S WHERE D.COD_SCENARIO = 'RED' AND S.COD_SCENARIO = D.COD_SCENARIO AND S.COD_AZIENDA_MADRE = D.COD_AZIENDA_MADRE AND S.COD_AZIENDA_FIGLIA = D.COD_AZIENDA_FIGLIA AND S.NUM_EVENTO = D.NUM_EVENTO;
+
+SELECT D.* FROM STRUTTURA_DATI_CAMBIO D, STRUTTURA_DATI S WHERE D.COD_SCENARIO = 'RED' AND S.COD_SCENARIO = D.COD_SCENARIO AND S.COD_AZIENDA_MADRE = D.COD_AZIENDA_MADRE AND S.COD_AZIENDA_FIGLIA = D.COD_AZIENDA_FIGLIA AND S.NUM_EVENTO = D.NUM_EVENTO ;
+
+SELECT D.* FROM STRUTTURA_DATI_DEST2_PART D, STRUTTURA_DATI S WHERE D.COD_SCENARIO = 'RED' AND S.COD_SCENARIO = D.COD_SCENARIO AND S.COD_AZIENDA_MADRE = D.COD_AZIENDA_MADRE AND S.COD_AZIENDA_FIGLIA = D.COD_AZIENDA_FIGLIA AND S.NUM_EVENTO = D.NUM_EVENTO;
+
+SELECT D.* FROM STRUTTURA_DATI_PART D, STRUTTURA_DATI S WHERE D.COD_SCENARIO = 'RED' AND S.COD_SCENARIO = D.COD_SCENARIO AND S.COD_AZIENDA_MADRE = D.COD_AZIENDA_MADRE AND S.COD_AZIENDA_FIGLIA = D.COD_AZIENDA_FIGLIA AND S.NUM_EVENTO = D.NUM_EVENTO;
+
+SELECT D.* FROM STRUTTURA_DATI_PN D, STRUTTURA_DATI S WHERE D.COD_SCENARIO = 'RED' AND S.COD_SCENARIO = D.COD_SCENARIO AND S.COD_AZIENDA_MADRE = D.COD_AZIENDA_MADRE AND S.COD_AZIENDA_FIGLIA = D.COD_AZIENDA_FIGLIA AND S.NUM_EVENTO = D.NUM_EVENTO;
+
+SELECT D.* FROM STRUTTURA_DATI_AVANZATI D, STRUTTURA_DATI S WHERE D.COD_SCENARIO = 'RED' AND S.COD_SCENARIO = D.COD_SCENARIO AND S.COD_AZIENDA_MADRE = D.COD_AZIENDA_MADRE AND S.COD_AZIENDA_FIGLIA = D.COD_AZIENDA_FIGLIA AND S.NUM_EVENTO = D.NUM_EVENTO;

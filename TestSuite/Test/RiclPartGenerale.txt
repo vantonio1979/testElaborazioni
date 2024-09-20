@@ -1,0 +1,1 @@
+[Simona]: questa classe è la superclasse di RiclPartNodi e RiclPartAziende. Pertanto si possono fare riferimento ai test delle rispettive card per testarla

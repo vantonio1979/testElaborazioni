@@ -1,0 +1,278 @@
+Riclassifica Conti
+
+Comprende:
+1) RiclassificaContiOrigElaboration
+2) GpnOrigElaboration
+3) RiclassificaContiConsElaboration
+4) GpnConsElaboration
+
+Tutte e 4 le elaborazioni estendono una classe comune: GenericElaboration
+
+Moduli di Destinazione:
+tgk-consolidation-dataprocessing-core-gpn-riclcon: parti a comune (per esempio GenericElaboration)
+tgk-consolidation-dataprocessing-original -> entity: RiclassificaContiOrigElaboration
+tgk-consolidation-dataprocessing-original -> entity: GpnOrigElaboration
+tgk-consolidation-dataprocessing-consolidation-legacy: RiclassificaContiConsElaboration
+tgk-consolidation-dataprocessing-consolidation-legacy: GpnConsElaboration
+
+
+*** RiclassificaContiOrigElaboration
+Codice Elaborazione: CONTR_PRECO_RECLASSIFICATION
+Provenienza Output: PROC_RECLASSIFICATION
+Tabelle Output: DATI_RETT_RIGA
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Account reclassification and NER -> on Entities
+	
+Lancio manuale: Cruscotto Contributor - Entity Data Processing -> Accounts reclassification
+
+- TEST
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio Cruscotto contributor - Elaborazioni di azienda
+Url: cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_2/2017TEST_2/01
+selezionare tutte le aziende
+Entity data processing 
+
+Output:
+select * from dati_rett_riga drr 
+where 
+cod_scenario = '2017TEST_2'
+and COD_PERIODO = '01'
+and provenienza like 'PROC_RECL%' 
+order by dateupd desc
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T5 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+1c) Lancio da Cruscotto contributor - Task Workflow
+Cruscotto Contributor -> Tab ''Trial balance' -> Selezionare Azienda EN_00 - > Icona ingranaggi 'Entity - Ricl. conti & GPN' -> 'Esegui'
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+2) Test Integrazione
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabGruppoScenariOriginari (Job, Template):
+
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015, Metro2016
+- TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3, DemoPg13_STAT5,	DemoPg13_STAT6
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19, EonHana24_ACT_YEAR_GP
+
+
+
+
+*** GpnOrigElaboration
+Codice Elaborazione: CONTR_NET_EQUITY_RECLASSIFICATION
+Provenienza Output: PROC_NETEQUITY_RECL
+Tabelle Output:  DATI_RETT_RIGA
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Account reclassification and NER -> Net equity reclassification on entities
+	
+Lancio manuale: Cruscotto Contributor - Entity Data Processing -> Net equity accounts reclassification (NER)
+
+- TEST
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio Cruscotto contributor - Elaborazioni di azienda
+Url: cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_2/2017TEST_2/01
+selezionare tutte le aziende
+Entity data processing 
+
+Output:
+select * from dati_rett_riga drr 
+where 
+cod_scenario = '2017TEST_2'
+and COD_PERIODO = '01'
+and provenienza like 'PROC_NET%' 
+order by dateupd desc
+
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T5 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+1c) Lancio da Cruscotto contributor - Task Workflow
+Cruscotto Contributor -> Tab ''Trial balance' -> Selezionare Azienda EN_00 - > Icona ingranaggi 'Entity - Ricl. conti & GPN' -> 'Esegui'
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+2) Test Integrazione
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabGruppoScenariOriginari (Job, Template):
+
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015, Metro2016
+
+
+
+*** RiclassificaContiConsElaboration
+Codice Elaborazione: FINAL_PRECO_RECLASSIFICATION
+Provenienza Output: CONS_RECLASSIFICATION
+Tabelle Output: DATI_RETT_RIGA_CONS_3
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Account reclassification and NER -> on consolidation area
+	
+Lancio manuale: Cruscotto Consolidator - Consolidation Data Processing -> Consolidation Area Data Processing
+
+- TEST
+
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio Cruscotto consolidatore - Elaborazioni di area
+Url: cockpit/consolidator/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_2/2017TEST_2/01
+selezionare tutti i nodi
+Consolidation Data Processing -> Custom -> Selezionare solo Consolidation Area Data Processing
+Scenario consolidamento 2017TEST2_USD periodo 01
+
+Output:
+select * from dati_rett_riga_CONS_3 drr 
+where 
+cod_scenario = '2017TEST2_USD'
+and COD_PERIODO = '01'
+and provenienza like 'CONS_RECL%' 
+order by dateupd desc
+
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T5 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+1c) Lancio da Cruscotto consolidatore - Workflow
+Cruscotto Consolidatore -> Tab 'Consolidation journals' -> Selezionare Nodo 100 - > Icona ingranaggi 'Area data processing' -> 'Esegui'
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+2) Test Integrazione
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabGruppoScenariOriginari (Job, Template):
+
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015, Metro2016
+- TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19, EonHana24_ACT_YEAR_GP
+
+
+*** GpnConsElaboration
+Codice Elaborazione: FINAL_NET_EQUITY_RECLASSIFICATION
+Provenienza Output: CONS_NETEQUITY_RECL
+Tabelle Output: DATI_SALDI_IC, DATI_SALDI_LORDI, DATI_RETT_RIGA
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Account reclassification and NER -> Net equity reclassification on consolidation area
+	
+Lancio manuale: Cruscotto Consolidator - Consolidation Data Processing -> Consolidation Area Data Processing
+
+- TEST
+
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio Cruscotto consolidatore - Elaborazioni di area
+Url: cockpit/consolidator/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_2/2017TEST_2/01
+selezionare tutti i nodi
+Consolidation Data Processing -> Custom -> Selezionare solo Consolidation Area Data Processing
+Scenario consolidamento 2017TEST2_USD periodo 01
+
+Output:
+select * from dati_rett_riga_CONS_3 drr 
+where 
+cod_scenario = '2017TEST2_USD'
+and COD_PERIODO = '01'
+and provenienza like 'CONS_NET%'
+order by dateupd desc
+
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T5 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+1c) Lancio da Cruscotto consolidatore - Workflow
+Cruscotto Consolidatore -> Tab 'Consolidation journals' -> Selezionare Nodo 100 - > Icona ingranaggi 'Area data processing' -> 'Esegui'
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+- trunk-yyc-gpn-hsql-int-test package it.grupposervizi.it.gpnriclassificaconti.netequityriclassification
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabGruppoScenariOriginari (Job, Template):
+
+
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015, Metro2016
+- TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3
+- TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-DRIVERMS	DemoSql_DriverMs
+- TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25BDG3, DemoHana25STAT3
+- TRUNK-MAVEN-AT-CONSOLIDATO-ORA-DBTESTNR-19	DemoOracle_BDG2

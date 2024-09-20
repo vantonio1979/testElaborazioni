@@ -1,0 +1,204 @@
+https://cchtagetik.atlassian.net/wiki/spaces/CTDC/pages/2791407640/Install+Linux+GUI+for+WSL
+GuiInstallazione wsl2 con GUI usando X Server
+	1)Verificare se il wsl è abilitato su windows
+	    Dare il seguente comando su dos per vedere se è installato wsl
+		wsl --version
+		Se non è installato wsl lo devo abilitare dando il seguente comando da powershell
+		Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+		Una volta installato wsl o vericato che è presente a sistema, dare il seguente comando per aggionrnare
+		wsl --update 
+	2)Aprire il dos e dare il comando wsl --list --online per scegliere 		
+	3)Do il comando wsl --install per installare il sistema Ubuntu di default, sul dos di windows
+	4)Una volta installato ubuntu, aprire il terminale di ubuntu e dare i seguenti comandi
+	   sudo apt-get update
+	   sudo apt-get upgrade
+	   sudo apt-get install net-tools
+	   sudo apt-get install x11-apps
+	   Do il seguente comando da ubuntu per installare librerie di cui ha bisogno intellij per partire
+	   sudo apt install fuse libcups2 libpangocairo-1.0-0 libatk-adaptor libxss1 libnss3 libxcb-keysyms1 x11-apps libgbm1 libfuse2 libgl1 libglx0
+	   Da dos riavviare wsl con il comando wsl --shutdown	   
+	5)Dare il seguente comando sotto ubuntu, per trovare indirizzo ip
+	  cat /etc/resolv.conf, 
+	  ip presente in questo file è lo stesso ip dato dal comando windows ipconfig	  
+	6)Dal terminale di ubuntu, creare le variabili di ambiente, 
+	  aprendo il file /home/nomeutente/.profile, nella home directory
+	  nano .profile
+	  Vado alla fine del file ed aggiungo quanto segue
+      export DISPLAY=:0 se non funziona cosi cambiare la variabile cosi 	  
+	  export DISPLAY=:0
+      export LIBGL_ALWAYS_INDIRECT=1	  
+	  Premo ctrl+o per salvare il file
+	  Premo ctrl+x per uscire dal editor
+	  Dare il seguente comando dal terminale di ubuntu source .profile
+	7)Dare i seguenti comandi per installare java,dal terminale di ubuntu
+	  sudo add-apt-repository ppa:openjdk-r/ppa
+	  sudo apt-get install openjdk-11-jdk
+	  Do il comando whereis java per vedere il link di java
+	  Do il comando ls -l /usr/bin/java per vedere il puntamento di java
+	  Do il comando ls -l /etc/alternatives/java per vedere la directory finale di java
+	  Modificare il file /home/nomeutente/.profile da ubuntu e dare i seguenti comando 
+	  nano .profile per aprire il file
+	  Aggiungo alla fine del file la seguente riga
+	  export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"
+	  PATH="$JAVA_HOME/bin:$PATH"
+      export PATH
+	  Salvo il file ed esco dal editor
+	  Premo ctrl+o per salvare il file
+	  Premo ctrl+x per uscire dal editor	  	  
+	  Dal terminare di ubuntu do il comando source .profile
+	  Dal terminale di dos do il comando wsl --shutdown
+	  Apro il terminale di ubuntu e do il comando java --version per vedere che è tutto ok
+	8)Per installare mvn do i seguenti comandi, sul terminale di ubuntu:
+	   wget --no-check-certificate https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache-maven-3.9.6-bin.tar.gz
+	   tar -xvf apache-maven-3.6.3-bin.tar.gz
+	   sudo mv apache-maven-3.6.3 /opt
+	   creo la variabile d'ambiente MVN_HOME in .profile
+	   Apro fil file con il comando nano .profile
+	   alla fine del file aggiungo le seguenti righe
+	   export MVN_HOME="/opt/apache-maven-3.6.3"
+	   PATH="$MVN_HOME/bin:$PATH"
+	   Salvo il file ed esco dal editor
+	   Premo ctrl+o per salvare il file
+	   Premo ctrl+x per uscire dal editor	  	  
+	   Dal terminare di ubuntu do il comando source .profile	  
+	   Riavviare il sistema wsl dal terminale dos con il comando wss --shutdown  	
+	9)Per configurare subversion sul wsl do i seguenti comandi
+	   sudo apt-get install subversion
+	   Per automatizzare il riconoscimento della password di svn faccio quanto esegue
+	   vado nella cartella /home/user/.subversion con il comando
+		   cd .subversion
+		   Installo il comando sudo apt-get install nautilus
+		   Apro il file config con il comando 
+		   nano config
+		   decommento la riga password-stores = gpg-agent,gnome-keyring,kwallet nella sezione auth
+		   Premo ctrl+x per uscire dal editor, prima y e poi invio
+		   Apro il file server con il comando
+		   nano servers
+		   A fine file aggiungo queste 3 righe di codice
+		   username=antoniovorraro --> qui metto lo username di svn
+		   store-passwords=yes
+		   store-auth-creds=yes
+		   Esco da editor con il comando ctrl+x11-apps
+		   Vado nella directory  /.subversion/auth/svn.simple
+		   do il comando ls -l
+		   poi apro il file nella directory ed aggiungo la riga prima di end
+		   K 8
+		   password
+		   V lunghezzaPasswordSvn
+		   Inserisco la password di svn
+		   Premo ctrlùx ed esco
+	   Nella home directory del utente creo la cartella con il comandk mkdir Sviluppo
+	   Do il comando cd Sviluppo
+	   Nella cartella Sviluppo do il seguente comando per fare il checkout
+	   svn co svn://linux02.platformteam.saastagetik.internal/Dev/solutions/cpm/trunk .
+	   svn co svn://linux02.platformteam.saastagetik.internal/Dev/solutions/tgk-modules/tgk-process/trunk
+	   Do il comando svn list svn://dominio/cartellaremota per sfogliare un repository
+	   Aggiungere file e cartelle ad un repository remoto
+	   svn add file svn://dominio/cartellaremota
+	   svn add cartellalocale svn://dominio/cartellaremota
+	   Dalla shell di ubuntu apro il file /home/nomeutente/.profile	con il comando
+	   nano .profile	   
+	   aggiungo alla fine le seguenti righe
+	   export passsvn="czh6MEXJntg4JYBe" -> password utente svn
+	   export usersvn="antoniovorraro" ->  utente svn
+	   export cpm="svn://linux02.platformteam.saastagetik.internal/Dev/solutions/cpm --non-interactive --username $usersvn --password "$passsvn
+	   Aggiungo tanti export svn link, quanti sono i link da cui scaricare i sorgenti
+	   Salvo il file ed esco dal editor
+	   Premo ctrl+o per salvare il file
+	   Premo ctrl+x per uscire dal editor	  	  
+	   Dal terminare di ubuntu do il comando source .profile	  	   
+	   svn co $cpm
+	   Esempi di comandi svn
+	   Copiare file e cartelle
+	   svn copy file1 file2
+	   svn copy file1 cartella/file1
+	   svn copy cartella1 cartella2
+	   svn copy cartella1 cartella2/cartella1
+	   Spostare file e cartelle
+	   svn move file1 file2
+	   svn move file1 cartella/file1
+	   svn move cartella1 cartella2
+	   svn move cartella1 cartella2/cartella1
+	   Rimuovere un file o una cartella
+	   svn rm file
+	   svn rm cartella
+	   Importazione di un progetto in un repository SVN
+	   svn import cartellalocale svn://dominio/cartella --username=nomeutente
+	   Guida completa svn 
+	   https://wiki.ubuntu-it.org/Programmazione/Subversion#:~:text=Subversion%20%C3%A8%20un%20sistema%20alternativo,mediante%20il%20client%20testuale%20svn.
+	10)Per installare docker uso i seguenti passaggi seguire questo link, 
+	    usando il terminale di ubuntu
+	    sudo apt-get update
+		sudo apt install docker.io  -y
+		sudo apt install docker-compose -y
+		sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+		sudo usermod -a -G docker $USER
+		Do i seguenti comandi 
+		sudo systemctl enable docker
+		sudo systemctl status docker
+		sudo systemctl start docker		
+		Dare il seguente comando dalla console di ubuntu
+        sudo visudo ed aggiungere la seguente riga
+		{username} ALL=(ALL) NOPASSWD: /usr/bin/dockerd
+		lanciare il seguente comando per assicurarsi che docker stia funzionando correttamente
+		sudo docker ps -a	   
+	11)Su windows scarico il programma https://sourceforge.net/projects/vcxsrv/
+	   Aggiungo al firewall di windows i permessi per lanciare i seguenti programmi
+	   Install il programma Xlaunch
+	   Aprire il firewall di windows
+	   Andare nella sezione consenti app o funzionalità dal menu a sinistra
+	   Aggiungere come app 
+	   C:\Program Files\VcXsrv\xlaunch.exe
+	   C:\Program Files\VcXsrv\vcxsrv.exe
+	   Se non si vuole usare X Server eseguire i seguenti passaggi su windows
+	   Da dos dare il comando wsl --update
+	   Aprire il file C:\Users\utente\.wslconfig
+	   Modificare la voce guiApplications=false a guiApplications=true
+	   Da dos dare di nuovo il comando wsl --update
+	12)Per eseguire un programma con interfaccia grafica da wsl, apro prima sotto windows il server
+	  X Xlaunch
+	13)Alla prima schermata del programma seleziono la prima opzione Multiple Window e premo Avanti
+	14)Alla schermata successiva seleziono l'opzione Start to client e premo Avanti
+	15)Alla schermata extra setting seleziono tutte e tre le opzioni e clicco Avanti
+	16)Clicco sul pulsante Fine e comparirà in basso, nella parte delle icone vicino la batteria,
+	   la nuova icona del client XLaunch
+	17)Dopo vado nel terminale ubuntu e lancio un applicazione grafica
+	18)Installazione di chrome su ubuntu, dare i seguenti comandi lato terminale ubuntu	   
+	   Scarico la chiave
+	   wget --no-check-certificate https://dl-ssl.google.com/linux/linux_signing_key.pub -O /tmp/google.pub
+	   Faccio una chiave per chrome
+	   sudo gpg --no-default-keyring --keyring /etc/apt/keyrings/google-chrome.gpg --import /tmp/google.pub
+	   Inizializzo il repository
+	   echo 'deb [arch=amd64 signed-by=/etc/apt/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+	   Installo il package
+	   sudo apt-get update 
+       sudo apt-get install google-chrome-stable
+	   Aggiungo la chiave di chrome
+	   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+	19)Per installare jetbrains eseguo i seguenti passaggi lato ubuntu
+	   Apro chrome con il comando google-chrome-stable
+	   Vado al sito https://www.jetbrains.com/toolbox-app/
+	   Scarico il file 
+	   Vado nella cartella Downloads con il comando 
+	   cd Downloads
+	   Sposto il file nella cartella principale del utente con il comando
+	   mv nomefile ../
+	   Esplodo il file con il comando
+	   tar -xvf nomefile
+	   Vado nella cartella jetbrains creata e lancio il file .sh
+	   ./jetbrains-toolbox
+	   Configuro l'ambiente per intellij e pycharm
+	20)Passi da seguire per configurare python ed ambienti virtuali
+	   Do i seguenti comandi
+	   sudo apt-get update
+	   sudo apt-get upgrade
+	   sudo add-apt-repository ppa:deadsnakes/ppa
+	   sudo apt-get update
+	   sudo apt-get install python3.11
+	   
+	   
+sotto wildfly /standalone/deployment fate
+ln -s /home/oscar-granese/sviluppo/cpm/gsw_ef/target/exploded.war gsw_ef.war
+
+
+sudo aptitude install libgnome-keyring0

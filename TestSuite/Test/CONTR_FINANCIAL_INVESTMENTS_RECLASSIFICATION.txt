@@ -1,0 +1,63 @@
+Codice Elaborazione: CONTR_FINANCIAL_INVESTMENTS_RECLASSIFICATION
+Provenienza Output: PROC_FININV_RECL (e PROC_FININV_RECL_CALC_BASIC generata dalle formule base) su categorie di tipo RP
+Tabelle Output: DATI_RETT_RIGA, DATI_RETT
+
+Moduli di Destinazione: 
+tgk-consolidation-dataprocessing-original -> entity
+
+Configurazione lancio manuale: Consolidato -> Consolidato Avanzato -> Riclassifica Partecipazioni -> su azienda
+
+Lancio manuale:  Cruscotto Contributor - Entity Data Processing
+
+TEST
+
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio Cruscotto contributor - Elaborazioni di azienda
+Url: cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_4/2017TEST4/01
+selezionare tutte le aziende
+Entity data processing.  Selezionare solo Riclassifica Partecipazioni - Financial investments reclassification
+
+Output:
+select drr.* 
+from dati_rett_riga drr, categoria c
+where cod_scenario = '2017TEST4'
+and cod_periodo = '01'
+and drr.provenienza like 'PROC_FININV_RECL%'
+and c.cod_categoria = drr.cod_categoria 
+and c.tipo_Categoria = 'RP'
+order by dateupd desc
+
+
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T21 -> Menu azioni -> Rivedi e lancia -> Lancia  Fallisce
+
+Output:
+Eseguire la stessa query indicata sopra
+
+
+
+1c) Lancio da Cruscotto contributor - Task Workflow
+Cruscotto Contributor -> Tab ''Trial balance' -> Selezionare Azienda EN_00 - > Icona ingranaggi 'Entity - Fin.Inv.Recl.' -> 'Esegui' Fallisce
+
+Output:
+Eseguire la stessa query indicata sopra
+
+2) Test Integrazione
+	
+Nessuno
+
+
+3) Test Automatici (AT)
+
+Nessuno

@@ -1,0 +1,85 @@
+****MinorityDataProcessing
+Codice Elaborazione: BASIC_MINORITY
+Provenienza Output: CONS_MINORITY_COPY_PERIOD, CONS_MINORITY_COPY_PERIOD
+Tabelle Output: DATI_RETT, DATI_RETT_RIGA_CONS_2
+
+Moduli di Destinazione: 
+tgk-consolidation-dataprocessing-consolidation
+
+Configurazione lancio manuale: Consolidation -> Basic Consolidation -> Generate contribution -> Minorities
+
+Lancio manuale:  Cruscotto Consolidator - Consolidation Data Processing -> Custom -> Consolidation Area Data Processing
+
+TEST
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+1a) Lancio Cruscotto consolidatore - Elaborazioni di area
+Url: cockpit/consolidator/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_2/2017TEST_2/01
+selezionare tutti i nodi
+Consolidation Data Processing -> Custom -> Selezionare solo Consolidation Area Data Processing
+Scenario consolidamento 2017TEST2_USD periodo 01
+
+Output:
+select *
+from dati_rett_riga_cons_2 drrc 
+where 
+cod_scenario like '2017TEST2_USD'
+and cod_periodo = '01'
+and provenienza in ('CONS_MINORITY', 'CONS_MINORITY_COPY_PERIOD')
+order by num_rettifica 
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T5 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire la stessa query indicata sopra
+
+1c) Lancio da Cruscotto consolidatore - Workflow
+Cruscotto Consolidatore -> Tab 'Consolidation journals' -> Selezionare Nodo 100 - > Icona ingranaggi 'Area data processing' -> 'Esegui'
+
+Output:
+select *
+from dati_rett_riga_cons_2 drrc 
+where 
+cod_scenario like '2017TEST2_USD'
+and cod_periodo = '01'
+and provenienza in ('CONS_MINORITY', 'CONS_MINORITY_COPY_PERIOD')
+order by dateupd desc 
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+trunk-yyc-in-memory-hsql-int-test	
+com.tagetik.cpm.consolidato.dataprocessing.internal.subdataprocessing.minority
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabScenariConsolidamento (Job, Template):
+
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_YEAR_GP
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3
+TRUNK-MAVEN-AT-CONSOLIDATO-ORA-DBTESTNR-19	DemoOracle_BDG2
+TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-DRIVERMS	DemoSql_DriverMs
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-ENTERTONEUK	EntertainmentOneUkLTD
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-EONE	EOneUkCE_FORZ_NOCMP
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-FAPER	Faper
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17DEV	DemoSql2017_BDG2
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17DEV	DemoSql2017_BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG2
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG2
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3

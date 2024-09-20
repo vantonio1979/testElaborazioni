@@ -1,0 +1,649 @@
+Do il seguente comando per salvare su un file tutte le dipendenze di un progetto attuale 
+freeze > requirements.txt
+Do il comando per installare tutte le dipendenze di un progetto da un file dei requisiti
+pip install -r requirements.txt
+
+https://www.programmareinpython.it/
+Porta tutti i requisti della versione
+ambiente che punta a python 3.9.13 e dare il comando di backup
+Selenium 4.16
+pip
+
+Vado nel progetto 
+Installo dal file delle librerire
+pip install -r requirements.txt
+python.exe -m pip install virtualenv
+pyenv local3.11.6
+
+https://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html
+robotframework==6.1.1
+robotframework-databaselibrary==1.3.1
+robotframework-seleniumlibrary==6.1.3
+robotframework-requests==1.0a4
+psycopg2==2.9.9
+
+
+https://pyenv-win.github.io/pyenv-win/
+https://note.nkmk.me/en/python-package-version/
+https://pyenv-win.github.io/pyenv-win/
+https://rkadezone.wordpress.com/2020/09/14/pyenv-win-virtualenv-windows/
+Guida per installare ambienti virtuali python sul pc
+https://programwithus.com/learn/python/pip-virtualenv-windows
+ambienti virtuali python
+https://www.youtube.com/watch?v=KxvKCSwlUv8
+https://www.youtube.com/watch?v=eDe-z2Qy9x4
+pyenv install 3.11.6
+pyenv global 3.11.6
+
+https://medium.com/geekculture/how-to-setup-robot-framework-for-test-automation-on-windows-2a9cc0da0763
+pip freeze > requirements.txt  comando da dare se tutte le dipendenze sono memorizzate nel file
+pip install robotframework==6.1.1
+pip install	robotframework-seleniumlibrary==6.1.3
+pip install robotframework-databaselibrary==1.3.1
+pip install robotframework-requests==1.0a4
+pip install psycopg2==2.9.9
+pip install robotframework-jsonlibrary==0.5
+pip install robotframework-jsonvalidator==2.0.0
+pip install robotframework-requests==0.9.3
+pip install robotframework-requests-extension==0.0.6
+pip install robotframework-excellib
+pip install robotframework-datetime-tz
+pip install Selenium=4.16.0
+pip install robotframework-confluentkafkalibrary
+
+
+link per controllare stato cpm
+
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/view/Maven%20Radiator%20Trunk/
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/job/ear/job/trunk-ear-build/
+
+Guida test xray
+https://cchtagetik.atlassian.net/wiki/spaces/SDLC/pages/3174760483/Internal+User+manual+XRay
+https://cchtagetik.atlassian.net/wiki/spaces/SDLC/pages/3258941449/End+Release+-+activities+in+Xray
+
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/
+
+Griglia test risultati di AT-CONSOLIDATO
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/view/AT-CONSOLIDATO/
+https://jenkins-eks-dev-cpm.platformteam.saastagetik.internal/view/AT-CONSOLIDATO/
+
+Verificare il plugin BuildMonitor per creare la dashboard dei pulsanti in jenkns
+https://www.youtube.com/watch?v=p5mpQ6pWtPU
+jenkis pipeline
+https://www.youtube.com/watch?v=TiTrcFEsj7A
+Guida jenkins
+https://www.youtube.com/watch?v=6YZvp2GwT0A
+https://www.ionos.it/digitalguide/siti-web/programmazione-del-sito-web/tutorial-su-jenkins/
+Guida jenkins
+https://www.youtube.com/watch?v=FX322RVNGj4
+
+
+ciao, ognuno di voi può controllare i propri test che escono da questa query e mettere lo stato del test corretto? sono solo 26 test da sistemare
+project = Development AND issuetype = Test AND status not in (Closed, Deprecated) AND fixVersion not in (5.3.SP28) ORDER BY reporter ASC
+ 
+se il test è da riutilizzare mettere nel titolo TO REUSE così si capisce bene che se non ha tutti i campi compilati correttamente va bene uguale
+
+Guida jenkins creazione job e view
+https://www.youtube.com/watch?v=u2TpnY1Mmts
+
+
+****nota pyenv****
+
+Installazione PyEnv sotto windows
+Installazione virtualenv
+Configurazione virtualenv con versione specifica di python
+migrazione e test delle dipendenze e dei requirements
+best practice sullo sviluppo 
+NOTA X Mangiapanello, Vincenzo anche in questo caso c'è una libreria custom a giro, va versionata e va pianificato refactoring e messa in essere su gitlab
+altre considerazioni in merito al tgkautoformat che purtroppo non siamo riusciti ad 
+indirizzare nemmeno con l'aiuto di Bendinelli, Alessandro Andrea che ha partecipato allo sviluppo
+
+
+
+Diciamo che il Way of Working dovrebbe essere il seguente (in linea di massima mi aspetto che valga per tutti i team):
+rf-common-library -> modifica locale della versione, i requirements diventano selenium==4.16.0, da testare in ambiente con Python 3.11.6 -> fare l'intall locale con pip install /library con terminale sotto la folder
+my-project-library -> SE DIPENDENTE DA RF-COMMON-LIBRARY o se ha keyword che vengono impattate -> fare l'install locale della libreria assicurandosi che veda l'install locale della rf-common-library del passo precedente
+my-project -> fare il reindexing (solitamente basta svuotare la cache), lanciare un test pilota che effettua la login tramite browser o API, dovreste riscontrare un errore sulla funzione init() questo dipende dal fatto che avete correttamente aggiornato l'ambiente, a questo punto dovete procedere ad aggiornare le vostre batterie di test studiandovi le keyword che sono nel file TGK_Auth_4.15.2 
+NOTA: entro mercoledì di questa settimana dovrei rilasciare una nuova versione della rf-common-library scritta grazie all'enorme aiuto che mi sta dando Giuntoli, Elena per corregge eventuali errori di login/logout a seconda se il test venga eseguito in vaadin o in angular, arriveranno anche delle modifiche ai file di configurazione.
+ 
+Per ora assicuratevi che i passi espressi in precedenza si comportino come atteso. Per eventuali dubbi vi invito a scrivere anche a Sbordone, Francesco che di recente ha indirizzato questi problemi con me e dovrebbe essere in grado di darvi una mano, o anche Senatore, Maria e Masturzo, Carmela. Io purtroppo oggi e domani sono impegnato sul GenAI e ho poca banda per darvi supporto.
+ 
+Penso di fissare una riunione "intensiva" per mercoledì, usiamo questo canale (senza troppo spam) per tenerci allineati
+
+https://gitlab.aws.tagetik.com/groups/tagetik/common-libraries/python/rbt-int
+
+Guida robot framework per commit e push
+https://cchtagetik.atlassian.net/wiki/spaces/TA1/pages/3725721601/Robot+Framework+modifica+codice+commit+push
+https://cchtagetik.atlassian.net/wiki/spaces/TA1/pages/3477143602/How+to+integrate+Robot+Framework+tests+on+Jenkins+CI+CD
+ssh -T e-antonio.vorraro@gitlab.aws.tagetik.com
+
+Link test fine release
+https://e-support.tagetik.com/secure/XrayTestPlanRepositoryAction!default.jspa?entityKey=DEV-97751&path=%5Craven_orphans
+https://e-support.tagetik.com/browse/DEV-97751
+
+Guida confluence per installare wsl
+https://cchtagetik.atlassian.net/wiki/spaces/OT/pages/3720020241/WSL+Docker+Kafka
+Guida installazione wsl
+Scaricare il terminale windows
+Poi dare il comando wsl --install
+sudo apt-get update
+sudo apt-get upgrade
+Sotto la shell di ubuntu di wsl2 do il seguente comando
+sudo apt-mark hold acpid acpi-support
+
+Do il seguente comando per aggiornare tutto il sistema
+sudo apt update && sudo apt upgrade
+Seguo il seguente link per la configurazione del ambiente di sviluppo sotto linus
+https://cchtagetik.atlassian.net/wiki/spaces/CTDC/pages/799965342/Developer+environment+setup
+Per installare sdkman copio il contenuto dal seguente sito https://get.sdkman.io/
+e lo metto nel file sdk.sh
+Dopo di che do il comando chmod 700 sdk.sh
+Eseguo il comando ./sdk.sh
+Seguo il seguente link per la configurazione del ambiente gui sotto ubuntu
+https://cchtagetik.atlassian.net/wiki/spaces/CTDC/pages/2791407640/Install+Linux+GUI+for+WSL
+Do il seguente comando per installare java
+sudo apt-get install openjdk-8-jdk 
+Do il comando nano /etc/enviroment ed aggiungo a fine file la seguente riga
+JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/bin"
+Do il comando seguente
+source /etc/environment
+
+Apro il file sudo gedit /etc/profile ed aggiungo le seguente righe
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
+export JAVA_HOME
+export JRE_HOME
+export PATH
+
+Do il seguente comando per scaricare wildfly
+wget --no-check-certificate https://download.jboss.org/wildfly/24.0.1.Final/wildfly-preview-24.0.1.Final.tar.gz
+Do il comando per estrarre il file tar.gz
+tar -xf wildfly-preview-24.0.1.Final.tar.gz
+Scarico il file log4j2.xml
+Scarico il file standalone.con.example
+Do il comando sudo apt-get install xubuntu-desktop -y per installare il desktop
+
+
+https://scikit-learn.org/stable/tutorial/index.html
+
+wsl hostname -I
+sudo apt-get install postgresql
+
+psql -h 10.8.8.57 -p 5432 -U postgres TGK_ONLYTRUNK_DEV_APP
+psql -U postgres -h 10.8.8.57 -p 5432 TGK_ONLYTRUNK_DEV_APP
+
+ssh -p 7822 postgres@postgres -L 5432:localhost:5432
+
+psql -h 127.0.0.1 -p 5432 -U postgres
+
+ALTER USER postgres PASSWORD 'postgres';
+
+
+Esempio di keyword ritorna multipli valori
+*** Test Case ***
+Example
+    ${value1}    ${value2}    return two values
+    Should be equal    ${value1}    this is value 1
+    Should be equal    ${value2}    this is value 2
+
+
+*** Keywords ***
+Return two values
+    ${v1}=      set variable    this is value 1
+    ${v2}=      set variable    this is value 2
+
+    [Return]    ${v1}    ${v2} 
+	
+Riga di codice divisa su più righe
+https://www.youtube.com/watch?v=o57HLQhbjlM
+
+https://jenkins-eks-dev.platformteam.saastagetik.internal/view/RobotFramework%20Status/
+
+elenco url test ambiente
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/3864264726/Test+environments+list
+
+https://cchtagetik.atlassian.net/wiki/spaces/TA1/pages/3896737828/RF+Workshop+-+Prerequisites
+
+
+https://gitlab.aws.tagetik.com/groups/tagetik/common-libraries/python/rbt-int
+
+Clicco sul pulsante azuread
+
+Prerequisiti robot framework workshop
+https://cchtagetik.atlassian.net/wiki/spaces/TA1/pages/3896737828/RF+Workshop+-+Prerequisites#Python-&-Robot-Framework
+
+Per fare andare il repository di gitlab di tagetik su windows devo eseguire i seguenti passaggi:
+1)Andare al seguente link:
+	https://cchtagetik.atlassian.net/wiki/spaces/TA1/pages/3896737828/RF+Workshop+-+Prerequisites#Python-&-Robot-Framework
+	
+2)Cliccare sul link della configurazione pip config
+	https://cchtagetik.atlassian.net/wiki/spaces/TA1/pages/3863150595/Some+tricks+or+suggestions#PIP-configuration
+
+3)  Scaricare il file pip.conf
+  Rinominare il file pip.conf in pip.ini
+  
+4)  Copiare il file pip.ini nelle seguenti cartelle
+	C:\ProgramData\pip
+	C:\Users\e-antonio.vorraro\AppData\Local\Programs\Python\Python311
+	
+5)Dare in fine il comando 
+	pip install rbt-setup==1.0.1
+	
+https://gitlab.aws.tagetik.com/groups/tagetik/common-libraries/python/rbt-int/
+
+
+https://learn.microsoft.com/it-it/windows/python/web-frameworks
+https://techexpert.tips/it/windows-it/installazione-dellambiente-virtuale-python-in-windows/
+
+
+ssh-keygen -t ed25519
+	
+	
+python -m pip install --upgrade pip
+
+
+pip config -v list
+
+nuovo link con cpm e jakarta testare tutte le funzionalità
+https://trunk-systemdemojkt.platformteam.saastagetik.internal/tagetikcpm
+
+verificare libreria browser
+
+https://forum.robotframework.org/t/selenium-library-or-browser-library-in-robot-framework/2899/5
+https://medium.com/@gama.william/why-should-you-try-to-use-the-browser-library-with-robot-framework-de3bf78a612b
+https://www.tesena.com/en/selenium-vs-browser-battle-of-tools-in-robot-framework
+https://www.youtube.com/watch?v=7y070j8_dTs
+
+TGK_ElementMGR
+
+dal progetto scaricato da git dare il comando
+pip install library dalla nome del progetto appena scaricato
+
+As stated in the documentation, the default locations for Linux are:
+
+per-user: $HOME/.config/pip/pip.conf
+global: /etc/pip.conf
+
+sudo apt-get purge --auto-remove python3.10
+sudo apt-get remove python3.10
+which python3.10
+
+sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
+
+https://radwanelourhmati7.medium.com/installing-python-3-11-on-ubuntu-step-by-step-a46631d4e293
+
+sudo apt-get install python3-dev 
+/home/default/Python-3.11.6/python
+
+sudo rm -r /var/lib/apt/lists/*
+sudo rm /var/lib/dpkg/info/python3*
+sudo dpkg --configure -a
+sudo rm /var/lib/dpkg/info/virtualbox*
+sudo dpkg --configure -a
+
+  ./configure
+    make
+    make test
+    sudo make install
+
+aggiungere gli alias al file .bashrc	
+alias python='/usr/local/bin/python3'
+da console source .bashrc	
+creare il link simbolico
+sudo ln -s /usr/local/bin/python3 /usr/bin/python3
+Scaricare pip
+wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
+
+Dare il comando 
+python 	get-pip.py
+
+aggiungere l'alias al file .bashrc
+alias pip='/usr/bin/pip'
+
+dare il comando source .bashrc
+dare il comando python get-pip.py
+
+dev test di fine release sp28
+https://e-support.tagetik.com/browse/DEV-103040
+
+Dev test fine release per onlytrunk
+https://e-support.tagetik.com/browse/DEV-103072
+
+
+https://www.sergiofreire.com/post/robotframework-browser-architecture
+
+Una differenza tra selenium e browser library:
+1)In archittetura selenium è tutto visto al top di istanza del browser,
+  mentre la libreria browser vede i tre livelli: browser,context, Pages
+2)Quando si deve aprire il browser, la libreria browser ha alcuni passaggi automatici
+  ad esempio in selenium bisogna fare prima Open Browser e poi caricare la pagina con Go to URL,
+  mentre con browser library basta richiamare la keywords New Page
+  
+Il test deve essere lanciato eseguendolo nelle tre modalità:
+
+Esempio di test scritto in modalità gherkin su jira
+
+1a)Given user logged, navigate to url: cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_2/2017TEST_2/01
+when selected all items in list
+When click on right tab data processing
+Click button run 
+
+1b)Given user logged as admin profile
+when click on card Elaboration -> Job
+when select code T5 on grid
+when click on menu Action 
+when click ok Review and show graph
+Then Run
+
+
+1c) )Given user logged, navigate to url: cockpit/contributor/TGK_DEV_YYC_MODULARIZATION/ACT_TEST_2/2017TEST_2/01
+When click on radio button Contributor
+When click on Tab ''Trial balance' 
+When selected node with value EN_00
+Click from graph icon Entity - Depreciation'
+
+
+
+
+quando devo scaricare un progetto robot framework da git eseguo i seguenti passaggi:
+vado nella cartella c:\sviluppo\git
+Da browser vado sul repository git gitlab.aws.tagetik.com/tagetik
+navigo fino a raggiungere il progetto che voglio scaaricare, dopo di che
+clicco sul pulsante a destra CLONE e copio l'indirizzo .git
+Apro una finestra del dos e mi posiziono nella cartella c:\sviluppo\git
+e do il comando git clone urlcopiato
+Dopo di che con pycharm apro il progetto appena creato
+Apro un terminare da pycharm e digito il seguente comando, dalla directory del progetto
+appena scaricato:
+	pip install library/
+Dopo aver lanciato questo comando do il seguente comando
+	pip install -r requirements
+	
+	
+
+
+assignee = "e-antonio.vorraro"
+
+
+
+1a)Given user logged with profile user, 
+  navigate to url 
+  cockpit/consolidator/TGK_DEV_YYC_MODULARIZATION/ACT_TEST/2017TEST/02
+  Click radio button Consolidator
+  selected all node on left
+  click on right tab Consolidation Data Processing -> Custom
+  Select only checkbox  Scenario consolidamento
+  Click on tree dots
+  Select period	2017TEST_USD periodo 02
+  Click button run
+
+1b)Given user logged with profile admin
+   when click on card Elaboration -> Job
+   when select code T6 on grid
+   when click on menu Action 
+   when click ok Review and show graph
+   Then Run
+
+
+1c)Given user logged with profile user, 
+  navigate to url 
+  cockpit/consolidator/TGK_DEV_YYC_MODULARIZATION/ACT_TEST/2017TEST/02
+  Click radio button Consolidator
+  Click on Tab 'Consolidation journals' 
+  Clickselected node with value EN_300
+  Click from graph icon Area data processing
+  Click Run
+  
+  
+https://wolterskluwer.sharepoint.com/teams/TAA_TGK_Global_Development_Team/DevDept/Lists/DevTeams/AllItems.aspx?useFiltersInViewXml=1&viewid=17611f19%2Daab1%2D47d3%2D8028%2D0208fd984190&OR=Teams%2DHL&CT=1713969620091&clickparams=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyNy8yNDAzMjgyMTIwMCIsIkhhc0ZlZGVyYXRlZFVzZXIiOmZhbHNlfQ%3D%3D
+
+
+per navigare nel codice in pycharm premere  i tasti
+crtl alt freccia a destra per andare avanti
+ctrl alt freccua a sinistra per andare in dietro
+
+
+in ogni caso ho aggiornato questa pagina con i passi da fare per fare la buil di un determinato giorno
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/3995959375/Pipelines
+
+sudo route del -net 172.20.0.0 gw 0.0.0.0 netmask 255.255.0.0
+
+Pagina confluence test automatici robot
+https://cchtagetik.atlassian.net/wiki/spaces/TA1/pages/4015620121/Asking+Functional+Account+No+MFA
+
+Manuale per fare deploy di ear precedenti
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/3995959375/Pipelines
+
+link test
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/3864264726/Test+environments+list
+
+link file attività ipstrint
+https://wolterskluwer.sharepoint.com/:x:/t/TAA_TGK_Global_Development_Team/Ed8LbpEHzehLuaRpS4G1bbQBGNRqujJJkFtfsPPiZ101tw?e=0mQdw5&clickparams=eyAiWC1BcHBOYW1lIiA6ICJNaWNyb3NvZnQgT3V0bG9vayIsICJYLUFwcFZlcnNpb24iIDogIjE2LjAuMTY3MzEuMjA2NzQiLCAiT1MiIDogIldpbmRvd3MiIH0%3D&CID=5F138A9F-88EB-427E-9ADC-C69EFDCBFABB&wdLOR=cCE516845-03AD-480D-BC7A-83153AD99FE6
+
+Integrazione test robot-framework jenkins
+https://cchtagetik.atlassian.net/wiki/spaces/TA1/pages/3477143602/How+to+integrate+Robot+Framework+tests+on+Jenkins+CI+CD
+
+Link test robot
+https://jenkins-eks-dev.platformteam.saastagetik.internal/view/RobotFramework%20Status/
+
+
+Test fine real
+
+Antonio Vorraro					OnlyTrunk
+Aversa Deorah					UsrBin
+Lipucci Di Paola, Dario			DevNull
+Merlini Samuele
+Pierri Giuseppe					bruscketta
+Rossi Guglielmo					Pizza
+
+
+controllare mail 01-07 per password saastagetik
+
+
+Do il seguente comando per avviare il contenitore docker kafka
+docker run --rm --net=host lensesio/fast-data-dev
+
+comando per mostrare le porte aperte
+docker container ls --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}" -a
+
+ docker-compose -f ~/docker_compose/docker-compose-kafkadrop.yaml up
+ http://localhost:9000/
+
+/opt/lensesio/kafka/bin/kafka-topics
+
+mi collego all'indirizzo web per vedere  i topic kafka
+http://localhost:3030/
+http://localhost:9000/
+
+Do il seguente comando per entrare in un container docker
+docker exec -it <idmycontainer> bash
+docker exec -it <idmycontainer> bash
+
+cd /opt/lensesio/kafka/bin
+kafka-topics.sh --create --topic $TEST_TOPIC_NAME --bootstrap-server kafka:9092
+echo "topic $TEST_TOPIC_NAME was create"
+
+Do il seguente comando per creare un topic
+./kafka-topics --create --topic TopicTest --bootstrap-server localhost:9000
+./kafka-topics.sh --zookeeper localhost:2181 --partitions 1 --replication-factor 1 --create --topic TopicProva1 config retention.ms=1000
+
+kafka-topics.sh --zookeeper localhost:2181 --delete --topic TopicProva7
+
+Link guida tester iniziale
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/4075880493/Tester+s+self-learning
+
+Installazione python da codice
+https://tecadmin.net/how-to-install-python-3-11-on-ubuntu/
+
+Esempio di chiamata kafka da python
+https://ioflood.com/blog/python-kafka/#:~:text=To%20use%20Apache%20Kafka%20with,in%20Apache%20Kafka%20using%20Python.&text=In%20this%20example%2C%20we%20first,from%20the%20confluent%2Dkafka%20library.
+
+https://cpm-man-trunk-3.platformteam.saastagetik.com/wildfly/
+
+from kafka.admin import KafkaAdminClient, NewTopic
+
+
+robot -v nomeTopic:pippo -v numeroMessaggi:1000 -v messaggio:'{\"chiave\":\"valore\"}' -d resultsKafka kafka.robot
+
+kafka-topics.sh --zookeeper localhost:2181 --delete --topic TopicProva7
+
+
+https://cchtagetik.atlassian.net/wiki/spaces/ST/pages/4045340699/WSL+-+Ubuntu+-+Configuration+for+OpenLens+and+CPM+EKS+connection
+
+
+https://docs.robotframework.org/docs/testcase_styles/datadriven
+pip install robotframework-datadriver
+
+
+https://cchtagetik.atlassian.net/wiki/spaces/TA1/pages/3953000455/RF+Workshop+2024
+
+
+https://gitlab.aws.tagetik.com/tagetik/robotframework-test/rbt-int/build-rf-consolidation/build-rf-consolidation-test
+
+password rsa per gitlab è antonio
+
+https://cchtagetik.atlassian.net/wiki/spaces/PES/pages/3324149763/GIT+-+Git+Flow
+
+https://gitlab.aws.tagetik.com/tagetik/common-libraries/python/rbt-int/rf-admintools-library
+
+Sito dove interrogare i file json e copiare le query
+https://www.site24x7.com/tools/jsonpath-finder-validator.html
+
+robot -v nomeTopic:Topic1 -v porta:19092 -v server:127.0.0.1 -v numeroMessaggi:1000 -v messaggio:'{\"chiave\":\"valore\"}' -d resultsKafka kafka.robot
+
+elaborationId posso mettere sempre questo valore FF80818191137E7801911385CB3C0634
+mentre sequence_id### devo generare una uuid generator con robot
+
+usando questo comando
+${uuid}=    Evaluate    uuid.uuid4()    modules=uuid
+
+661 clienti
+3500 lancio al giorno
+
+Lista ambienti di test
+https://cchtagetik.atlassian.net/wiki/spaces/QA/pages/3864264726/Test+environments+list
+
+Quando scarico una libreria di gitlab lanciando il comando git clone url
+E dopo lancio il comando cd nomelibreria, 
+e poi do il comadno per installare la libreria pip install library
+Le referenze nella libreria vengogno copiae nella cartella 
+C:\Users\e-antonio.vorraro\AppData\Local\Programs\Python\Python311\Lib\site-packages
+Cosi poi dallo script robot per richiamarla la devo semplicemente includere cosi
+
+*** Settings ***
+Documentation       Run test for Diagnostic show form
+
+Variables           ../config/config_consolidation.py
+Resource            TGKCommonLibrary/includes_4.15.2.resource
+Resource            TGKCommonLibrary/TGK_VaadinComponentLibrary/includes.resource
+Resource            TGKCommonLibrary/TGK_Navigation_4.15.2.resource
+
+
+https://cpm-man-trunk-2.platformteam.saastagetik.com/tagetikcpm,$USER,$USER
+https://cpm-man-trunk-3.platformteam.saastagetik.com/tagetikcpm,$USER,$USER
+https://cpm-auto-trunk-1.platformteam.saastagetik.com/tagetikcpm,$USER,$USER
+https://cpm-auto-trunk-2.platformteam.saastagetik.com/tagetikcpm,$USER,$USER
+https://cpm-auto-trunk-3.platformteam.saastagetik.com/tagetikcpm,$USER,$USER
+https://systemdemo-trunk-aws-jardine.platformteam.saastagetik.com/tagetikcpm,$USER,$USER
+https://systemdemo-trunk-aws-multiwar.platformteam.saastagetik.com/tagetikcpm,$USER,$USER
+https://testinfra-trunk-aws-pps.platformteam.saastagetik.com/tagetikcpm,$USER,$USER
+https://testinfra-trunk-aws-end-release-test-idp.platformteam.saastagetik.com/tagetikcpm,$USER,$USER
+
+
+docker-compose -f docker-compose-kafkadrop.yaml up
+
+Dare il seguente comando per installere postgres su ubuntu
+ed aggiungere il percorso del file pg_config alla variabile path in bashrc
+sudo apt-get install postgresqlN
+
+Per creare un ambiente virtuale in python sotto ubuntu do i seguenti passaggi:
+1)Installo python se non è installato
+2)Creo la cartella dove creare il progetto con ambiente virtuale
+3)Do il comando python -m venv "nome cartella" dove creare ambiente virtuale
+4)Devo attivare l'ambiente virtuale dalla cartella bin creata con il comando source activate
+5)Do il seguente comando per disinstallre tutti i package installati
+pip uninstall -r requirements.txt -y
+
+
+Comandi per installare python
+./configure
+make
+make test
+sudo make install
+
+
+${url},${user},${pass}
+https://cpm-man-trunk-1.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-man-trunk-2.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-man-trunk-3.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-auto-trunk-1.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-auto-trunk-2.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-man-trunk-3.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-auto-trunk-1.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-auto-trunk-2.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://cpm-auto-trunk-3.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://systemdemo-trunk-aws-jardine.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://systemdemo-trunk-aws-multiwar.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://testinfra-trunk-aws-pps.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+https://testinfra-trunk-aws-end-release-test-idp.platformteam.saastagetik.com/tagetikcpm,ROBOT_CHECK_HEALTH,ROBOT
+
+
+
+(.venv) PS C:\Users\e-antonio.vorraro\git\rf-repository\library\TGKRepository\src\CheckURL> git switch master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+(.venv) PS C:\Users\e-antonio.vorraro\git\rf-repository\library\TGKRepository\src\CheckURL> git branch
+* master
+  master-check-url
+
+aprire ticket al soc per avere le credenziali saas
+
+sudo rm /var/lib/dpkg/info/python3.postinst
+
+Comando per rimuovere python da ubuntu
+./configure
+./configure --enable-optimizations
+make
+make test
+sudo make install
+
+ /usr/local/lib/python3.11
+sudo apt purge python3*
+
+sudo apt purge --autoremove python3.10 
+ sudo apt remove python3.10
+ sudo apt remove python3.10-minimal
+ sudo apt purge --autoremove python3.10-minimal
+sudo apt -f install
+sudo apt update
+sudo apt upgrade
+sudo dpkg --configure -a
+
+unselected package python3.10-minimal
+
+Procedimento per escludere il path di windows nel path della wsl,
+questo mi serve per far vedere dalla variabile di ambiente in locale di linux
+python, altrimenti lo prende dal percorso /mnt di windows e mi da problemi
+can override settings by edit "/etc/wsl.conf"
+normally this file is not exists at first
+$ sudo vi /etc/wsl.conf
+
+Per installare pip scarico il file get-pip.py
+Do il comando dalla cartella di installazione di python 
+python get-pip.py
+
+[interop]
+appendWindowsPath = false
+
+
+
+https://cchtagetik.atlassian.net/wiki/spaces/TA1/pages/3725721601/Robot+Framework+modifica+codice+commit+push
+
+
+echo "# testElaborazioni" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/vantonio1979/testElaborazioni.git
+git push -u origin main

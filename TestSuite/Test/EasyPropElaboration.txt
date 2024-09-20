@@ -1,0 +1,32 @@
+[9:36 AM] Pastore, Silvio
+* Test EasyPropElaboration:
+ 
+    Login
+
+        YYC
+
+        Itsvil2
+
+    Lanciare da cruscotto il processo:
+
+        ACT -> 2016ACT -> 12
+
+            Cliccare su Consolidatore a DX
+
+                Selezionare un nodo a SX e nel menù a DX scegliere la voce: 
+
+                    Elaborazioni di consolidamento --> Custom
+
+                        Deflaggo le prime due, lascio l'ultima e lascio solo uno scenario per l'area:
+
+                            2016ACT_USD periodo 12
+
+                                Esegui
+
+                                    Esce una maschera di riepilogo prima di lanciare l'elaborazione, cliccare su Continua
+
+                                        Query di verifica dati: 
+
+                                            select * from dati_rett_riga_cons_1 where cod_scenario = '2016ACT_USD' 
+
+                                            and cod_periodo = '12' order by dateupd desc																						

@@ -1,0 +1,2 @@
+Vai da Repository->Utenti->User Mapping modifichi un match e salvi (in tal caso viene lanciata come subelaboration)
+Sempre da repository vai su Utenti, c'è una bacchetta magica in alto, cliccando esce un menu con 3 elementi, clicchi sull'ultimo (in questo caso parte come elaborazione)

@@ -1,0 +1,129 @@
+* Test EasyPropElaboration:			OK
+
+    Login
+    
+        YYC
+        Itsvil2
+        
+    Lanciare da cruscotto il processo:
+    
+        ACT -> 2016ACT -> 12
+        
+            Cliccare su Consolidatore a DX
+            
+                Selezionare un nodo a SX e nel menù a DX scegliere la voce: 
+                
+                    Elaborazioni di consolidamento --> Custom
+            
+                        Deflaggo le prime due, lascio l'ultima e lascio solo uno scenario per l'area:
+                                                        
+                            2016ACT_USD periodo 12
+    
+                                Esegui
+                                
+                                    Esce una maschera di riepilogo prima di lanciare l'elaborazione, cliccare su Continua
+                                    
+                                        Query di verifica dati: 
+                                            
+                                            select * from dati_rett_riga_cons_1 where cod_scenario = '2016ACT_USD' 
+                                            and cod_periodo = '12' order by dateupd desc
+
+
+* Test Legacy dal CPM:			OK
+		
+	- Profilo Admin.
+	- Dimensioni --> Scenario --> Raggruppamento
+	
+		Se premo il report in alto --> Export excel... passa per il Legacy!
+	
+	
+* Test elaborazioni Multidimensional:
+
+	- Accedere come lato utente e come database TGK_DEV_JUSTTEAM_LOCAL_001 / justTeam local
+	- Processi
+		Multi...
+			...2021_ACTUAL
+				...01- Junary
+				
+				
+* Test elaborazioni Forzatura Tipo Importo:
+
+	Processi -> ACT - Actual Close -> 2017ACT - 2017 Actuals -> 12 - December
+	
+		In alto a DX si seleziona Consolidatore
+		
+		Scegliere una foglia tra i Noti consolidatore:
+		
+			Espandi 010 - All entries tasto... selezionare una foglia, ad esempio 100 - North America
+		
+			A DX, Selezionare Elaboraizoni di consolidamento -> Custom
+			
+				Nel Box area delle azioni deselezionare le prime 2 e scegliere dalla tendina della terza azione: Consolidamento
+				
+					e poi segli il primo: Consolidation
+					
+						Esegui
+	
+	
+* Test ScaricoPartecipazioni:
+
+	Abilitazione a partire di un processo: (Messaggio da Dalu, Simona il 03/04/2023)
+
+		1) Accedere in Admin -> Processi e selezionare un processo	
+		2) Menu action -> process definition
+		3) Dall'area Data Processing, abilitare Load financial investments on amounts che è in Consolidation -> Basic Consolidation
+		4) Dopodichè si può lanciare da cruscotto, se vado nel processo la lancio da Azioni scegliendo -> Elaborazioni di azienda, dovrebbe esserci:
+		
+				Elaborazioni -> Elaborazioni di azienda -> Scarico partecipazioni
+			
+			
+* Test CONSOLIDAMENTO_DIRETTO:
+
+	Login
+	
+		YYC
+		Itsvil2
+	
+	Processi -> ACT_OLD
+	
+		In alto a DX si seleziona Consolidatore
+		
+		Selezionare la foglia 100 - North America - OPPURE - Dalla radice 010 - All Entities, tasto dx e scegliere 'Seleziona in cascata'
+		
+			A DX, Selezionare Edit windows -> Edit Consolidation journals
+			
+				Scegliere la personalizzazione delle colonne con il tasto quadrato le colonne:
+				
+					Proportional calculation method, Minorities calculation method e Equity evaluation method -> OK 
+					
+				Selezionare una riga con i primi 3 None e Dal menù in alto con i tre pallini scegliere -> Consolidate journals 
+				
+					Consolidation scenarios: scegliere un scenario e premere OK
+			
+						Eseguire l'elaborazione: RUN
+	
+	Poi in Admin -> Audit
+	
+		Selezionare l'elaborazione e nel menù in alto -> Dettagli
+		
+			Scegliere il tab -> Parametri
+
+
+											
+https://wolterskluwer.sharepoint.com/:x:/t/TAA_TGK_Global_Development_Team/EcFbur8Wmv1Crgbsvl4VDtsB--7Mq5_n3_OQWa6J85JzEA?e=qk9oPY&isSPOFile=1
+
+
+elisioni test di integrazioni da spostare
+come vanno remotizzate le elisioni
+
+
+
+
+
+Fusioni
+
+
+DeconsolidFusioni
+
+
+Deconsolid

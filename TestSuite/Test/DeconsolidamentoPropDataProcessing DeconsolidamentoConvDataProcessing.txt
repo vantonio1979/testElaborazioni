@@ -1,0 +1,157 @@
+******DeconsolidamentoPropDataProcessing
+
+Codice Elaborazione: BASIC_DECONSOLIDATION
+Provenienza Output: CONS_DECONSOLIDATION, CONS_DECONSOLIDATION_2
+Tabelle Output: DATI_RETT_RIGA_CONS_1, DATI_RETT_RIGA_CONS_2, DATI_SALDI_CONS_1, DATI_SALDI_CONS_2
+
+Moduli di Destinazione: 
+tgk-consolidation-dataprocessing-consolidation
+
+Configurazione lancio manuale: 
+Consolidation -> Basic Consolidation -> Deconsolidation -> on consolidation area
+
+Lancio manuale: 
+Cruscotto Consolidator - Consolidation Data Processing -> Consolidation Area Data Processing
+
+TEST
+
+1) Test manuali da applicazione 
+
+<connection-url>jdbc:postgresql://postgres13-dev.grupposervizi.it:5432/TGK_DEV_YYC_MODULARIZATION</connection-url>
+<driver>postgresql</driver>
+<security>
+  <user-name>tagetikcpm</user-name>
+  <password>tagetikcpm</password>
+</security>
+
+
+1a) Lancio Cruscotto consolidatore - Elaborazioni di area
+Url: cockpit/consolidator/TGK_DEV_YYC_MODULARIZATION/ACT_TEST/2017TEST/02
+selezionare tutti i nodi
+Consolidation Data Processing -> Custom -> Area Data Processing
+Scenario consolidamento 2017TEST_USD periodo 02
+
+Output:
+SELECT *
+FROM DATI_RETT_RIGA_CONS_1 
+WHERE PROVENIENZA IN ('CONS_DECONSOLIDATION')
+AND COD_SCENARIO = '2017TEST_USD' AND COD_PERIODO = '02'
+
+SELECT *
+FROM DATI_SALDI_CONS_1 
+WHERE PROVENIENZA IN ('CONS_DECONSOLIDATION')
+AND COD_SCENARIO = '2017TEST_USD' AND COD_PERIODO = '02'
+
+SELECT *
+FROM DATI_RETT_RIGA_CONS_2
+WHERE PROVENIENZA IN ('CONS_DECONSOLIDATION_2')
+AND COD_SCENARIO = '2017TEST_USD' AND COD_PERIODO = '02'
+
+SELECT *
+FROM DATI_SALDI_CONS_2 
+WHERE PROVENIENZA IN ('CONS_DECONSOLIDATION_2')
+AND COD_SCENARIO = '2017TEST_USD' AND COD_PERIODO = '02'
+
+
+
+1b) Lancio da Job
+Menu Admin > Elaborazioni > Job.
+Selezionare la riga con codice T6 -> Menu azioni -> Rivedi e lancia -> Lancia
+
+Output:
+Eseguire le stesse query indicate sopra
+
+
+
+1c) Lancio da Cruscotto consolidatore - Task Workflow
+Cruscotto Consolidatore -> Tab 'Consolidation journals' -> Selezionare Nodo 300 - > Icona ingranaggi 'Area data processing' -> 'Esegui'
+
+Output:
+SELECT *
+FROM DATI_RETT_RIGA_CONS_1 
+WHERE PROVENIENZA IN ('CONS_DECONSOLIDATION')
+AND COD_SCENARIO = '2017TEST_USD' AND COD_PERIODO = '02'
+and NUM_RETTIFICA like 'EN_65%'
+
+SELECT *
+FROM DATI_SALDI_CONS_1 
+WHERE PROVENIENZA IN ('CONS_DECONSOLIDATION')
+AND COD_SCENARIO = '2017TEST_USD' AND COD_PERIODO = '02'
+
+SELECT *
+FROM DATI_RETT_RIGA_CONS_2
+WHERE PROVENIENZA IN ('CONS_DECONSOLIDATION_2')
+AND COD_SCENARIO = '2017TEST_USD' AND COD_PERIODO = '02'
+and NUM_RETTIFICA like 'EN_65%'
+
+SELECT *
+FROM DATI_SALDI_CONS_2 
+WHERE PROVENIENZA IN ('CONS_DECONSOLIDATION_2')
+AND COD_SCENARIO = '2017TEST_USD' AND COD_PERIODO = '02'
+
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> TestElabScenariConsolidamento (Job, Template):
+
+
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_QUART_GP_19
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV24-EON	EonHana24_ACT_YEAR_GP
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-HANA-HANADEV25-DEMO	DemoHana25STAT3
+TRUNK-MAVEN-AT-CONSOLIDATO-POSTGRES-13	DemoPg13_STAT3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2015
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-DBTEST-3-METRO	Metro2016
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB17DEV	DemoSql2017_BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3
+TRUNK-MAVEN-AT-CONSOLIDATO-SQL-SQLDB19NR	DemoSql2019_BDG3
+
+
+******DeconsolidamentoConvDataProcessing
+
+Codice Elaborazione: BASIC_DECONSOLIDATION
+Provenienza Output: CONS_DECONSOLIDATION_2, CONS_DECONSOLIDATION_2_MIN
+Tabelle Output: TODO
+
+Moduli di Destinazione: (come DeconsolidamentoPropDataProcessing)
+
+Configurazione lancio manuale: 
+(come DeconsolidamentoPropDataProcessing)
+
+Lancio manuale: 
+(come DeconsolidamentoPropDataProcessing)
+
+TEST
+
+1) Test manuali da applicazione
+
+(come DeconsolidamentoPropDataProcessing) ma output :
+
+SELECT *
+FROM DATI_RETT_RIGA_CONS_2 
+WHERE PROVENIENZA IN ('CONS_DECONSOLIDATION_2','CONS_DECONSOLIDATION_2_MIN')
+AND COD_SCENARIO = '2017TEST_USD' AND COD_PERIODO = '02'
+
+SELECT *
+FROM DATI_SALDI_CONS_2 
+WHERE PROVENIENZA IN ('CONS_DECONSOLIDATION_2','CONS_DECONSOLIDATION_2_MIN')
+AND COD_SCENARIO = '2017TEST_USD' AND COD_PERIODO = '02'
+
+
+2) Test Integrazione
+Job da controllare su http://jenkins:8080/view/YYC-IT
+
+Nessuno
+
+
+3) Test Automatici (AT)
+Job da controllare su http://test:8080/view/AT-CONSOLIDATO -> REPLACE_TEMPLATE (Job, Template):
+
+
+(come DeconsolidamentoPropDataProcessing)

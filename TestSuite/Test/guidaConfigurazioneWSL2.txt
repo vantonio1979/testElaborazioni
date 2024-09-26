@@ -355,6 +355,18 @@ Guida installazione wsl2
 		12)Aprire Pycharm ed installare i due plugins di utilità per robot
 		   IntelliBot	Patched
 		   Robot framework Language server
+		13)Controllare che è settata la seguente configurazione in pycharm
+		   File > Settings > Languages & Frameworks > Robot Framework Language Serve
+		   Settare la prima voce nella scheda Language Server Python con il percorso
+		   dove risiede python
+		14)Dare il comando
+		    sudo apt-get install libgtk-3-dev
+	    15)Dare il seguente comando per scaricare il setup di robot
+		   git clone git@gitlab.aws.tagetik.com:tagetik/common-libraries/python/rbt-int/rbt-setup.git
+		   pip install rbt-setup/library
+	    15)Dare i seguenti comandi per fare backup delle librerire installate e per disinstallare tutto
+		   pip freeze requirements.txt
+           pip uninstall -r requirements.txt -y
 
 			
 
